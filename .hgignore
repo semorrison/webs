@@ -1,0 +1,25 @@
+# use glob syntax.
+syntax: glob
+
+# temporary files
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz*
+*.nav
+*.snm
+
+# artifacts
+webs.pdf
+
+# bibliograph stuff
+*.bbl
+*.blg
+bibliography
+
+# generic OSX crap
+.DS_Store
+
+# latex2pdf temporary files
+
