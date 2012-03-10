@@ -94,33 +94,33 @@ Next, we find that we can explicitly describe the kernel of $\Usl{m}$ acting on 
 \label{sec:idemform}
 We now introduce the idempotent form of $\Ugl{m}$.  This is an algebra with generators $ E_i, F_i, \one_\ul{k} $, where $ \ul{k} = (k_1, \dots, k_m) \in \mathbb Z^m $.
 
-It will be convenient for us to think of a $\Ugl{m} $ as a $\mathbb C$-linear category (which we will continue to denote $\Ugl{m}$) with object $ \ul(k) $ and $ Hom(\ul{k}, \ul{k'}) = \ul(k) \Ugl{m} \ul{k'}$.
+It will be convenient for us to think of a $\Ugl{m} $ as a $\mathbb C$-linear category (which we will continue to denote $\Ugl{m}$) with objects $ \ul{k} $ and $ Hom(\ul{k}, \ul{k'}) = \one_\ul{k} \Ugl{m} \one_\ul{k'}$.
 
-Note that $ Hom(\ul{k}, \ul{k'}) = 0 $ unless $ \sum \ul{k} = \sum \ul{k'} $.
+Note that $ Hom(\ul{k}, \ul{k'}) = 0 $ unless $ \sum k_i = \sum k'_i $.
 
 \todo{More detail here.}
 
 \subsection{The functor $F_m^n$}
-Let $K $ be a positive integer.  The vector space $ \Lambda^K(\mathbb C^n \otimes \mathbb C^m) $ carries commuting actions of both $ GL_m $ and $ GL_n $ and these actions generate each others commutant.  
+Let $K $ be a positive integer.  The vector space $ \Alt^K(\mathbb C^n \otimes \mathbb C^m) $ carries commuting actions of both $ GL_m $ and $ GL_n $ and these actions generate each others commutant.  
 
-Let us consider the weight decomposition of $\Lambda^K(\mathbb C^n \otimes \mathbb C^m)$  with respect to the maximal torus of $ GL_m $.  It is given by 
+Let us consider the weight decomposition of $\Alt^K(\mathbb C^n \otimes \mathbb C^m)$  with respect to the maximal torus of $ GL_m $.  It is given by 
 \begin{equation}
- \Lambda^K(\mathbb C^n \otimes \mathbb C^m) = \oplus_{\ul{k}} \Alt^{k_1} \mathbb C^n \otimes \cdots \otimes \Alt^{k_m} \mathbb C^n
+ \Alt^K(\mathbb C^n \otimes \mathbb C^m) = \bigoplus_{\ul{k}} \alt^{k_1} \mathbb C^n \otimes \cdots \otimes \alt^{k_m} \mathbb C^n
  \end{equation}
 where the sum ranges over those $ \ul{k} $ with $ 0 \le k_i \le n $ for all $ i $.  We will refer to these as the $n$-bounded weights of $ GL_m$.
 
 Thus since we have a $ GL_m$ action with these weight spaces, for any two $n$-bounded weights $ \ul{k}, \ul{k'}$ with $ \sum \ul{k} = \sum \ul{k'} = K$, we obtain a map
 $$
-\one_\ul{k} \Ugl{m} \one_\ul{k'} \rightarrow Hom(\Alt^{k_1} \mathbb C^n \otimes \cdots \otimes \Alt^{k_m} \mathbb C^n, \Alt^{k'_1} \mathbb C^n \otimes \cdots \otimes \Alt^{k'_m} \mathbb C^n)
+\one_\ul{k} \Ugl{m} \one_\ul{k'} \rightarrow Hom(\alt^{k_1} \mathbb C^n \otimes \cdots \otimes \alt^{k_m} \mathbb C^n, \alt^{k'_1} \mathbb C^n \otimes \cdots \otimes \alt^{k'_m} \mathbb C^n)
 $$
 
 Since the actions of $GL_m $ and $ SL_n $ commute, this map lands inside the subspace of $ SL_n$-equivariant maps and since the action of $ GL_m$ generates the commutant of the $ SL_n $ action, we see that this map is a surjection onto this subspace.
 
-Let us rephrase this construction by defining a functor $ F_m^n : \Ugl{m} \rightarrow \RepSL{n} $ as follows.  On objects $ F_m^n(\ul{k}) = \Alt^{k_1} \mathbb C^n \otimes \cdots \otimes \Alt^{k_m} \mathbb C^n $, if $ \ul{k} $ is $n$-bounded, and 0 otherwise.  On morphisms $ F_m^n $ is the above map 
+Let us rephrase this construction by defining a functor $ \Phi_m^n : \Ugl{m} \rightarrow \RepSL{n} $ as follows.  On objects $ \Phi_m^n(\ul{k}) = \alt^{k_1} \mathbb C^n \otimes \cdots \otimes \alt^{k_m} \mathbb C^n $, if $ \ul{k} $ is $n$-bounded, and 0 otherwise.  On morphisms $ \Phi_m^n $ is the above map 
 $$
-\one_\ul{k} \Ugl{m} \one_\ul{k'} \rightarrow Hom_{SL_n}(\Alt^{k_1} \mathbb C^n \otimes \cdots \otimes \Alt^{k_m} \mathbb C^n, \Alt^{k'_1} \mathbb C^n \otimes \cdots \otimes \Alt^{k'_m} \mathbb C^n)
+\one_\ul{k} \Ugl{m} \one_\ul{k'} \rightarrow Hom_{SL_n}(\alt^{k_1} \mathbb C^n \otimes \cdots \otimes \Alt^{k_m} \mathbb C^n, \alt^{k'_1} \mathbb C^n \otimes \cdots \otimes \alt^{k'_m} \mathbb C^n)
 $$
-As above, $ F_m^n $ is a surjection on Hom spaces.  In other words, it is full.
+As above, $ \Phi_m^n $ is a surjection on Hom spaces.  In other words, it is full.
 
 \subsection{A quotient of $\Ugl{m}$}
 Let $ \Ugl{m}^n $ denote the quotient of $ \Ugl{m} $ where we set to 0 all morphisms which factor through an object which is not an $n$-bounded weight.
@@ -128,10 +128,64 @@ Let $ \Ugl{m}^n $ denote the quotient of $ \Ugl{m} $ where we set to 0 all morph
 
 Since all weights of $ \Lambda^K(\mathbb{C}^n \otimes \mathbb{C}^m) $ are $ n$-bounded, the functor $ \Ugl{m} \rightarrow \RepSL{n} $ factors through $ \Ugl{m}^n $.
 
-\begin{thm}
+\begin{thm} \label{th:functorfullyfaithful}
 The resulting functor $ \Ugl{m}^n \rightarrow \RepSL{n}$ is fully faithful (it gives isomorphisms on Hom-spaces).
 \end{thm}
 
+To prove this result, we will need a general result about semisimple Lie algebras which may be well-known, but was not previously known to us.
+
+Let $ \mathfrak g $ denote a semisimple Lie algebra and the $ U \mathfrak g $ denote its idempotent form.  Let $ \lambda $ be a dominant weight for $ \mathfrak g $ and let $ I_\lambda $ be the 2-sided ideal in $ U\mathfrak g $ generated by all $ 1_\nu $ such that $ \nu $ is not a weight of the representation $ V(\lambda) $.
+
+If $ \mu $ is a dominant weight of $ \mathfrak g $ with $ \mu \le \lambda $, then for each $ \nu $ as above, $ 1_\nu $ is not a weight of the representation $ V(\mu)$.  Thus $ I_\lambda $ acts trivially on $ V(\mu) $ and we get a representation $ U \mathfrak g / I_\lambda \rightarrow \End{V(\mu)} $.
+
+\begin{lem}
+The resulting map
+$$
+U \mathfrak g / I_\lambda \rightarrow \bigoplus_{\mu \le \lambda} \End{ V(\mu)}
+$$
+is an isomorphism.
+\end{lem}
+
+\begin{proof}
+First note that $U \mathfrak g/ I_\lambda $ is finite-dimensional.  By Weddeburn's theorem, it suffices to show that the category of finite-dimensional $ U\mathfrak g / I_\lambda $-modules is semisimple with simple objects the $ V(\mu) $, for $ \mu \le \lambda $.
+
+Now a $ U\mathfrak g / I_\lambda$ module is the same thing as a $ U\mathfrak g $ module in which $ I_\lambda $ acts trivially.  Thus the semisimplicity is immediate.  It remains just to verify that $ I_\lambda $ does act trivially on $ V(\mu)$.
+
+\end{proof}
+
+\begin{proof}[Proof of Theorem \ref{th:functorfullyfaithful}]
+For $ 0 \le K \le mn $,  recall that by skew-Howe duality, we have a decomposition (under the $GL_n \times GL_m$ action),
+$$
+\Alt^K (\mathbb C^n \otimes \mathbb C^m) = \oplus_{\mu} V(\mu^t) \otimes V(\mu)
+$$
+where in the direct sum, $\mu $ varies over all dominant weight $ (\mu_1, \dots, \mu_m) $ of $ GL_m $ such that $ 0 \le \mu_i \le n $ for all $ i$  and $ \mu_1 + \dots + \mu_m = K $.  The notation $ \mu^t $ denotes the transpose of a partition.
+
+Thus we see that
+$$
+Hom_{SL_n} (\Alt^K(\mathbb C^n \otimes \mathbb C^m), \Alt^K(\mathbb C^n \otimes \mathbb C^m)) = 
+\oplus_{\mu} End V(\mu) 
+$$
+where $ \mu $ ranges over the same set as before.  Note that these $\mu $ are exactly those which satisfy $ \mu \le \lambda(K) $ , where $ \lambda(K) $ is the unique weight of the form $\lambda =  (n, \dots, n, r, 0, \dots, 0) $ with $ \lambda_1 + \dots + \lambda_m = K $.
+
+For any integer $ K $, let $ U \mathfrak{gl}_m(K) $ denote the subalgebra of the idempotented universal enveloping algebra generated by all $ 1_\mu $ with $ \mu_1 + \dots + \mu_m = K $.  Note that the entire idempotented universal enveloping algebra is a product of these subalgebras, 
+$$
+U \mathfrak{gl}_m = \oplus_{K \in \mathbb Z} U \mathfrak{gl}_m(K)
+$$
+
+For any $ 0 \le K \le mn $, let $ I_{\lambda(K)} $ denote ideal in $ U \mathfrak{gl}_m(K)$ generated by all weights $ \nu $ with $ \nu_1 + \dots + \nu_m = K $ which are not $ n$-bounded (which is equivalent to not being a weight $ V(\lambda(K)) $.
+
+Though $ U\mathfrak{gl}_m(K) $ is not the enveloping algebra of a semsimple Lie algebra (unless $ K = 0 $), it is easy to see that the previous Lemma applies to $ U\mathfrak{gl}_m(K) $ and to the highest weight $\lambda(K) $ shows that
+$$
+U\mathfrak{gl}_m(K) / I_{\lambda(K)} \cong \oplus_{\mu \le \lambda(K)} \End{V(\mu)}
+$$
+
+Finally, we note that 
+$$
+\oplus_{K= 0}^{mn} U\mathfrak{gl}_m(K) / I_{\lambda(K)} \cong \Ugl{m}^n 
+$$
+and so combining together the above isomorphisms gives the desired result.
+
+\end{proof} 
 
 \section{Ladder diagrams and $\Usl{m}$}
 \label{sec:ladders}
@@ -143,7 +197,7 @@ We introduce a category $ \Lad_n^m $ whose objects are again labelled by $n$-bou
 \todo{More details about ladder diagrams}
 
 \subsection{Relations}
-We have a functor $ \Lad_n^m \rightarrow \Ugl{m}^n $ which is the identity on objects.  On morphisms it consists of intepreting each ladder diagram as a sequence of $ E_i, F_j $ generators of $ Ugl{m}^n $.
+We have a functor $ \Lad_n^m \rightarrow \Ugl{m}^n $ which is the identity on objects.  On morphisms it consists of intepreting each ladder diagram as a sequence of $ E_i, F_j $ generators of $ \Ugl{m}^n $.
 
 \begin{thm}
 The kernel of $ \Lad_n^m \rightarrow \Ugl{m}^n $ is generated by the following relations.
@@ -163,20 +217,20 @@ We have the following 5 categories:
 \item $FSp(SL_n) $, the free spider category (no relations)
 \item $Sp(SL_n) $, the spider category defined by generators and relations (which Scott denotes $ \cW $ in the intro)
 \item $\Lad_n^m$, the free ladder category
-\item $\Ugl{m}^n $, defined as a quotient of $ Ugl{m} $ above.  Also above, we know the generators of the kernel of $ \Lad_n^m \rightarrow \Ugl{m}^n $.
+\item $\Ugl{m}^n $, defined as a quotient of $ \Ugl{m} $ above.  Also above, we know the generators of the kernel of $ \Lad_n^m \rightarrow \Ugl{m}^n $.
 \item $\RepSL{n}$
 \end{enumerate}
 
 We have a commutative diagram
 \begin{equation*}
 \xymatrix{
-\Lad_n^m \ar[r] \ar[d] & \Ugl{m}^n \ar[dr]^{F_m^n} \ar[d] & \\
+\Lad_n^m \ar[r] \ar[d] & \Ugl{m}^n \ar[dr]^{\Phi_m^n} \ar[d] & \\
 FSp(SL_n) \ar[r] & Sp(SL_m) \ar[r] & \RepSL{n} \\
 }
 \end{equation*}
 The key point is that the functor $ F_m^n $ provided by the Skew Howe duality, factors through $ Sp(SL_m)$.  This is because we have a functor $ \Lad_n^m \rightarrow FSp(SL_n) $ given by interpreting ladder diagrams as web diagrams and because the kernel of $ \Lad_n^m \rightarrow \Ugl{m}^n $ is sent into the kernel of $ FSp(SL_n) \rightarrow Sp(SL_m) $.  
 
-Now, in order to show that $ Sp(SL_n) \rightarrow \RepSL{n} $ is injective, we let $ \phi $ be a morphism in $ FSp(SL_n)$ which is sent to 0 in $ \RepSL{n} $.  So $ \phi $ is a linear combination of web diagrams, so choosing $m$ large enough, we can represent $ \phi $ as a linear combination $ \tilde{\phi} $ of ladder diagrams.   By commutativity of the above diagram, $ \tilde{\phi} $ is sent to 0 in $ \RepSL{n} $ following the route via $ \Ugl{m}^n $.  However, since $ F_m^n $ is fully-faithful, it must already go to 0 in $ \Ugl{m}^n $.  Thus using the functor $ \Ugl{m}^n \rightarrow Sp(SL_m) $ we get that $ \tilde{\phi} $ and hence $ \phi $ are sent to 0 in $ Sp(SL_m) $ and thus we are done.
+Now, in order to show that $ Sp(SL_n) \rightarrow \RepSL{n} $ is injective, we let $ \phi $ be a morphism in $ FSp(SL_n)$ which is sent to 0 in $ \RepSL{n} $.  So $ \phi $ is a linear combination of web diagrams, so choosing $m$ large enough, we can represent $ \phi $ as a linear combination $ \tilde{\phi} $ of ladder diagrams.   By commutativity of the above diagram, $ \tilde{\phi} $ is sent to 0 in $ \RepSL{n} $ following the route via $ \Ugl{m}^n $.  However, since $ \Phi_m^n $ is fully-faithful, it must already go to 0 in $ \Ugl{m}^n $.  Thus using the functor $ \Ugl{m}^n \rightarrow Sp(SL_m) $ we get that $ \tilde{\phi} $ and hence $ \phi $ are sent to 0 in $ Sp(SL_m) $ and thus we are done.
 
 
 % ----------------------------------------------------------------
