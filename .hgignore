@@ -10,8 +10,14 @@ syntax: glob
 *.nav
 *.snm
 
+# Dropbox
+.dropbox
+Icon*
+
 # artifacts
 webs.pdf
+webs.dvi
+*.bak
 
 # bibliograph stuff
 *.bbl
