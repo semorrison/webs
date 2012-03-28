@@ -5,7 +5,7 @@
 \input{preamble}
 
 \title{something about webs and skew Howe duality}
-\author{Sabin~Cautis, Joel Kamnitzer and Scott~Morrison}
+\author{Sabin~Cautis, Joel~Kamnitzer and Scott~Morrison}
 
 \begin{document}
 
@@ -86,6 +86,94 @@ Next, we find that we can explicitly describe the kernel of $\Usl{m}$ acting on 
 
 \section{Web diagrams and relations}
 \label{sec:diagrams}
+The free spider category $FSp(SL_n)$ has as objects sequences $\ul{k}$ in $\{0,\ldots,n\}$, and as morphisms linear combinations of planar trivalent graphs locally modeled on the two types of vertices
+$$ ... $$
+The spider category $Sp(SL_n)$ is the quotient by the following relations
+
+\tikzstyle{mid>}=[decoration={markings, mark=at position 0.5 with {\arrow{>}}}, postaction={decorate}]
+\tikzstyle{mid<}=[decoration={markings, mark=at position 0.5 with {\arrow{<}}}, postaction={decorate}]
+
+
+\begin{align}
+\tikz[baseline]{\draw[->] (0,0.5) node[above] {$a$} arc (45:-315:0.5cm);} & = \qBinomial{n}{a} \label{eq:loop} \\
+\begin{tikzpicture}[baseline=20]
+\foreach \n in {0,...,3} {
+	\coordinate (z\n) at (0.4*\n, 0.8*\n);
+}
+\draw[mid>] (z0) -- node[right] {$a+b$} (z1);
+\draw[mid>] (z2) -- node[right] {$a+b$} (z3);
+\draw[mid>] (z1) to[out=150,in=-190] node[left] {$a$} (z2);
+\draw[mid>] (z1) to[out=-30,in=0] node[right] {$b$} (z2);
+\end{tikzpicture}
+& = \qBinomial{a+b}{a}
+\tikz[baseline=20]{\draw[mid>] (0,0) -- node[right] {$a+b$} (1,2);} \\
+\begin{tikzpicture}[baseline=20]
+\foreach \n in {0,...,3} {
+	\coordinate (z\n) at (0.4*\n, 0.8*\n);
+}
+\draw[mid>] (z0) -- node[right] {$a$} (z1);
+\draw[mid>] (z2) -- node[right] {$a$} (z3);
+\draw[mid<] (z1) to[out=150,in=-190] node[left] {$b$} (z2);
+\draw[mid>] (z1) to[out=-30,in=0] node[right] {$a+b$} (z2);
+\end{tikzpicture}
+& = \qBinomial{n-a}{b}
+\tikz[baseline=20]{\draw[mid>] (0,0) -- node[right] {$a$} (1,2);} \\
+\begin{tikzpicture}[baseline]
+\foreach \x/\y in {0/0,1/0,2/0,0/1,1/1,0/2} {
+	\coordinate(z\x\y) at (\x+\y/2,\y/1.5);
+}
+\coordinate (z03) at (1,2);
+\draw[mid>] (z00) node[below] {$a$} --  (z01);
+\draw[mid>] (z01) -- node[left] {$a+b$} (z02);
+\draw[mid>] (z10) node[below] {$b$} -- (z01);
+\draw[mid>] (z20) node[below] {$c$} -- (z02); 
+\draw[mid>](z02) -- node[left] {$a+b+c$} (z03);
+\end{tikzpicture}
+& =
+\begin{tikzpicture}[baseline]
+\foreach \x/\y in {0/0,1/0,2/0,0/1,1/1,0/2} {
+	\coordinate(z\x\y) at (\x+\y/2,\y/1.5);
+}
+\coordinate (z03) at (1,2);
+\draw[mid>] (z00) node[below] {$a$} --  (z02);
+\draw[mid>] (z10) node[below] {$b$} -- (z11);
+\draw[mid>] (z20) node[below] {$c$} -- (z11); 
+\draw[mid>] (z11) -- node[right] {$b+c$} (z02);
+\draw[mid>](z02) -- node[left] {$a+b+c$} (z03);
+\end{tikzpicture} \\
+\mathfig{0.35}{trivial} \label{eq:trivial} \\
+\intertext{TODO: the twisted version, too}
+\mathfig{0.45}{commutation} \label{eq:commutation}
+\intertext{TODO: first term disappears if $a=0$ or $b=n$}
+\end{align}
+Note that Relation \eqref{eq:loop} is actually a consequence of Relation \eqref{eq:bigon2} with $a=0$, using Relation \eqref{eq:trivial} to remove the $0$-strings. 
+\todo{We also need mirror reflections and the arrow reversals of these.}
+
+We'll also record several consequences of these relations, to be used later.
+\begin{lem}
+$$\mathfig{0.35}{combine}$$
+\end{lem}
+\begin{proof}
+Use I=H twice, then remove a bigon.
+\end{proof}
+
+\begin{lem}
+The Serre relation.
+\end{lem}
+\begin{proof}
+Look at the middle term, use I=H then the commutation relation to open up the square.
+\end{proof}
+
+\begin{lem}
+\begin{align*}
+\mathfig{0.8}{commutation2}
+\end{align*}
+\end{lem}
+
+\begin{rem}
+Just as a check:
+Taking the `partial trace' of Relation \eqref{eq:commutation} (that is, closing up the $b$ endpoints), and evaluating all terms to a multiple of the $a$ strand using Relations \eqref{eq:bigon1} and \eqref{eq:bigon2}, we get the identity $\qBinomial{n-1}{b-1} \qi{n-a} = \qBinomial{n-1}{b} \qi{a} + \qBinomial{n}{b} \qi{b-a}$, which does in fact hold!
+\end{rem}
 
 \section{Skew Howe Duality}
 \label{sec:skew-howe}
@@ -195,6 +283,8 @@ and so combining together the above isomorphisms gives the desired result.
 We introduce a category $ \Lad_n^m $ whose objects are again labelled by $n$-bounded weights of $ GL_m$.  The morphisms in this category are given by formal linear combinations of ladder diagrams.
 
 \todo{More details about ladder diagrams}
+
+\todo{Explain why every diagram in $Sp(SL_n)$ is `equivalent' to one in $FSp(SL_n)$ which comes from a ladder diagram.}
 
 \subsection{Relations}
 We have a functor $ \Lad_n^m \rightarrow \Ugl{m}^n $ which is the identity on objects.  On morphisms it consists of intepreting each ladder diagram as a sequence of $ E_i, F_j $ generators of $ \Ugl{m}^n $.

@@ -126,6 +126,10 @@
 \newcommand{\norm}[1]{\left|\left|#1\right|\right|}
 \newcommand{\abs}[1]{\left|#1\right|}
 
+\newcommand{\qi}[2][q]{\left[#2\right]_{#1}}
+\newcommand{\qBinomial}[3][q]{\genfrac{[}{]}{0pt}{}{#2}{#3}_{#1}}
+\newcommand{\qPoch}[3]{\left(#1;#2\right)_{#3}}
+
 \newcommand{\card}[1]{\sharp{#1}}
 
 \newcommand{\bdy}{\partial}
@@ -171,7 +175,7 @@
 \usepackage{tikz}
 \usetikzlibrary{shapes}
 \usetikzlibrary{backgrounds}
-\usetikzlibrary{decorations,decorations.pathreplacing}
+\usetikzlibrary{decorations,decorations.pathreplacing,decorations.markings}
 \usetikzlibrary{fit,calc,through}
 
 % tricky way to iterate macros over a list
