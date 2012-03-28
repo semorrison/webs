@@ -86,12 +86,60 @@ Next, we find that we can explicitly describe the kernel of $\Usl{m}$ acting on 
 
 \section{Web diagrams and relations}
 \label{sec:diagrams}
-The free spider category $FSp(SL_n)$ has as objects sequences $\ul{k}$ in $\{0,\ldots,n\}$, and as morphisms linear combinations of planar trivalent graphs locally modeled on the two types of vertices
-$$ ... $$
-The spider category $Sp(SL_n)$ is the quotient by the following relations
-
 \tikzstyle{mid>}=[decoration={markings, mark=at position 0.5 with {\arrow{>}}}, postaction={decorate}]
 \tikzstyle{mid<}=[decoration={markings, mark=at position 0.5 with {\arrow{<}}}, postaction={decorate}]
+
+The free spider category $FSp(SL_n)$ has as objects sequences $\ul{k}$ in $\{0,\ldots,n\}$, and as morphisms linear combinations of oriented planar graphs locally modeled on the following four types of vertices:
+\begin{align*}
+\tikz{
+\coordinate (z1) at (0,0);
+\coordinate (z2) at (1,0);
+\coordinate (c) at (0.5,0.5);
+\coordinate (e) at (0.5,1);
+\draw[mid>] (z1) node[below] {$a$} -- (c);
+\draw[mid>] (z2) node[below] {$b$} -- (c);
+\draw[mid>] (c) -- (e) node[above] {$a+b$};
+}
+\qquad
+\tikz{
+\coordinate (z1) at (0,1);
+\coordinate (z2) at (1,1);
+\coordinate (c) at (0.5,0.5);
+\coordinate (e) at (0.5,0);
+\draw[mid<] (z1) node[above] {$a$} -- (c);
+\draw[mid<] (z2) node[above] {$b$} -- (c);
+\draw[mid<] (c) -- (e) node[below] {$a+b$};
+}
+\qquad
+\tikz{
+\foreach \n in {0,1,2} {
+	\coordinate (a\n) at (0.4*\n, 0.8*\n);
+}
+\draw[mid>] (a0) -- node[right] {$a$} (a1);
+\draw[mid<] (a1) -- node[right] {$n-a$} (a2);
+\draw (a1) -- +(-0.2,0.1);
+}
+\qquad
+\tikz{
+\foreach \n in {0,1,2} {
+	\coordinate (a\n) at (0.4*\n, 0.8*\n);
+}
+\draw[mid<] (a0) -- node[right] {$a$} (a1);
+\draw[mid>] (a1) -- node[right] {$n-a$} (a2);
+\draw (a1) -- +(-0.2,0.1);
+}
+\end{align*}
+with all labels drawn from the set $\{1,\ldots,n-1\}$.
+(The third and fourth are bivalent vertices, called `tags', which are not rotationally symmetric; the tag provides a distinguished side.)
+
+We will often draw diagrams with edges also labelled by $0$ or $n$. This is a notational convenience, to be interpreted as follows. Edges labelled by $0$ and $n$ are to be removed; trivalent vertices involving a $0$ edge become simple strands, and trivalent vertices involving a $n$ edge are replaced by tags:
+\begin{align*}
+...
+\end{align*}
+(Any trivalent vertices with all edges labelled either $0$ or $n$ can simply be deleted.)
+
+The spider category $Sp(SL_n)$ is the quotient by the following relations
+
 
 
 \begin{align}
