@@ -89,29 +89,33 @@ Next, we find that we can explicitly describe the kernel of $\Usl{m}$ acting on 
 \tikzstyle{mid>}=[decoration={markings, mark=at position 0.5 with {\arrow{>}}}, postaction={decorate}]
 \tikzstyle{mid<}=[decoration={markings, mark=at position 0.5 with {\arrow{<}}}, postaction={decorate}]
 
-The free spider category $FSp(SL_n)$ has as objects sequences $\ul{k}$ in $\{0,\ldots,n\}$, and as morphisms linear combinations of oriented planar graphs locally modeled on the following four types of vertices:
-\begin{align*}
-\tikz{
+The free spider category $FSp(SL_n)$ has as objects sequences $\ul{k}$ in $\{0^\pm,\ldots,n^\pm\}$, and as morphisms (linear combinations of) oriented planar graphs locally modeled on the following four types of vertices:
+\newcommand{\fuse}[3]{\tikz[baseline=0.5cm]{
 \coordinate (z1) at (0,0);
 \coordinate (z2) at (1,0);
 \coordinate (c) at (0.5,0.5);
 \coordinate (e) at (0.5,1);
-\draw[mid>] (z1) node[below] {$a$} -- (c);
-\draw[mid>] (z2) node[below] {$b$} -- (c);
-\draw[mid>] (c) -- (e) node[above] {$a+b$};
-}
-\qquad
-\tikz{
+\draw[mid>] (z1) node[below] {$#1$} -- (c);
+\draw[mid>] (z2) node[below] {$#2$} -- (c);
+\draw[mid>] (c) -- (e) node[above] {$#3$};
+}}
+\newcommand{\fork}[3]{\tikz[baseline=0.5cm]{
 \coordinate (z1) at (0,1);
 \coordinate (z2) at (1,1);
 \coordinate (c) at (0.5,0.5);
 \coordinate (e) at (0.5,0);
-\draw[mid<] (z1) node[above] {$a$} -- (c);
-\draw[mid<] (z2) node[above] {$b$} -- (c);
-\draw[mid<] (c) -- (e) node[below] {$a+b$};
-}
+\draw[mid<] (z1) node[above] {$#1$} -- (c);
+\draw[mid<] (z2) node[above] {$#2$} -- (c);
+\draw[mid<] (c) -- (e) node[below] {$#3$};
+}}
+
+
+\begin{align*}
+\fuse{a}{b}{a+b}
 \qquad
-\tikz{
+\fork{a}{b}{a+b}
+\qquad
+\tikz[baseline=0.4cm]{
 \foreach \n in {0,1,2} {
 	\coordinate (a\n) at (0.4*\n, 0.8*\n);
 }
@@ -120,7 +124,7 @@ The free spider category $FSp(SL_n)$ has as objects sequences $\ul{k}$ in $\{0,\
 \draw (a1) -- +(-0.2,0.1);
 }
 \qquad
-\tikz{
+\tikz[baseline=0.4cm]{
 \foreach \n in {0,1,2} {
 	\coordinate (a\n) at (0.4*\n, 0.8*\n);
 }
@@ -130,20 +134,55 @@ The free spider category $FSp(SL_n)$ has as objects sequences $\ul{k}$ in $\{0,\
 }
 \end{align*}
 with all labels drawn from the set $\{1,\ldots,n-1\}$.
-(The third and fourth are bivalent vertices, called `tags', which are not rotationally symmetric; the tag provides a distinguished side.)
+(The third and fourth are bivalent vertices, called `tags', which are not rotationally symmetric; the tag provides a distinguished side.) The source and target of a morphism determine the labels which must appear around the boundary. The bottom boundary of the planar graph in $\Hom(\ul{k}, \ul{k'})$ must have boundary agreeing with the source object $\ul{k}$, ignoring any $0^\pm$ or $n^\pm$ entries, and with the strand oriented up for each positive entry, and the strand oriented down for each negative entry. Similary, the top boundary is determined from $\ul{k'}$ in the same way.
+\begin{example}
+\todo{some examples}
+\end{example}
+Note that any given graph lies in many distinct $\Hom$ spaces: we can always insert additional $0^\pm$ and $n^\pm$ in the source or target. In fact, whenever we add or remove a $0^\pm$ or $n^\pm$ in a sequence $\ul{k}$, we obtain an isomorphic object (just take the identity diagram, the appropriately oriented vertical strings labelled by the other elements of $\ul{k}$). We could skeletonize the category by throwing out all these redundant objects, but it's more convenient to keep them.
 
-We will often draw diagrams with edges also labelled by $0$ or $n$. This is a notational convenience, to be interpreted as follows. Edges labelled by $0$ and $n$ are to be removed; trivalent vertices involving a $0$ edge become simple strands, and trivalent vertices involving a $n$ edge are replaced by tags:
+We will often draw diagrams with edges also labelled by $0$ or $n$. This is a notational convenience, to be interpreted as follows. Edges labelled by $0$ and $n$ are to be deleted; trivalent vertices involving a $0$ edge become simple strands, and trivalent vertices involving a $n$ edge are replaced by tags:
 \begin{align*}
-...
+\fuse{a}{n-a}{n} & = \tikz[baseline=0.5cm]{\draw[mid>] (0,0) node[below] {$a$} arc (180:90:0.6) node[coordinate] (c) {}; \draw[mid<] (c) arc (90:0:0.6) node[below] {$n-a$}; \draw (c) -- +(0,0.2);} \\
+\fork{a}{n-a}{n} & = \tikz[baseline=-0.5cm]{\draw[mid<] (0,0) node[above] {$a$} arc (-180:-90:0.6) node[coordinate] (c) {}; \draw[mid>] (c) arc (-90:0:0.6) node[above] {$n-a$}; \draw (c) -- +(0,0.2);} 
 \end{align*}
-(Any trivalent vertices with all edges labelled either $0$ or $n$ can simply be deleted.)
+(Any trivalent vertices with all edges labelled either $0$ or $n$ can simply be deleted.) In fact, we'll sometimes draw diagrams with edges less than $0$ or greater than $n$, and these are simply zero.
 
-The spider category $Sp(SL_n)$ is the quotient by the following relations
+The spider category $Sp(SL_n)$ is the quotient of $FSp(SL_n)$ by the following relations
 
 
 
 \begin{align}
-\tikz[baseline]{\draw[->] (0,0.5) node[above] {$a$} arc (45:-315:0.5cm);} & = \qBinomial{n}{a} \label{eq:loop} \\
+\tikz[baseline=0.6cm]{
+\foreach \n in {0,1,2,3} {
+	\coordinate (a\n) at (0.4*\n, 0.8*\n);
+}
+\draw[mid>] (a0) -- node[right] {$a$} (a1);
+\draw[mid<] (a1) -- node[right] {$n-a$} (a2);
+\draw[mid>] (a2) -- node[right] {$a$} (a3);
+\draw (a1) -- +(-0.2,0.1);
+\draw (a2) -- +(0.2,-0.1);
+} & = \tikz[baseline=0.6cm]{\draw[mid>] (0,0) -- node[right] {$a$} (1.2,2.4);}
+\displaybreak[1] \\
+\tikz[baseline=0.4cm]{
+\foreach \n in {0,1,2} {
+	\coordinate (a\n) at (0.4*\n, 0.8*\n);
+}
+\draw[mid>] (a0) -- node[right] {$a$} (a1);
+\draw[mid<] (a1) -- node[right] {$n-a$} (a2);
+\draw (a1) -- +(-0.2,0.1);
+} 
+& = (-1)^{(n+1)a}
+\tikz[baseline=0.4cm]{
+\foreach \n in {0,1,2} {
+	\coordinate (a\n) at (0.4*\n, 0.8*\n);
+}
+\draw[mid>] (a0) -- node[right] {$a$} (a1);
+\draw[mid<] (a1) -- node[right] {$n-a$} (a2);
+\draw (a1) -- +(0.2,-0.1);
+}
+\displaybreak[1] \\
+\tikz[baseline]{\draw[->] (0,0.5) node[above] {$a$} arc (45:-315:0.5cm);} & = \qBinomial{n}{a} \label{eq:loop}
+\displaybreak[1] \\
 \begin{tikzpicture}[baseline=20]
 \foreach \n in {0,...,3} {
 	\coordinate (z\n) at (0.4*\n, 0.8*\n);
@@ -154,7 +193,9 @@ The spider category $Sp(SL_n)$ is the quotient by the following relations
 \draw[mid>] (z1) to[out=-30,in=0] node[right] {$b$} (z2);
 \end{tikzpicture}
 & = \qBinomial{a+b}{a}
-\tikz[baseline=20]{\draw[mid>] (0,0) -- node[right] {$a+b$} (1,2);} \\
+\tikz[baseline=20]{\draw[mid>] (0,0) -- node[right] {$a+b$} (1,2);}
+\label{eq:bigon1}
+\displaybreak[1] \\
 \begin{tikzpicture}[baseline=20]
 \foreach \n in {0,...,3} {
 	\coordinate (z\n) at (0.4*\n, 0.8*\n);
@@ -165,7 +206,9 @@ The spider category $Sp(SL_n)$ is the quotient by the following relations
 \draw[mid>] (z1) to[out=-30,in=0] node[right] {$a+b$} (z2);
 \end{tikzpicture}
 & = \qBinomial{n-a}{b}
-\tikz[baseline=20]{\draw[mid>] (0,0) -- node[right] {$a$} (1,2);} \\
+\tikz[baseline=20]{\draw[mid>] (0,0) -- node[right] {$a$} (1,2);}
+\label{eq:bigon2}
+\displaybreak[1] \\
 \begin{tikzpicture}[baseline]
 \foreach \x/\y in {0/0,1/0,2/0,0/1,1/1,0/2} {
 	\coordinate(z\x\y) at (\x+\y/2,\y/1.5);
@@ -188,13 +231,30 @@ The spider category $Sp(SL_n)$ is the quotient by the following relations
 \draw[mid>] (z20) node[below] {$c$} -- (z11); 
 \draw[mid>] (z11) -- node[right] {$b+c$} (z02);
 \draw[mid>](z02) -- node[left] {$a+b+c$} (z03);
-\end{tikzpicture} \\
-\mathfig{0.35}{trivial} \label{eq:trivial} \\
-\intertext{TODO: the twisted version, too}
+\end{tikzpicture}
+\label{eq:IH}
+\displaybreak[1] \\
+\begin{tikzpicture}
+\coordinate (a0) at (0,0);
+\coordinate (a1) at (0,1.2);
+\coordinate (a2) at (0,1.8);
+\coordinate (a3) at (0,3);
+\coordinate (b0) at (1.5,0);
+\coordinate (b1) at (1.5,0.8);
+\coordinate (b2) at (1.5,2.2);
+\coordinate (b3) at (1.5,3);
+\draw[mid>] (a0) -- node[left] {$a$} (a1);
+\draw[mid>] (a1) -- node[left] {$a{+}1$} (a2);
+\draw[mid>] (a2) -- node[left] {$a$} (a3);
+\draw[mid>] (b0) -- node[right] {$b$} (b1);
+\draw[mid>] (b1) -- node[right] {$b{-}1$} (b2);
+\draw[mid>] (b2) -- node[right] {$b$} (b3);
+\draw[mid>] (b1) -- node[below] {1} (a1);
+\draw[mid>] (a2) -- node[above] {1} (b2);
+\end{tikzpicture}
 \mathfig{0.45}{commutation} \label{eq:commutation}
-\intertext{TODO: first term disappears if $a=0$ or $b=n$}
 \end{align}
-Note that Relation \eqref{eq:loop} is actually a consequence of Relation \eqref{eq:bigon2} with $a=0$, using Relation \eqref{eq:trivial} to remove the $0$-strings. 
+Note that Relation \eqref{eq:loop} is actually a consequence of Relation \eqref{eq:bigon2} with $a=0$ after deleting the $0$-strings. 
 \todo{We also need mirror reflections and the arrow reversals of these.}
 
 We'll also record several consequences of these relations, to be used later.
