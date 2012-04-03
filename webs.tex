@@ -115,7 +115,7 @@ The free spider category $FSp(SL_n)$ has as objects sequences $\ul{k}$ in $\{0^\
 \qquad
 \fork{a}{b}{a+b}
 \qquad
-\tikz[baseline=0.4cm]{
+\tikz[baseline=0.7cm]{
 \foreach \n in {0,1,2} {
 	\coordinate (a\n) at (0.4*\n, 0.8*\n);
 }
@@ -124,7 +124,7 @@ The free spider category $FSp(SL_n)$ has as objects sequences $\ul{k}$ in $\{0^\
 \draw (a1) -- +(-0.2,0.1);
 }
 \qquad
-\tikz[baseline=0.4cm]{
+\tikz[baseline=0.7cm]{
 \foreach \n in {0,1,2} {
 	\coordinate (a\n) at (0.4*\n, 0.8*\n);
 }
@@ -138,11 +138,11 @@ with all labels drawn from the set $\{1,\ldots,n-1\}$.
 \begin{example}
 \todo{some examples}
 \end{example}
-Note that any given graph lies in many distinct $\Hom$ spaces: we can always insert additional $0^\pm$ and $n^\pm$ in the source or target. In fact, whenever we add or remove a $0^\pm$ or $n^\pm$ in a sequence $\ul{k}$, we obtain an isomorphic object (just take the identity diagram, the appropriately oriented vertical strings labelled by the other elements of $\ul{k}$). We could skeletonize the category by throwing out all these redundant objects, but it's more convenient to keep them.
+Note that any given graph lies in many distinct $\Hom$ spaces: we can always insert additional $0^\pm$ and $n^\pm$ in the source or target. In fact, whenever we add or remove a $0^\pm$ or $n^\pm$ in a sequence $\ul{k}$, we obtain an isomorphic object (just take the identity diagram: the appropriately oriented vertical strings labelled by the other elements of $\ul{k}$). We could skeletonize the category by throwing out all these redundant objects, but it's more convenient to keep them.
 
 We will often draw diagrams with edges also labelled by $0$ or $n$. This is a notational convenience, to be interpreted as follows. Edges labelled by $0$ and $n$ are to be deleted; trivalent vertices involving a $0$ edge become simple strands, and trivalent vertices involving a $n$ edge are replaced by tags:
 \begin{align*}
-\fuse{a}{n-a}{n} & = \tikz[baseline=0.5cm]{\draw[mid>] (0,0) node[below] {$a$} arc (180:90:0.6) node[coordinate] (c) {}; \draw[mid<] (c) arc (90:0:0.6) node[below] {$n-a$}; \draw (c) -- +(0,0.2);} \\
+\fuse{a}{n-a}{n} & = \tikz[baseline=0.5cm]{\draw[mid>] (0,0) node[below] {$a$} arc (180:90:0.6) node[coordinate] (c) {}; \draw[mid<] (c) arc (90:0:0.6) node[below] {$n-a$}; \draw (c) -- +(0,0.2);} &
 \fork{a}{n-a}{n} & = \tikz[baseline=-0.5cm]{\draw[mid<] (0,0) node[above] {$a$} arc (-180:-90:0.6) node[coordinate] (c) {}; \draw[mid>] (c) arc (-90:0:0.6) node[above] {$n-a$}; \draw (c) -- +(0,0.2);} 
 \end{align*}
 (Any trivalent vertices with all edges labelled either $0$ or $n$ can simply be deleted.) In fact, we'll sometimes draw diagrams with edges less than $0$ or greater than $n$, and these are simply zero.
@@ -150,19 +150,45 @@ We will often draw diagrams with edges also labelled by $0$ or $n$. This is a no
 The spider category $Sp(SL_n)$ is the quotient of $FSp(SL_n)$ by the following relations
 
 
+\newcommand{\ladderX}{1.5}
+\newcommand{\ladderY}{1.5}
+\newcommand{\ladderR}{0.6}
+\newcommand{\laddercoordinates}[2]{
+\foreach \x in {0,...,#1} {
+	\foreach \y in {0,...,#2} {
+		\coordinate (l\x\y) at (\x * \ladderX, \y * \ladderY);
+		\coordinate (u\x\y) at ($(l\x\y)+\ladderR*(0,\ladderY)$);
+		\coordinate (d\x\y) at ($(l\x\y)+(0,\ladderY)-\ladderR*(0,\ladderY)$);
+	}
+}
+}
+\newcommand{\ladderEn}[5]{
+\draw[mid>] (l#1#2) -- (d#1#2);
+\draw[mid>] (d#1#2) -- ($(l#1#2)+(0,\ladderY)$) node[left] {#3};
+\draw[mid>] ($(l#1#2)+(\ladderX,0)$) -- ($(u#1#2)+(\ladderX,0)$);
+\draw[mid>] ($(u#1#2)+(\ladderX,0)$) -- ($(l#1#2)+(\ladderX,\ladderY)$) node[right] {#4};
+\draw[mid>] (d#1#2) --node[above]{#5} ($(u#1#2)+(\ladderX,0)$);
+}
+\newcommand{\ladderE}[4]{\ladderEn{#1}{#2}{#3}{#4}{}}
+\newcommand{\ladderFn}[5]{
+\draw[mid>] (l#1#2) -- (u#1#2);
+\draw[mid>] (u#1#2) -- ($(l#1#2)+(0,\ladderY)$) node[left] {#3};
+\draw[mid>] ($(l#1#2)+(\ladderX,0)$) -- ($(d#1#2)+(\ladderX,0)$);
+\draw[mid>] ($(d#1#2)+(\ladderX,0)$) -- ($(l#1#2)+(\ladderX,\ladderY)$) node[right] {#4};
+\draw[mid>] ($(d#1#2)+(\ladderX,0)$) --node[above]{#5} (u#1#2);
+}
+\newcommand{\ladderF}[4]{\ladderFn{#1}{#2}{#3}{#4}{}}
+\newcommand{\ladderIn}[3]{\draw[mid>] (l#1#2) -- +($#3*(0,\ladderY)$);}
+\newcommand{\ladderI}[2]{\ladderIn{#1}{#2}{1}}
+\newenvironment{ladder}[2]{%
+\begin{tikzpicture}[baseline=13*\ladderY*#2]
+\laddercoordinates{#1}{#2}
+}%
+{
+\end{tikzpicture}
+}
 
 \begin{align}
-\tikz[baseline=0.6cm]{
-\foreach \n in {0,1,2,3} {
-	\coordinate (a\n) at (0.4*\n, 0.8*\n);
-}
-\draw[mid>] (a0) -- node[right] {$a$} (a1);
-\draw[mid<] (a1) -- node[right] {$n-a$} (a2);
-\draw[mid>] (a2) -- node[right] {$a$} (a3);
-\draw (a1) -- +(-0.2,0.1);
-\draw (a2) -- +(0.2,-0.1);
-} & = \tikz[baseline=0.6cm]{\draw[mid>] (0,0) -- node[right] {$a$} (1.2,2.4);}
-\displaybreak[1] \\
 \tikz[baseline=0.4cm]{
 \foreach \n in {0,1,2} {
 	\coordinate (a\n) at (0.4*\n, 0.8*\n);
@@ -180,9 +206,9 @@ The spider category $Sp(SL_n)$ is the quotient of $FSp(SL_n)$ by the following r
 \draw[mid<] (a1) -- node[right] {$n-a$} (a2);
 \draw (a1) -- +(0.2,-0.1);
 }
-\displaybreak[1] \\
-\tikz[baseline]{\draw[->] (0,0.5) node[above] {$a$} arc (45:-315:0.5cm);} & = \qBinomial{n}{a} \label{eq:loop}
-\displaybreak[1] \\
+\displaybreak[1]
+\label{eq:switch}
+\\
 \begin{tikzpicture}[baseline=20]
 \foreach \n in {0,...,3} {
 	\coordinate (z\n) at (0.4*\n, 0.8*\n);
@@ -234,49 +260,232 @@ The spider category $Sp(SL_n)$ is the quotient of $FSp(SL_n)$ by the following r
 \end{tikzpicture}
 \label{eq:IH}
 \displaybreak[1] \\
-\begin{tikzpicture}
-\coordinate (a0) at (0,0);
-\coordinate (a1) at (0,1.2);
-\coordinate (a2) at (0,1.8);
-\coordinate (a3) at (0,3);
-\coordinate (b0) at (1.5,0);
-\coordinate (b1) at (1.5,0.8);
-\coordinate (b2) at (1.5,2.2);
-\coordinate (b3) at (1.5,3);
-\draw[mid>] (a0) -- node[left] {$a$} (a1);
-\draw[mid>] (a1) -- node[left] {$a{+}1$} (a2);
-\draw[mid>] (a2) -- node[left] {$a$} (a3);
-\draw[mid>] (b0) -- node[right] {$b$} (b1);
-\draw[mid>] (b1) -- node[right] {$b{-}1$} (b2);
-\draw[mid>] (b2) -- node[right] {$b$} (b3);
-\draw[mid>] (b1) -- node[below] {1} (a1);
-\draw[mid>] (a2) -- node[above] {1} (b2);
+\begin{tikzpicture}[baseline=40]
+\laddercoordinates{1}{2}
+\node[left] at (l00) {$a$};
+\node[right] at (l10) {$b$};
+\ladderEn{0}{0}{$a{-}1$}{$b{+}1$}{1}
+\ladderFn{0}{1}{$a$}{$b$}{1}
 \end{tikzpicture}
-\mathfig{0.45}{commutation} \label{eq:commutation}
+& =
+\begin{tikzpicture}[baseline=40]
+\laddercoordinates{1}{2}
+\node[left] at (l00) {$a$};
+\node[right] at (l10) {$b$};
+\ladderFn{0}{0}{$a{+}1$}{$b{-}1$}{1}
+\ladderEn{0}{1}{$a$}{$b$}{1}
+\end{tikzpicture}
++
+\qi{b-a}
+\begin{tikzpicture}[baseline=40]
+\laddercoordinates{1}{2}
+\ladderIn{0}{0}{2}
+\ladderIn{1}{0}{2}
+\node[left] at (l02) {$a$};
+\node[right] at (l12) {$b$};
+\end{tikzpicture}
+\label{eq:commutation}
 \end{align}
-Note that Relation \eqref{eq:loop} is actually a consequence of Relation \eqref{eq:bigon2} with $a=0$ after deleting the $0$-strings. 
 \todo{We also need mirror reflections and the arrow reversals of these.}
+
+Throughout below we'll refer to these as `switching a tag' (Relation \eqref{eq:switch}), `removing a bigon' (Relations \eqref{eq:bigon1, eq:bigon2}), `$I=H$' (Relation \eqref{eq:IH}) and `commutation' (Relation \eqref{eq:commutation}).
 
 We'll also record several consequences of these relations, to be used later.
 \begin{lem}
-$$\mathfig{0.35}{combine}$$
+\begin{equation}
+\tikz[baseline]{\draw[->] (0,0.5) node[above] {$a$} arc (45:-315:0.5cm);}  = \qBinomial{n}{a} \label{eq:loop}
+\end{equation}
 \end{lem}
 \begin{proof}
-Use I=H twice, then remove a bigon.
+This is just Relation \eqref{eq:bigon2} with $a=0$ after deleting the 0-strings.
+\end{proof}
+\begin{lem}
+\begin{equation}
+\tikz[baseline=0.6cm]{
+\foreach \n in {0,1,2,3} {
+	\coordinate (a\n) at (0.4*\n, 0.8*\n);
+}
+\draw[mid>] (a0) -- node[right] {$a$} (a1);
+\draw[mid<] (a1) -- node[right] {$n-a$} (a2);
+\draw[mid>] (a2) -- node[right] {$a$} (a3);
+\draw (a1) -- +(-0.2,0.1);
+\draw (a2) -- +(0.2,-0.1);
+}  = \tikz[baseline=0.6cm]{\draw[mid>] (0,0) -- node[right] {$a$} (1.2,2.4);}
+\end{equation}
+\end{lem}
+\begin{proof}
+This is just the second bigon relation (Relation \eqref{eq:bigon2}) with $b=n-a$ after replacing the $n$-strand with a matching pair of tags. 
+\end{proof}
+
+
+\begin{lem}
+\begin{equation}
+\tikz[baseline=40]{
+\laddercoordinates{1}{2}
+\ladderEn{0}{0}{$a-s$}{$b+s$}{$s$}
+\ladderEn{0}{1}{$a-s-r$}{$b+s+r$}{$r$}
+\node[left] at (l00) {$a$};
+\node[right] at (l10) {$b$};
+}
+=
+\qBinomial{r+s}{r}
+\tikz[baseline=20]{
+\laddercoordinates{1}{1}
+\ladderEn{0}{0}{$a-s-r$}{$b+s+r$}{$r+s$}
+\node[left] at (l00) {$a$};
+\node[right] at (l10) {$b$};
+}
+\end{equation}
+\end{lem}
+\begin{proof}
+Use the $I=H$ relation twice, then remove a bigon.
 \end{proof}
 
 \begin{lem}
-The Serre relation.
+\begin{align}
+\label{eq:commutation2}
+\begin{ladder}{1}{2}
+\node[left] at (l00) {$a$};
+\node[right] at (l10) {$b$};
+\ladderFn{0}{0}{$a+s$}{$b-s$}{$s$}
+\ladderEn{0}{1}{$a+s-r$}{$b-s+r$}{$r$}
+\end{ladder}
+& = 
+\sum_t (-1)^t \qBinomial{t+s-r-1+a-b}{t}
+\begin{ladder}{1}{2}
+\node[left] at (l00) {$a$};
+\node[right] at (l10) {$b$};
+\ladderEn{0}{0}{$a-r+t$}{$b+r-t$}{$r-t$}
+\ladderFn{0}{1}{$a+s-r$}{$b-s+r$}{$s-t$}
+\end{ladder}
+\end{align}
 \end{lem}
+\begin{rem}
+The summation over $t$ in Equation \eqref{eq:commutation2} is over the range $\max(b+r-n,r-a,0) \leq t \leq \min(s,r)$. If $t > s$ or $t>r$, the diagram vanishes (by convention) because there are labels less than zero. If $t<b+r-n$ the label on the right side of the square is greater than $n$. If $t<r-a$ the label on the left side is greater than $n$. If $t<0$ the quantum binomial vanishes. One may check that in each of the other terms all the labels are in $\{0,\ldots,n\}$.
+\end{rem}
 \begin{proof}
-Look at the middle term, use I=H then the commutation relation to open up the square.
+\todo{}
 \end{proof}
 
+{
+In the next lemma, we begin using the convenient notation that any non-vertical strand which is not labelled implicitly carries a $1$, while unlabelled vertical strands are labelled arbitrarily.
+
+\renewcommand{\ladderY}{1}
 \begin{lem}
+\begin{equation}
+\begin{ladder}{2}{3}
+\ladderE{0}{0}{}{}
+\ladderE{0}{1}{}{}
+\ladderE{1}{2}{}{}
+\ladderI{0}{2}
+\ladderIn{2}{0}{2}
+\node[below] at (l00) {$a$};
+\node[below] at (l10) {$b$};
+\node[below] at (l20) {$c$};
+\end{ladder}
+- \qi{2}
+\begin{ladder}{2}{3}
+\ladderE{0}{0}{}{}
+\ladderE{1}{1}{}{}
+\ladderE{0}{2}{}{}
+\ladderI{0}{1}
+\ladderI{2}{0}
+\ladderI{2}{2}
+\end{ladder}
++
+\begin{ladder}{2}{3}
+\ladderE{1}{0}{}{}
+\ladderE{0}{1}{}{}
+\ladderE{0}{2}{}{}
+\ladderI{0}{0}
+\ladderIn{2}{1}{2}
+\end{ladder}
+= 0
+\end{equation}
+\end{lem}
+\begin{proof}
+In the middle term, apply the $I=H$ relation, obtaining
 \begin{align*}
-\mathfig{0.8}{commutation2}
+\begin{ladder}{2}{3}
+\ladderE{0}{0}{}{}
+\ladderE{1}{1}{}{}
+\ladderE{0}{2}{}{}
+\ladderI{0}{1}
+\ladderI{2}{0}
+\ladderI{2}{2}
+\end{ladder}
+& = 
+\begin{tikzpicture}[baseline=40]
+\laddercoordinates{2}{3}
+\coordinate (m0) at ($(l00)!.5!(l03)$);
+\coordinate (m2) at ($(l20)!.5!(l23)$);
+\coordinate (m1m) at ($(m0)!.3!(m2)$);
+\coordinate (m1p) at ($(m0)!.7!(m2)$);
+\coordinate (m1d) at ($(l10)!.3!(l13)$);
+\coordinate (m1u) at ($(l10)!.7!(l13)$);
+\draw[mid>] (l00) -- (m0);
+\draw[mid>] (m0) -- (l03);
+\draw[mid>] (l20) -- (m2);
+\draw[mid>] (m2) -- (l23);
+\draw[mid>] (l10) -- (m1d);
+\draw[mid>] (m1u) -- (l13);
+\draw[mid>] (m0) -- node[above] {2} (m1m);
+\draw[mid>] (m1p) -- (m2);
+\draw[mid>] (m1m) -- (m1u);
+\draw[mid>] (m1m) -- (m1d);
+\draw[mid>] (m1d) --node[below right] {$b{+}1$} (m1p);
+\draw[mid>] (m1p) --node[above right] {$b$} (m1u);
+\end{tikzpicture} \\
+\intertext{and now apply Equation \eqref{eq:commutation2} to the central square}
+& = 
+(-1)^0 ???
+\begin{tikzpicture}[baseline=40]
+\laddercoordinates{2}{3}
+\coordinate (m0) at ($(l00)!.5!(l03)$);
+\coordinate (m2) at ($(l20)!.5!(l23)$);
+\coordinate (m1m) at ($(m0)!.3!(m2)$);
+\coordinate (m1p) at ($(m0)!.7!(m2)$);
+\coordinate (m1d) at ($(l10)!.3!(l13)$);
+\coordinate (m1u) at ($(l10)!.7!(l13)$);
+\draw[mid>] (l00) -- (m0);
+\draw[mid>] (m0) -- (l03);
+\draw[mid>] (l20) -- (m2);
+\draw[mid>] (m2) -- (l23);
+\draw[mid>] (l10) -- (m1d);
+\draw[mid>] (m1u) -- (l13);
+\draw[mid>] (m0) -- node[below] {2} (m1m);
+\draw[mid>] (m1p) -- (m2);
+\draw[mid>] (m1m) --node[above left] {$b+2$} (m1u);
+\draw[mid<] (m1m) --node[below left] {$b$} (m1d);
+\draw[mid<] (m1p) -- (m1u);
+\end{tikzpicture}
++
+(-1)^1 ???
+\begin{tikzpicture}[baseline=40]
+\laddercoordinates{2}{3}
+\coordinate (m0) at ($(l00)!.5!(l03)$);
+\coordinate (m2) at ($(l20)!.5!(l23)$);
+\coordinate (m1m) at ($(m0)!.3!(m2)$);
+\coordinate (m1p) at ($(m0)!.7!(m2)$);
+\coordinate (m1d) at ($(l10)!.3!(l13)$);
+\coordinate (m1u) at ($(l10)!.7!(l13)$);
+\draw[mid>] (l00) -- (m0);
+\draw[mid>] (m0) -- (l03);
+\draw[mid>] (l20) -- (m2);
+\draw[mid>] (m2) -- (l23);
+\draw[mid>] (l10) -- (m1d);
+\draw[mid>] (m1u) -- (l13);
+\draw[mid>] (m0) -- node[above] {2} (m1m);
+\draw[mid>] (m1p) -- (m2);
+\draw[mid>] (m1m) --(m1u);
+\draw[mid>] (m1d) --node[below right] {$b$} (m1p);
+\draw[mid>] (m1p) --node[above right] {$b{-}1$} (m1u);
+\end{tikzpicture}
 \end{align*}
-\end{lem}
+after which an application of the $I=H$ relation on each $2$-strand gives the desired identity.
+\end{proof}
+}
+
 
 \begin{rem}
 Just as a check:
