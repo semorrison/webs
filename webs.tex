@@ -523,7 +523,7 @@ Since the actions of $GL_m $ and $ SL_n $ commute, this map lands inside the sub
 
 Let us rephrase this construction by defining a functor $ \Phi_m^n : \Ugl{m} \rightarrow \RepSL{n} $ as follows.  On objects $ \Phi_m^n(\ul{k}) = \alt^{k_1} \mathbb C^n \otimes \cdots \otimes \alt^{k_m} \mathbb C^n $, if $ \ul{k} $ is $n$-bounded, and 0 otherwise.  On morphisms $ \Phi_m^n $ is the above map 
 $$
-\one_\ul{k} \Ugl{m} \one_\ul{k'} \rightarrow \Hom_{SL_n}(\alt^{k_1} \mathbb C^n \otimes \cdots \otimes \Alt^{k_m} \mathbb C^n, \alt^{k'_1} \mathbb C^n \otimes \cdots \otimes \alt^{k'_m} \mathbb C^n)
+\one_\ul{k} \Ugl{m} \one_\ul{k'} \rightarrow \Hom_{SL_n}(\alt^{k_1} \mathbb C^n \otimes \cdots \otimes \alt^{k_m} \mathbb C^n, \alt^{k'_1} \mathbb C^n \otimes \cdots \otimes \alt^{k'_m} \mathbb C^n)
 $$
 As above, $ \Phi_m^n $ is a surjection on $\Hom$ spaces.  In other words, it is full.
 
@@ -601,7 +601,47 @@ We introduce a category $ \Lad_n^m $ whose objects are again labelled by $n$-bou
 
 \todo{More details about ladder diagrams}
 
-\todo{Explain why every diagram in $Sp(SL_n)$ is `equivalent' to one in $FSp(SL_n)$ which comes from a ladder diagram.}
+\begin{thm}
+For every morphism $D \in Sp(SL_n)$, there is a decomposition $D = \alpha D' \beta$, where $\alpha$ and $\beta$ are isomorphisms sent to isomorphisms in $\RepSL{n}$ and $D'$ is in the image of $\Lad_n^m$ for some $m$.
+\end{thm}
+\begin{rem}
+Clearly if the source or target of $D$ contains a factor $k^-$ (that is, there is a boundary point oriented downwards) then $D$ cannot be in the image of $\Lad_n$. The decomposition here just conjugates $D$ by some tags in order to get all the boundary points oriented upwards, and possibly adds a long string of $0$s to the source and target objects. The morphisms $\alpha$ and $\beta$ are canonical up to the sign coming from Relation \eqref{eq:switch}. Besides these technicalities, this theorem is essentially saying the the functor $\Lad_n^m \to Sp(SL_n)$ is surjective.
+\end{rem}
+\begin{proof}
+If $D \in \Hom(\ul{k}, \ul{k'})$, then $D'$ will be a morphism in $\Hom(\abs{\ul{k}} \tensor 0^{\tensor m}, \abs{\ul{k'}} \tensor 0^{\tensor m'})$ for some $m, m' \geq 0$ to be specified below, where $\abs{\ul{k}}$ denotes the sequence obtained from $\ul{k}$ by replacing each $k^-$ with $(n-k)^+$. 
+
+Given any diagrammatic morphism $D \in Sp(SL_n)$, just by a planar isotopy we can write it as
+\begin{equation*}
+\begin{tikzpicture}
+\draw (0,0) -- (0,3);
+\draw (1,0) -- (1,3);
+\draw (3,0) -- (3,3);
+\draw[fill=white] (-1,1) rectangle (4,2);
+\node at (1.5,1.5) {$D$};
+\end{tikzpicture}
+=
+\begin{tikzpicture}
+\draw(0,0) -- (1,1.4);
+\draw(1,0) -- (1,1.3);
+\draw(3,0) -- (1,1.1);
+\draw[fill=white] (4,1) rectangle (7,2);
+\node at (5.5,1.5) {$D_2$};
+\end{tikzpicture}
+\end{equation*}
+where $D_2$ is in Morse position relative to the $x$-coordinate. (That is, no two critical $x$-values or $x$-coordinates of vertices coincide.)
+
+Now replace $D_1$ with
+\begin{equation*}
+E_1 = ...
+\end{equation*}
+and each elementary piece of the Morse decomposition of $D_2$ as follows, to obtain $E_2$:
+\begin{align*}
+...
+\end{align*}
+
+It is clear that $E_1 E_2$ is a ladder diagram.
+\end{proof}
+
 
 \subsection{Relations}
 We have a functor $ \Lad_n^m \rightarrow \Ugl{m}^n $ which is the identity on objects.  On morphisms it consists of intepreting each ladder diagram as a sequence of $ E_i, F_j $ generators of $ \Ugl{m}^n $.
