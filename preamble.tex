@@ -178,6 +178,24 @@
 \usetikzlibrary{backgrounds}
 \usetikzlibrary{decorations,decorations.pathreplacing,decorations.markings}
 \usetikzlibrary{fit,calc,through}
+\usetikzlibrary{external}
+\tikzexternalize[prefix=diagrams/externalized/]
+
+\usepackage{environ}
+\usepackage{xargs}
+
+\newcommandx{\NewEnvironx}[5][2,3]{%
+  \expandafter\newcommandx\csname start#1\endcsname[#2][#3]{#4}%
+  \NewEnviron{#1}{\csname start#1\expandafter\endcsname\BODY #5}}
+
+% example for creating tikz environments compatible with externalize
+% thanks Andrew Stacey: http://tex.stackexchange.com/a/15614/77
+%\NewEnvironx{mytikz}[1][1=]{%
+%  \begin{figure}[htp]
+%  \centering
+%  \begin{tikzpicture}[#1]}
+%{\end{tikzpicture}
+%  \end{figure}}
 
 % tricky way to iterate macros over a list
 \def\semicolon{;}
