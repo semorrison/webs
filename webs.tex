@@ -93,7 +93,7 @@ Next, we find that we can explicitly describe the kernel of $\Ugl{m}$ acting on 
 \tikzstyle{mid>}=[decoration={markings, mark=at position 0.5 with {\arrow{>}}}, postaction={decorate}]
 \tikzstyle{mid<}=[decoration={markings, mark=at position 0.5 with {\arrow{<}}}, postaction={decorate}]
 
-The free spider category $FSp(SL_n)$ has as objects sequences $\ul{k}$ in $\{0^\pm,\ldots,n^\pm\}$, and as morphisms (linear combinations of) oriented planar graphs locally modeled on the following four types of vertices:
+The free spider category $FSp(SL_n)$ has as objects sequences $\ul{k}$ in $\{1^\pm,\ldots,(n-1)^\pm\}$, and as morphisms (linear combinations of) oriented planar graphs locally modeled on the following four types of vertices:
 \newcommand{\fuse}[3]{\tikz[baseline=0.5cm]{
 \coordinate (z1) at (0,0);
 \coordinate (z2) at (1,0);
@@ -138,11 +138,10 @@ The free spider category $FSp(SL_n)$ has as objects sequences $\ul{k}$ in $\{0^\
 }
 \end{align*}
 with all labels drawn from the set $\{1,\ldots,n-1\}$.
-(The third and fourth are bivalent vertices, called `tags', which are not rotationally symmetric; the tag provides a distinguished side.) The source and target of a morphism determine the labels which must appear around the boundary. The bottom boundary of the planar graph in $\Hom(\ul{k}, \ul{k'})$ must have boundary agreeing with the source object $\ul{k}$, ignoring any $0^\pm$ or $n^\pm$ entries, and with the strand oriented up for each positive entry, and the strand oriented down for each negative entry. Similary, the top boundary is determined from $\ul{k'}$ in the same way.
+(The third and fourth are bivalent vertices, called `tags', which are not rotationally symmetric; the tag provides a distinguished side.) The source and target of a morphism determine the labels which must appear around the boundary. The bottom boundary of the planar graph in $\Hom(\ul{k}, \ul{k'})$ must have boundary agreeing with the source object $\ul{k}$ with the strand oriented up for each positive entry, and the strand oriented down for each negative entry. Similary, the top boundary is determined from $\ul{k'}$ in the same way.
 \begin{example}
 \todo{some examples}
 \end{example}
-Note that any given graph lies in many distinct $\Hom$ spaces: we can always insert additional $0^\pm$ and $n^\pm$ in the source or target. In fact, whenever we add or remove a $0^\pm$ or $n^\pm$ in a sequence $\ul{k}$, we obtain an isomorphic object (just take the identity diagram: the appropriately oriented vertical strings labelled by the other elements of $\ul{k}$). We could skeletonize the category by throwing out all these redundant objects, but it's more convenient to keep them.
 
 We will often draw diagrams with edges also labelled by $0$ or $n$. This is a notational convenience, to be interpreted as follows. Edges labelled by $0$ and $n$ are to be deleted; trivalent vertices involving a $0$ edge become simple strands, and trivalent vertices involving a $n$ edge are replaced by tags:
 \begin{align*}
@@ -184,13 +183,10 @@ The spider category $Sp(SL_n)$ is the quotient of $FSp(SL_n)$ by the following r
 \newcommand{\ladderF}[4]{\ladderFn{#1}{#2}{#3}{#4}{}}
 \newcommand{\ladderIn}[3]{\draw[mid>] (l#1#2) -- +($#3*(0,\ladderY)$);}
 \newcommand{\ladderI}[2]{\ladderIn{#1}{#2}{1}}
-\newenvironment{ladder}[2]{%
-\begin{tikzpicture}[baseline=13*\ladderY*#2]
-\laddercoordinates{#1}{#2}
-}%
-{
-\end{tikzpicture}
-}
+
+\NewEnvironx{ladder}[2][1=]{%
+  \begin{tikzpicture}[baseline=13*\ladderY*#2]\laddercoordinates{#1}{#2}}
+{\end{tikzpicture}}
 
 \begin{align}
 \tikz[baseline=0.4cm]{
@@ -490,11 +486,21 @@ after which an application of the $I=H$ relation on each $2$-strand gives the de
 \end{proof}
 }
 
+\todo{Explain exactly what's happening with the square-switch relations from Scott's thesis}
+\todo{Explain why(?) the Kekule relations are consequences of these...}
 
 \begin{rem}
 Just as a check:
-Taking the `partial trace' of Relation \eqref{eq:commutation} (that is, closing up the $b$ endpoints), and evaluating all terms to a multiple of the $a$ strand using Relations \eqref{eq:bigon1} and \eqref{eq:bigon2}, we get the identity $\qBinomial{n-1}{b-1} \qi{n-a} = \qBinomial{n-1}{b} \qi{a} + \qBinomial{n}{b} \qi{b-a}$, which does in fact hold!
+Taking the `partial trace' of Relation \eqref{eq:commutation} (that is, closing up the $b$ endpoints), and evaluating all terms to a multiple of the $a$ strand using Relations \eqref{eq:bigon1} and \eqref{eq:bigon2}, we get the non-trivial identity $\qBinomial{n-1}{b-1} \qi{n-a} = \qBinomial{n-1}{b} \qi{a} + \qBinomial{n}{b} \qi{b-a}$.
 \end{rem}
+
+\subsection{The upwards subcategory}
+We'll use $FSp(SL_n)^+$ and $Sp(SL_n)^+$ to denote the full subcategories of the above where we restrict to objects which are words in $\{1^+,\ldots,(n-1)^+\}$, that is, we require that at the boundary strands are always oriented upwards. These are tensor subcategories, but not pivotal subcategories, since the pairing and copairing morphisms for an object $k$ do not lie in the subcategory.
+
+\begin{lem}
+Every diagrammatic morphism $D$ in $Sp(SL_n)$ is of the form $\alpha D' \beta$, where $D'$ is a morphism in $Sp(SL_n)^+$ and $\alpha$ and $\beta$ are isomorphisms built out of tags, sending $k^-$ to $(n-k)^+$. This decomposition is canonical up to a sign coming from Relation \eqref{eq:switch}; there is a choice at each tag of which way it faces.
+\end{lem}
+
 
 \section{Skew Howe Duality}
 \label{sec:skew-howe}
@@ -605,16 +611,13 @@ We introduce a category $ \Lad_n^m $ whose objects are again labelled by $n$-bou
 
 \todo{More details about ladder diagrams}
 
-\begin{thm}
-For every morphism $D \in Sp(SL_n)$, there is a decomposition $D = \alpha D' \beta$, where $\alpha$ and $\beta$ are isomorphisms sent to isomorphisms in $\RepSL{n}$ and $D'$ is in the image of $\Lad_n^m$ for some $m$.
-\end{thm}
-\begin{rem}
-Clearly if the source or target of $D$ contains a factor $k^-$ (that is, there is a boundary point oriented downwards) then $D$ cannot be in the image of $\Lad_n$. The decomposition here just conjugates $D$ by some tags in order to get all the boundary points oriented upwards, and possibly adds a long string of $0$s to the source and target objects. The morphisms $\alpha$ and $\beta$ are canonical up to the sign coming from Relation \eqref{eq:switch}. Besides these technicalities, this theorem is essentially saying the the functor $\Lad_n^m \to Sp(SL_n)$ is surjective.
-\end{rem}
-\begin{proof}
-If $D \in \Hom(\ul{k}, \ul{k'})$, then $D'$ will be a morphism in $\Hom(\abs{\ul{k}} \tensor 0^{\tensor m}, \abs{\ul{k'}} \tensor 0^{\tensor m'})$ for some $m, m' \geq 0$ to be specified below, where $\abs{\ul{k}}$ denotes the sequence obtained from $\ul{k}$ by replacing each $k^-$ with $(n-k)^+$. 
+There is an obvious functor from $\Lad_n^m \to FSp(SL_n)^+$, just forgetting that the diagrams have a ladder structure and interpreting them as webs. There is a slightly discrepancy at the level of objects: in $\Lad_n^m$ the objects $\ul{k}$ are sequences in $\{0,\ldots,n\}$, while in $FSp(SL_n)$ the objects are sequences in $\{1^\pm,\ldots,(n-1)^\pm\}$. The functor deletes $0$s and $n$s from the sequences, and sends $k$ to $k^+$.
 
-Given any diagrammatic morphism $D \in Sp(SL_n)$, just by a planar isotopy we can write it as
+\begin{thm}
+The functor $\Lad_n^m \to Sp(SL_n)^+$ is surjective.
+\end{thm}
+\begin{proof}
+Given any diagrammatic morphism $D \in Sp(SL_n)^+$, just by a planar isotopy we can write it as
 \begin{equation*}
 \begin{tikzpicture}
 \draw (0,0) -- (0,3);
@@ -638,12 +641,47 @@ Now replace $D_1$ with
 \begin{equation*}
 E_1 = ...
 \end{equation*}
-and each elementary piece of the Morse decomposition of $D_2$ as follows, to obtain $E_2$:
+Next, to the right of each element piece of the Morse decomposition of $D_2$, superimpose either a vertical $0$ strand or a vertical $n$ strand as follows
 \begin{align*}
 ...
 \end{align*}
+Then make the following local replacements
+\begin{align*}
+\tikz[baseline=6]{
+\draw[mid>] (-1,0) -- (0,0);
+\draw (0,0) --node[below] {$a$} (1,0);
+\draw[mid>, dashed] (0,-1) -- (0,0);
+\draw[dashed] (0,0) --node[right] {0} (0,1);
+} & \mapsto
+\tikz[baseline=6]{
+\draw[mid>] (-1,-0.2) -- (0,-0.2);
+\draw[mid>] (0,-0.2) -- (0,0.2);
+\draw[mid>] (0,0.2) --node[below] {$a$} (1,0.2);
+\draw[mid>,dashed]  (0,-1) -- (0,-0.2);
+\draw[dashed] (0,0.2) --node[right] {0} (0,1);
+}
+&
+\tikz[baseline=6]{
+\draw[mid<] (-1,0) -- (0,0);
+\draw (0,0) --node[below] {$a$} (1,0);
+\draw[mid>, dashed] (0,-1) -- (0,0);
+\draw[dashed] (0,0) --node[right] {0} (0,1);
+} & \mapsto
+\tikz[baseline=6]{
+\draw[mid<] (-1,0.2) -- (0,0.2);
+\draw[mid>] (0,-0.2) -- (0,0.2);
+\draw[mid<] (0,-0.2) --node[below] {$a$} (1,-0.2);
+\draw[mid>,dashed]  (0,-1) -- (0,-0.2);
+\draw[dashed] (0,0.2) --node[right] {0} (0,1);
+}
+\end{align*}
+\begin{align*}
+\begin{tikzpicture}
+\end{tikzpicture}
+\end{align*}
+to obtain $E_2$.
 
-It is clear that $E_1 E_2$ is a ladder diagram.
+It is clear that $D$ is equivalent in $Sp(SL_n)^+$ to $E_1 E_2$ which is a ladder diagram.
 \end{proof}
 
 

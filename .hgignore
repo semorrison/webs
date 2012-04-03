@@ -9,6 +9,8 @@ syntax: glob
 *.synctex.gz*
 *.nav
 *.snm
+*.auxlock
+diagrams/externalized/
 
 # Dropbox
 .dropbox
