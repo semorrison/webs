@@ -184,7 +184,7 @@ The spider category $Sp(SL_n)$ is the quotient of $FSp(SL_n)$ by the following r
 \newcommand{\ladderIn}[3]{\draw[mid>] (l#1#2) -- +($#3*(0,\ladderY)$);}
 \newcommand{\ladderI}[2]{\ladderIn{#1}{#2}{1}}
 
-\NewEnvironx{ladder}[2][1=]{%
+\NewEnvironx{ladder}[2]{%
   \begin{tikzpicture}[baseline=13*\ladderY*#2]\laddercoordinates{#1}{#2}}
 {\end{tikzpicture}}
 
@@ -288,7 +288,7 @@ The spider category $Sp(SL_n)$ is the quotient of $FSp(SL_n)$ by the following r
 \end{align}
 \todo{We also need mirror reflections and the arrow reversals of these.}
 
-Throughout below we'll refer to these as `switching a tag' (Relation \eqref{eq:switch}), `removing a bigon' (Relations \eqref{eq:bigon1, eq:bigon2}), `$I=H$' (Relation \eqref{eq:IH}) and `commutation' (Relation \eqref{eq:commutation}).
+Throughout below we'll refer to these as `switching a tag' (Relation \eqref{eq:switch}), `removing a bigon' (Relations \eqref{eq:bigon1} and \eqref{eq:bigon2}), `$I=H$' (Relation \eqref{eq:IH}) and `commutation' (Relation \eqref{eq:commutation}).
 
 We'll also record several consequences of these relations, to be used later.
 \begin{lem}
@@ -435,7 +435,8 @@ In the middle term, apply the $I=H$ relation, obtaining
 \draw[mid>] (m1m) -- (m1d);
 \draw[mid>] (m1d) --node[below right] {$b{+}1$} (m1p);
 \draw[mid>] (m1p) --node[above right] {$b$} (m1u);
-\end{tikzpicture} \\
+\end{tikzpicture}
+\\
 \intertext{and now apply Equation \eqref{eq:commutation2} to the central square}
 & = 
 (-1)^0 ???
