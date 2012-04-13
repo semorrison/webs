@@ -5,7 +5,7 @@
 \usepackage{amsmath,amssymb,amsfonts,amsthm}
 \usepackage{ifpdf}
 
-%\usepackage[all,color]{xy}
+\usepackage[all]{xy}
 \SelectTips{cm}{}
 % This may speed up compilation of complex documents with many xymatrices.
 %\CompileMatrices
@@ -179,7 +179,14 @@
 \usetikzlibrary{decorations,decorations.pathreplacing,decorations.markings}
 \usetikzlibrary{fit,calc,through}
 \usetikzlibrary{external}
-\tikzexternalize[prefix=diagrams/externalized/]
+
+\tikzstyle{mid>}=[decoration={markings, mark=at position 0.5 with {\arrow{>}}}, postaction={decorate}]
+\tikzstyle{mid<}=[decoration={markings, mark=at position 0.5 with {\arrow{<}}}, postaction={decorate}]
+\tikzstyle{upper>}=[decoration={markings, mark=at position 0.8 with {\arrow{>}}}, postaction={decorate}]
+\tikzstyle{upper<}=[decoration={markings, mark=at position 0.8 with {\arrow{<}}}, postaction={decorate}]
+\tikzstyle{lower>}=[decoration={markings, mark=at position 0.2 with {\arrow{>}}}, postaction={decorate}]
+\tikzstyle{lower<}=[decoration={markings, mark=at position 0.2 with {\arrow{<}}}, postaction={decorate}]
+
 
 \usepackage{environ}
 \usepackage{xargs}

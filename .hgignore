@@ -11,6 +11,7 @@ syntax: glob
 *.snm
 *.auxlock
 diagrams/externalized/
+sandbox.pdf
 
 # Dropbox
 .dropbox
