@@ -299,6 +299,7 @@ We'll also record several consequences of these relations, to be used later.
 This is just Relation \eqref{eq:bigon2} with $a=0$ after deleting the 0-strings.
 \end{proof}
 \begin{lem}
+\label{lem:cancel-tags}
 \begin{equation}
 \tikz[baseline=0.6cm]{
 \foreach \n in {0,1,2,3} {
@@ -318,6 +319,7 @@ This is just the second bigon relation (Relation \eqref{eq:bigon2}) with $b=n-a$
 
 
 \begin{lem}
+\label{lem:stack}
 \begin{equation}
 \tikz[baseline=40]{
 \laddercoordinates{1}{2}
@@ -482,7 +484,7 @@ In the middle term, apply the $I=H$ relation, obtaining
 \draw[mid>] (m1p) --node[above right] {$b{-}1$} (m1u);
 \end{tikzpicture}
 \end{align*}
-after which an application of the $I=H$ relation on each $2$-strand gives the desired identity.
+after which an application of Lemma \ref{lem:stack} on each $2$-strand gives the desired identity.
 \end{proof}
 }
 
@@ -498,8 +500,9 @@ Taking the `partial trace' of Relation \eqref{eq:commutation} (that is, closing 
 We'll use $FSp(SL_n)^+$ and $Sp(SL_n)^+$ to denote the full subcategories of the above where we restrict to objects which are words in $\{1^+,\ldots,(n-1)^+\}$, that is, we require that at the boundary strands are always oriented upwards. These are tensor subcategories, but not pivotal subcategories, since the pairing and copairing morphisms for an object $k$ do not lie in the subcategory.
 
 \begin{lem}
-Every diagrammatic morphism $D$ in $Sp(SL_n)$ is of the form $\alpha D' \beta$, where $D'$ is a morphism in $Sp(SL_n)^+$ and $\alpha$ and $\beta$ are isomorphisms built out of tags, sending $k^-$ to $(n-k)^+$. This decomposition is canonical up to a sign coming from Relation \eqref{eq:switch}; there is a choice at each tag of which way it faces.
+Every diagrammatic morphism $D$ in $Sp(SL_n)$ is of the form $\alpha D' \beta$, where $D'$ is a morphism in $Sp(SL_n)^+$ and $\alpha$ and $\beta$ are isomorphisms built out of tags, sending $k^-$ to $(n-k)^+$. 
 \end{lem}
+This decomposition is canonical up to a sign coming from Relation \eqref{eq:switch}; there is a choice at each tag of which way it faces.
 
 
 \section{Skew Howe Duality}
@@ -515,7 +518,7 @@ Note that $ \Hom(\ul{k}, \ul{k'}) = 0 $ unless $ \sum k_i = \sum k'_i $.
 
 \todo{More detail here.}
 
-\subsection{The functor $F_m^n$}
+\subsection{The functor $\Phi_m^n$}
 Let $K $ be a positive integer.  The vector space $ \Alt^K(\mathbb C^n \otimes \mathbb C^m) $ carries commuting actions of both $ GL_m $ and $ GL_n $ and these actions generate each others commutant.  
 
 Let us consider the weight decomposition of $\Alt^K(\mathbb C^n \otimes \mathbb C^m)$  with respect to the maximal torus of $ GL_m $.  It is given by 
@@ -526,14 +529,14 @@ where the sum ranges over those $ \ul{k} $ with $ 0 \le k_i \le n $ for all $ i 
 
 As we have a $ GL_m$ action with these weight spaces, for any two $n$-bounded weights $ \ul{k}, \ul{k'}$ with $ \sum \ul{k} = \sum \ul{k'} = K$, we obtain a map
 $$
-\one_\ul{k} \Ugl{m} \one_\ul{k'} \rightarrow \Hom(\alt^{k_1} \mathbb C^n \otimes \cdots \otimes \alt^{k_m} \mathbb C^n, \alt^{k'_1} \mathbb C^n \otimes \cdots \otimes \alt^{k'_m} \mathbb C^n)
+\one_\ul{k} \Ugl{m} \one_\ul{k'} \rightarrow \Hom\left(\alt^{k_1} \mathbb C^n \otimes \cdots \otimes \alt^{k_m} \mathbb C^n, \alt^{k'_1} \mathbb C^n \otimes \cdots \otimes \alt^{k'_m} \mathbb C^n\right)
 $$
 
 Since the actions of $GL_m $ and $ SL_n $ commute, this map lands inside the subspace of $ SL_n$-equivariant maps and since the action of $ GL_m$ generates the commutant of the $ SL_n $ action, we see that this map is a surjection onto this subspace.
 
 Let us rephrase this construction by defining a functor $ \Phi_m^n : \Ugl{m} \rightarrow \RepSL{n} $ as follows.  On objects $ \Phi_m^n(\ul{k}) = \alt^{k_1} \mathbb C^n \otimes \cdots \otimes \alt^{k_m} \mathbb C^n $, if $ \ul{k} $ is $n$-bounded, and 0 otherwise.  On morphisms $ \Phi_m^n $ is the above map 
 $$
-\one_\ul{k} \Ugl{m} \one_\ul{k'} \rightarrow \Hom_{SL_n}(\alt^{k_1} \mathbb C^n \otimes \cdots \otimes \alt^{k_m} \mathbb C^n, \alt^{k'_1} \mathbb C^n \otimes \cdots \otimes \alt^{k'_m} \mathbb C^n)
+\one_\ul{k} \Ugl{m} \one_\ul{k'} \rightarrow \Hom_{SL_n}\left(\alt^{k_1} \mathbb C^n \otimes \cdots \otimes \alt^{k_m} \mathbb C^n, \alt^{k'_1} \mathbb C^n \otimes \cdots \otimes \alt^{k'_m} \mathbb C^n\right)
 $$
 As above, $ \Phi_m^n $ is a surjection on $\Hom$ spaces.  In other words, it is full.
 
@@ -544,7 +547,7 @@ Let $ \Ugl{m}^n $ denote the quotient of $ \Ugl{m} $ where we set to 0 all morph
 Since all weights of $ \Lambda^K(\mathbb{C}^n \otimes \mathbb{C}^m) $ are $ n$-bounded, the functor $ \Ugl{m} \rightarrow \RepSL{n} $ factors through $ \Ugl{m}^n $.
 
 \begin{thm} \label{th:functorfullyfaithful}
-The resulting functor $ \Ugl{m}^n \rightarrow \RepSL{n}$ is fully faithful (it gives isomorphisms on $\Hom$-spaces).
+The resulting functor $\Phi_m^n: \Ugl{m}^n \rightarrow \RepSL{n}$ is fully faithful (it gives isomorphisms on $\Hom$-spaces).
 \end{thm}
 
 To prove this result, we will need a general result about semisimple Lie algebras which may be well-known, but was not previously known to us.
@@ -577,7 +580,7 @@ where in the direct sum, $\mu $ varies over all dominant weight $ (\mu_1, \dots,
 
 Thus we see that
 $$
-\Hom_{SL_n} (\Alt^K(\mathbb C^n \otimes \mathbb C^m), \Alt^K(\mathbb C^n \otimes \mathbb C^m)) = 
+\Hom_{SL_n} \left(\Alt^K(\mathbb C^n \otimes \mathbb C^m), \Alt^K(\mathbb C^n \otimes \mathbb C^m)\right) = 
 \oplus_{\mu} \End V(\mu) 
 $$
 where $ \mu $ ranges over the same set as before.  Note that these $\mu $ are exactly those which satisfy $ \mu \le \lambda(K) $, where $ \lambda(K) $ is the unique weight of the form $\lambda =  (n, \dots, n, r, 0, \dots, 0) $ with $ \lambda_1 + \dots + \lambda_m = K $.
@@ -614,6 +617,7 @@ We introduce a category $ \Lad_n^m $ whose objects are again labelled by $n$-bou
 There is an obvious functor from $\Lad_n^m \to FSp(SL_n)^+$, just forgetting that the diagrams have a ladder structure and interpreting them as webs. There is a slightly discrepancy at the level of objects: in $\Lad_n^m$ the objects $\ul{k}$ are sequences in $\{0,\ldots,n\}$, while in $FSp(SL_n)$ the objects are sequences in $\{1^\pm,\ldots,(n-1)^\pm\}$. The functor deletes $0$s and $n$s from the sequences, and sends $k$ to $k^+$.
 
 \begin{thm}
+\label{thm:laddering}
 The functor $\Lad_n^m \to Sp(SL_n)^+$ is surjective.
 \end{thm}
 \begin{proof}
@@ -655,7 +659,8 @@ $ and $D_2$ is in Morse position relative to the $x$-coordinate (that is, no two
 
 Now replace $D_1$ with
 \begin{equation*}
-E_1 = \begin{tikzpicture}[baseline=15,x=1.5cm, y=1.5cm]
+E_1 =
+\begin{tikzpicture}[baseline=15,x=1.5cm, y=1.5cm]
 \foreach \n/\x/\y in {1/0.25/0.6,2/0.75/0.45, 3/1.25/0.3, 4/1.75/0.15} {
  \coordinate (b\n)  at  (\x, -0.4);
  \draw[lower>, upper>] (b\n) to[out=90,in=180] coordinate (mb\n) (2.2,\y);
@@ -664,12 +669,22 @@ E_1 = \begin{tikzpicture}[baseline=15,x=1.5cm, y=1.5cm]
  \draw[dashed,mid>] (mb\n) --node[left=0.2pt] {\small $0$} (mt\n);
 }
 \end{tikzpicture}
+=
+\begin{tikzpicture}[baseline=12,x=0.8cm,y=0.5cm]
+\foreach \x in {2,3,4,5} {
+	\draw[dashed] (-\x,-3) -- (-\x,5);
+}
+\foreach \n in {1,2,3,4} {
+	\foreach \m in {1,...,\n} {
+		\draw[thick](-\m,5-\n+\m/2) -- +(-1,0) -- +(-1,0.5) node[coordinate] (z\n\m) {};
+		\draw[thick](-\m,-3+\n-\m/2) -- +(-1,0) -- +(-1,-0.5) node[coordinate] (w\n\m) {};		
+	} 
+	\draw[thick, mid>] (z\n\n) -- (-\n-1,5.5);
+	\draw[thick, mid<] (w\n\n) -- (-\n-1,-3.5);
+}
+\end{tikzpicture}
 \end{equation*}
-Next, to the right of each elementary piece of the Morse decomposition of $D_2$, superimpose either a vertical $0$ strand or a vertical $n$ strand as follows
-\begin{align*}
-...
-\end{align*}
-Then make the following local replacements
+Next, to the right of each elementary piece of the Morse decomposition of $D_2$, superimpose either a vertical $0$ strand or a vertical $n$ strand and then make the following local replacements
 \begin{align*}
 \tikz[baseline=6]{
 \draw[mid>] (-1,0) -- (0,0);
@@ -749,13 +764,107 @@ Then make the following local replacements
 \tikz[baseline=6]{
 \draw[mid>] (-1,0.5) node[left] {$a$} -- (-0.5,0);
 \draw[mid>] (-1,-0.5) node[left] {$b$}-- (-0.5,0);
-\draw[upper>] (-0.5,0) -- (1,0) node[right] {$a+b$};
+\draw[upper>] (-0.5,0) -- (1,0) node[right] {$a{+}b$};
 \draw[dashed,lower>] (0,-1) -- (0,1);
 }
-& \mapsto \cdots
+& \mapsto
+\tikz[baseline=6]{
+\draw[mid>] (-1,-0.5) node[left] {$b$} -- (0,-0.5);
+\draw[mid>] (-1,0) node[left] {$a$} -- (0,0);
+\draw[mid>] (0,0.5) -- (1,0.5) node[right] {$a{+}b$} ;
+\draw[dashed,mid>] (0,-1) -- (0,-0.5);
+\draw[mid>] (0,-0.5) -- (0,0);
+\draw[mid>] (0,0) -- (0,0.5);
+\draw[dashed,mid>] (0,0.5) -- (0,1);
+}
+&
+\tikz[baseline=6]{
+\draw[mid<] (-1,0.5) node[left] {$a$} -- (-0.5,0);
+\draw[mid<] (-1,-0.5) node[left] {$b$}-- (-0.5,0);
+\draw[upper<] (-0.5,0) -- (1,0) node[right] {$a{+}b$};
+\draw[dashed,lower>] (0,-1) -- (0,1);
+}
+& \mapsto
+\tikz[baseline=6]{
+\draw[mid<] (-1,0) node[left] {$b$} -- (0,0);
+\draw[mid<] (-1,0.5) node[left] {$a$} -- (0,0.5);
+\draw[mid<] (0,-0.5) -- (1,-0.5) node[right] {$a{+}b$} ;
+\draw[dashed,mid>] (0,-1) -- (0,-0.5);
+\draw[mid>] (0,-0.5) -- (0,0);
+\draw[mid>] (0,0) -- (0,0.5);
+\draw[dashed,mid>] (0,0.5) -- (0,1);
+}
+\\\\
+\tikz[baseline=6]{
+\draw[mid<] (-1,0.5) node[left] {$a{+}b$} -- (-0.5,0);
+\draw[mid>] (-1,-0.5) node[left] {$a$}-- (-0.5,0);
+\draw[upper<] (-0.5,0) -- (1,0) node[right] {$b$};
+\draw[dashed,lower>] (0,-1) -- (0,1);
+}
+& \mapsto
+\tikz[baseline=6]{
+\draw[mid>] (-1,-0.5) node[left] {$a$} -- (0,-0.5);
+\draw[mid<] (-1,0.5) node[left] {$a{+}b$} -- (0,0.5);
+\draw[mid<] (0,0) -- (1,0) node[right] {$b$} ;
+\draw[dashed,mid>] (0,-1) -- (0,-0.5);
+\draw[mid>] (0,-0.5) -- (0,0);
+\draw[mid>] (0,0) -- (0,0.5);
+\draw[dashed,mid>] (0,0.5) -- (0,1);
+}
+&
+\tikz[baseline=6]{
+\draw[mid>] (-1,0.5) node[left] {$a{+}b$} -- (-0.5,0);
+\draw[mid<] (-1,-0.5) node[left] {$a$}-- (-0.5,0);
+\draw[upper>] (-0.5,0) -- (1,0) node[right] {$b$};
+\draw[dashed,lower>] (0,-1) node[below] {$n$} -- (0,1) node[above] {$n$};
+}
+& \mapsto
+\tikz[baseline=6]{
+\draw[mid<] (-1,-0.5) node[left] {$a$} -- (0,-0.5);
+\draw[mid>] (-1,0.5) node[left] {$a{+}b$} -- (0,0.5);
+\draw[mid>] (0,0) -- (1,0) node[right] {$b$} ;
+\draw[dashed,mid>] (0,-1) node[below] {$n$} -- (0,-0.5);
+\draw[mid>] (0,-0.5) -- (0,0);
+\draw[mid>] (0,0) -- (0,0.5);
+\draw[dashed,mid>] (0,0.5) -- (0,1) node[above] {$n$};
+}
+\\\\
+\tikz[baseline=6]{
+\draw[mid>] (-1,0.5) node[left] {$a$} -- (-0.5,0);
+\draw[mid<] (-1,-0.5) node[left] {$a{+}b$}-- (-0.5,0);
+\draw[upper<] (-0.5,0) -- (1,0) node[right] {$b$};
+\draw[dashed,lower>] (0,-1) node[below] {$n$} -- (0,1) node[above] {$n$};
+}
+& \mapsto
+\tikz[baseline=6]{
+\draw[mid<] (-1,-0.5) node[left] {$a{+}b$} -- (0,-0.5);
+\draw[mid>] (-1,0.5) node[left] {$a$} -- (0,0.5);
+\draw[mid<] (0,0) -- (1,0) node[right] {$b$} ;
+\draw[dashed,mid>] (0,-1) node[below] {$n$} -- (0,-0.5);
+\draw[mid>] (0,-0.5) -- (0,0);
+\draw[mid>] (0,0) -- (0,0.5);
+\draw[dashed,mid>] (0,0.5) -- (0,1) node[above] {$n$};
+}
+&
+\tikz[baseline=6]{
+\draw[mid<] (-1,0.5) node[left] {$a$} -- (-0.5,0);
+\draw[mid>] (-1,-0.5) node[left] {$a{+}b$}-- (-0.5,0);
+\draw[upper>] (-0.5,0) -- (1,0) node[right] {$b$};
+\draw[dashed,lower>] (0,-1) -- (0,1);
+}
+& \mapsto
+\tikz[baseline=6]{
+\draw[mid>] (-1,-0.5) node[left] {$a{+}b$} -- (0,-0.5);
+\draw[mid<] (-1,0.5) node[left] {$a$} -- (0,0.5);
+\draw[mid>] (0,0) -- (1,0) node[right] {$b$} ;
+\draw[dashed,mid>] (0,-1) -- (0,-0.5);
+\draw[mid>] (0,-0.5) -- (0,0);
+\draw[mid>] (0,0) -- (0,0.5);
+\draw[dashed,mid>] (0,0.5) -- (0,1);
+}
 \end{align*}
-to obtain $E_2$. \todo{continue}
-It is clear that $D$ is equivalent in $Sp(SL_n)^+$ to $E_1 E_2$ which is a ladder diagram.
+to obtain $E_2$. 
+It is clear that $D$ is equivalent (via deleting $0$ and $n$ strands, Lemma \ref{lem:cancel-tags} and \todo{???}) in $Sp(SL_n)^+$ to $E_1 E_2$, which is a ladder diagram.
 \end{proof}
 
 
@@ -777,23 +886,28 @@ The following is just a schematic indication of how the proof should go.
 
 We have the following 5 categories:
 \begin{enumerate}
-\item $FSp(SL_n) $, the free spider category (no relations)
-\item $Sp(SL_n) $, the spider category defined by generators and relations.
+\item $FSp(SL_n)^+$, the free spider category with no relations.
+\item $Sp(SL_n)^+$, the spider category defined by generators and relations.
 \item $\Lad_n^m$, the free ladder category
 \item $\Ugl{m}^n $, defined as a quotient of $ \Ugl{m} $ above.  Also above, we know the generators of the kernel of $ \Lad_n^m \rightarrow \Ugl{m}^n $.
 \item $\RepSL{n}$
 \end{enumerate}
+For $FSp(SL_n)^+$ and $Sp(SL_n)^+$, the +-superscript indicates the full subcategory on objects oriented upwards.
 
 We have a commutative diagram
 \begin{equation*}
 \xymatrix{
 \Lad_n^m \ar[r] \ar[d] & \Ugl{m}^n \ar[dr]^{\Phi_m^n} \ar[d] & \\
-FSp(SL_n) \ar[r] & Sp(SL_m) \ar[r] & \RepSL{n} \\
+FSp(SL_n)^+ \ar[r] & Sp(SL_m)^+ \ar[r] & \RepSL{n} \\
 }
 \end{equation*}
-The key point is that the functor $ F_m^n $ provided by the Skew Howe duality, factors through $ Sp(SL_m)$.  This is because we have a functor $ \Lad_n^m \rightarrow FSp(SL_n) $ given by interpreting ladder diagrams as web diagrams and because the kernel of $ \Lad_n^m \rightarrow \Ugl{m}^n $ is sent into the kernel of $ FSp(SL_n) \rightarrow Sp(SL_m) $.  
+The key point is that the functor $ \Phi_m^n $ provided by the Skew Howe duality, factors through $ Sp(SL_m)$.  This is because we have a functor $ \Lad_n^m \rightarrow FSp(SL_n) $ given by interpreting ladder diagrams as web diagrams and because the kernel of $ \Lad_n^m \rightarrow \Ugl{m}^n $ is sent into the kernel of $ FSp(SL_n)^+ \rightarrow Sp(SL_m)^+ $.  
 
-Now, in order to show that $ Sp(SL_n) \rightarrow \RepSL{n} $ is injective, we let $ \phi $ be a morphism in $ FSp(SL_n)$ which is sent to 0 in $ \RepSL{n} $.  So $ \phi $ is a linear combination of web diagrams, so choosing $m$ large enough, we can represent $ \phi $ as a linear combination $ \tilde{\phi} $ of ladder diagrams.   By commutativity of the above diagram, $ \tilde{\phi} $ is sent to 0 in $ \RepSL{n} $ following the route via $ \Ugl{m}^n $.  However, since $ \Phi_m^n $ is fully-faithful, it must already go to 0 in $ \Ugl{m}^n $.  Thus using the functor $ \Ugl{m}^n \rightarrow Sp(SL_m) $ we get that $ \tilde{\phi} $ and hence $ \phi $ are sent to 0 in $ Sp(SL_m) $ and thus we are done.
+Now, in order to show that $ Sp(SL_n)^+ \rightarrow \RepSL{n} $ is injective, we
+ let $ \phi $ be a morphism in $ Sp(SL_n)^+$ which is sent to 0 in $ \RepSL{n} $.  
+By Theorem \ref{thm:laddering} we can pick a representative of $\phi$ in $FSp(SL_n)^+$ which in turn comes from some $\tilde{\phi}$ a linear combination of ladder diagrams in  $\Lad_n^m$ for some $m$ sufficiently large.
+
+By commutativity of the above diagram, $ \tilde{\phi} $ is sent to 0 in $ \RepSL{n} $ following the route via $ \Ugl{m}^n $.  However, since $ \Phi_m^n $ is fully-faithful, it must already go to 0 in $ \Ugl{m}^n $.  Thus using the functor $ \Ugl{m}^n \rightarrow Sp(SL_m) $ we get that $ \tilde{\phi} $ is sent to 0 in $ Sp(SL_m) $ and thus $\phi=0$ and we are done.
 
 
 % ----------------------------------------------------------------
