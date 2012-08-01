@@ -1,5 +1,5 @@
-\documentclass[11pt,leqno]{article}
-
+\documentclass[10pt,leqno]{article}
+\usepackage{comment}
 \input{preamble}
 
 %\tikzexternalize[prefix=diagrams/externalized/]
@@ -41,18 +41,30 @@
 
 \newcommand{\one}{1}
 
-\newcommand{\gl}[1]{\mathfrak{gl}_{#1}}
-\newcommand{\Ugl}[1]{U\gl{#1}}
+\def\sl{{\mathfrak{sl}}}
+\def\Sp{{\mathcal{S}p}}
+\def\FSp{{\mathcal{FS}p}}
+\def\bC{{\mathbb{C}}}
+\def\g{{\mathfrak{g}}}
+\def\SL{{\rm{SL}}}
+\def\GL{{\rm{GL}}}
+\def\gl{{\mathfrak{gl}}}
+\def\dU{\dot{{\mathcal{U}}}}
+\def\Rep{\mathcal{R}ep}
+\def\la{\langle}
+\def\ra{\rangle}
+% \newcommand{\gl}[1]{\mathfrak{gl}_{#1}}
+%\newcommand{\Ugl}[1]{U\gl{#1}}
 
 \newcommand{\ul}[1]{{\underline{#1}}}
 
-\newcommand{\RepSL}[1]{\mathcal{R}ep(SL_{#1})}
+%\newcommand{\RepSL}[1]{\mathcal{R}ep(SL_{#1})}
 \newcommand{\Lad}{\mathcal{L}ad}
 
 \section{Introduction}
 The representation theory of $\sl{n}$ is a pivotal tensor category, and it is natural to ask for a presentation by generators and relations, as a pivotal tensor category.
 
-There are two main choices one needs to make before looking for such a presentation. First, it would be reasonable to pass to any full subcategory, whose idempotent completion recovers the entire representation theory. In particular, in this paper we look at the full subcategory (denoted $\RepSL{n}$) whose objects are isomorphic to tensor products of the fundamental representations $\Alt^k \mathbb C^n$ of $\sl{n}$. (It might alternatively be interesting to descend all the way to the full subcategory whose objects are tensor powers of the standard representation.) Second, we need to decide which generators to use. We take the maps $\Alt^a \mathbb{C}^n \tensor \Alt^b \mathbb{C}^n \tensor \Alt^c \mathbb{C}^n \to \mathbb{C}$. (The space of such maps is one-dimensional if $a+b+c$ is a multiple of $n$, or zero-dimensional otherwise.) It is relatively easy to show that these are indeed generators, i.e. that every $\sl{n}$-linear map between tensor products of fundamental representations can be written as tensor products and compositions of these maps, along with the duality pairing and copairing maps \cite[Proposition 3.5.8]{0704.1503}. The question then, is to identify the relations holding between such planar compositions.
+There are two main choices one needs to make before looking for such a presentation. First, it would be reasonable to pass to any full subcategory, whose idempotent completion recovers the entire representation theory. In particular, in this paper we look at the full subcategory (denoted $\Rep(\SL_n)$) whose objects are isomorphic to tensor products of the fundamental representations $\Alt^k \mathbb C^n$ of $\sl{n}$. (It might alternatively be interesting to descend all the way to the full subcategory whose objects are tensor powers of the standard representation.) Second, we need to decide which generators to use. We take the maps $\Alt^a \mathbb{C}^n \tensor \Alt^b \mathbb{C}^n \tensor \Alt^c \mathbb{C}^n \to \mathbb{C}$. (The space of such maps is one-dimensional if $a+b+c$ is a multiple of $n$, or zero-dimensional otherwise.) It is relatively easy to show that these are indeed generators, i.e. that every $\sl{n}$-linear map between tensor products of fundamental representations can be written as tensor products and compositions of these maps, along with the duality pairing and copairing maps \cite[Proposition 3.5.8]{0704.1503}. The question then, is to identify the relations holding between such planar compositions.
 
 Said another way, we have a pivotal category of trivalent webs, with oriented edges labelled by $\{1, \ldots, n-1\}$, and at each vertex the labels summing to a multiple of $n$, and a full and dominant functor to the representation theory category. The question is to identify the pivotal ideal which is the kernel of this functor.
 
@@ -65,17 +77,17 @@ For $n \geq 4$, generators for the kernel have been proposed, by \cite{math.QA/0
 This paper answers the question, in particular showing that the relations of \cite{0704.1503} are complete. In fact, those relations are over complete; just the $I=H$ and `square-switch' relations suffice (and in fact only one of the square-switch relations implies the others), and generate the others. The relevant relations are reproduced in \S\ref{sec:diagrams}.
 The main theorem, stating the isomorphism between a combinatorially defined web category and the representation theory of $\Usl{n}$, appears in \S \ref{sec:theorem}.
 
-The core idea of our proof is to use skew Howe duality (see \S \ref{sec:skew-howe}). In fact we give a very succinct recipe for the relations, as certain truncations of relations holding in $\Usl{m}$. We now give a quick overview of the argument.
+The core idea of our proof is to use skew Howe duality. In fact we give a very succinct recipe for the relations, as certain truncations of relations holding in $\Usl{m}$. We now give a quick overview of the argument.
 
-We denote the quotient of the category of trivalent webs by the $I=H$ and square switch relations as $Sp(SL_n)$. We have a surjective functor to the the representation theory, which we would like to show is an isomorphism. All that remains is to check that it is injective on morphisms.
+We denote the quotient of the category of trivalent webs by the $I=H$ and square switch relations as $\Sp(SL_n)$. We have a surjective functor to the the representation theory, which we would like to show is an isomorphism. All that remains is to check that it is injective on morphisms.
 
 Skew Howe duality states that the commuting actions of $\Usl{n}$ and $\Usl{m}$ on $\Alt^\bullet(\mathbb{C}^n \tensor \mathbb{C}^m)$ are in fact each the commutant of the other. That is, if  $f: \Alt^\bullet(\mathbb{C}^n \tensor \mathbb{C}^m) \to \Alt^\bullet(\mathbb{C}^n \tensor \mathbb{C}^m)$ is $\sl{n}$-linear, then there is some element $X_f \in \Usl{m}$ whose action on  $\Alt^\bullet(\mathbb{C}^n \tensor \mathbb{C}^m)$ is exactly $f$.
 
-Suppose we have some element $A \in \Homa{Sp(SL_n)}{\underline{k}}{\underline{k'}}$ which maps to zero in the representation theory. Here $\underline{k}$ and $\underline{k}$ denote two sequences of integers with signs from the set $\{1^\pm,\ldots,n-1^\pm\}$, i.e. two objects in $Sp(SL_n)$. (The sign indicates whether the strand and that boundary point is oriented up or down.) First, we realize that by conjugating $A$ by the isomorphisms between $k^-$ and $(n-k)^+$ in $Sp(SL_n)$, which are sent to isomorphisms in the representation theory, we may assume that all the signs are positive.
+Suppose we have some element $A \in \Homa{\Sp(SL_n)}{\underline{k}}{\underline{k'}}$ which maps to zero in the representation theory. Here $\underline{k}$ and $\underline{k}$ denote two sequences of integers with signs from the set $\{1^\pm,\ldots,n-1^\pm\}$, i.e. two objects in $\Sp(SL_n)$. (The sign indicates whether the strand and that boundary point is oriented up or down.) First, we realize that by conjugating $A$ by the isomorphisms between $k^-$ and $(n-k)^+$ in $\Sp(SL_n)$, which are sent to isomorphisms in the representation theory, we may assume that all the signs are positive.
 
  We would like to show that $A$ is itself zero. 
  We then choose sequences $\ul{l}$ and $\ul{l'}$ obtained from $\underline{k}$ by interposing some number of $0$s and $n$s, so $\ul{l}$ and $\ul{l'}$ have the same length $m$ and the same sum $L$ (previously, the sums of $\underline{k}$ and $\underline{k'}$ might be differed by a multiple of $n$).
- The element $A$ is then equivalent, via the specified relations in $Sp(SL_n)$ to a `ladder diagram' with $m$ rails and boundary given by the sequences $\ul{l}$ and $\ul{l'}$. (See Figure \ref{fig:ladder-example} for an example.)
+ The element $A$ is then equivalent, via the specified relations in $\Sp(SL_n)$ to a `ladder diagram' with $m$ rails and boundary given by the sequences $\ul{l}$ and $\ul{l'}$. (See Figure \ref{fig:ladder-example} for an example.)
  \todo{an example ladder diagram}
 A complete description of ladder diagrams and this equivalence to a ladder diagram is in \S \ref{sec:ladders}.
 
@@ -84,15 +96,31 @@ Now, rewriting $\Alt^L(\mathbb C^n \tensor \mathbb C^m)$ as
 \alt^L(\mathbb C^n \tensor \mathbb C^m) & = \alt^L(\mathbb C^n \directSum \cdots \directSum \mathbb C^n) \\
         & = \DirectSum_{\underline{l}: \sum \underline{l} = L} \alt^{l_1} \mathbb C^n \tensor \cdots \tensor \alt^{l_m} \mathbb C^n
 \end{align*}
-we see the objects $\underline{l}$ and $\underline{l}'$ as summands, and hence $A$ as an endomorphism of $\Alt^L(\mathbb C^n \tensor \mathbb C^m)$. Thus there is some element $X_{A} \in \Ugl{m}$, which acts by zero on $\Alt^L(\mathbb C^n \tensor \mathbb C^m)$. In fact, since we had shown $A$ was equivalent to a ladder diagram, we can write down an explicit element $X_A$, by interpreting each rung of the ladder as some $E^{(a)}_j$ or $F^{(a)}_j$ in $\Ugl{m}$. 
+we see the objects $\underline{l}$ and $\underline{l}'$ as summands, and hence $A$ as an endomorphism of $\Alt^L(\mathbb C^n \tensor \mathbb C^m)$. Thus there is some element $X_{A} \in \dU(\gl_m)$, which acts by zero on $\Alt^L(\mathbb C^n \tensor \mathbb C^m)$. In fact, since we had shown $A$ was equivalent to a ladder diagram, we can write down an explicit element $X_A$, by interpreting each rung of the ladder as some $E^{(a)}_j$ or $F^{(a)}_j$ in $\dU(\gl_m)$. 
 
-Next, we find that we can explicitly describe the kernel of $\Ugl{m}$ acting on $\Alt^\bullet(\mathbb C^n \tensor \mathbb C^m)$. The kernel is precisely the ideal generated by those weight space idempotents falling outside the weight support of $\Alt^\bullet(\mathbb C^n \tensor \mathbb C^m)$. \todo{Saying this requires having previously mentioned the idempotented form.} This result is proved in \S \ref{sec:kernel}.
+Next, we find that we can explicitly describe the kernel of $\dU(\gl_m)$ acting on $\Alt^\bullet(\mathbb C^n \tensor \mathbb C^m)$. The kernel is precisely the ideal generated by those weight space idempotents falling outside the weight support of $\Alt^\bullet(\mathbb C^n \tensor \mathbb C^m)$. \todo{Saying this requires having previously mentioned the idempotented form.} This result is proved in \S \ref{sec:kernel}.
 
 
-\section{Web diagrams and relations}
-\label{sec:diagrams}
+\section{The categories $\Rep(\SL_n)$ and $\Sp(\SL_n)$}\label{sec:diagrams}
 
-The free spider category $FSp(SL_n)$ has as objects sequences $\ul{k}$ in $\{1^\pm,\ldots,(n-1)^\pm\}$, and as morphisms (linear combinations of) oriented planar graphs locally modeled on the following four types of vertices:
+We denote by $[n]_q$ the quantum integer $q^{n-1} + q^{n-3} + \dots + q^{-n+3} + q^{-n+1}$. More generally, 
+$$\qBinomial{n}{k} := \frac{[n]_q\dots[1]_q}{([n-k]_q \dots [1]_q)([k]_q \dots [1]_q)}.$$
+We will denote by $U_q(\sl_n)$ the quantum group associated to $\sl_n$. 
+
+\subsection{Definition of the representation category $\Rep(\SL_n)$}
+
+The objects in $\Rep(\SL_n)$ are tensor products of the fundamental representations $\alt^k \bC^n$ of $U_q(\sl_n)$. These are clearly in bijection with tuples $\ul{k} = (k_1, \dots, k_m)$ with $0 \le k_i \le n$. 
+
+The morphisms in $\Rep(\SL_n)$ are generated by maps $\alt^a \bC^n \otimes \alt^b \bC^n \rightarrow \alt^c \bC^n$. Note that the space of such maps is one-dimensional if $a+b \equiv c \mbox{mod} n$ and zero otherwise. 
+
+\begin{lem}\label{lem:surjective} Any map of $U_q(\sl_n)$-modules between tensor products of fundamental representations is generated by the morphisms described above.
+\end{lem}
+\begin{proof}
+\todo{NEED}
+\end{proof}
+
+\subsection{The free spider category $\FSp(\SL_n)$} 
+The free spider category $\FSp(\SL_n)$ has as objects sequences $\ul{k}$ in $\{1^\pm,\ldots,(n-1)^\pm\}$, and as morphisms (linear combinations of) oriented planar graphs locally modeled on the following four types of vertices:
 \newcommand{\fuse}[3]{\tikz[baseline=0.5cm]{
 \coordinate (z1) at (0,0);
 \coordinate (z2) at (1,0);
@@ -136,8 +164,10 @@ The free spider category $FSp(SL_n)$ has as objects sequences $\ul{k}$ in $\{1^\
 \draw (a1) -- +(-0.2,0.1);
 }
 \end{align*}
-with all labels drawn from the set $\{1,\ldots,n-1\}$.
-(The third and fourth are bivalent vertices, called `tags', which are not rotationally symmetric; the tag provides a distinguished side.) The source and target of a morphism determine the labels which must appear around the boundary. The bottom boundary of the planar graph in $\Hom(\ul{k}, \ul{k'})$ must have boundary agreeing with the source object $\ul{k}$ with the strand oriented up for each positive entry, and the strand oriented down for each negative entry. Similary, the top boundary is determined from $\ul{k'}$ in the same way.
+with all labels drawn from the set $\{1,\ldots,n-1\}$. The third and fourth graphs depict bivalent vertices, called `tags', which are not rotationally symmetric, meaning that the tag provides a distinguished side. The bottom boundary of any planar graph in $\Hom(\ul{k}, \ul{k'})$ is $\ul{k}$ with the strand oriented up for each positive entry, and the strand oriented down for each negative entry. Similary, the top boundary is determined by $\ul{k'}$ in the same way.
+
+\todo{how about a trivalent vertex with labels $n-1,n-1,n-2$? how does that fit in this setup?}
+
 \begin{example}
 \todo{some examples}
 \end{example}
@@ -147,10 +177,10 @@ We will often draw diagrams with edges also labelled by $0$ or $n$. This is a no
 \fuse{a}{n-a}{n} & = \tikz[baseline=0.5cm]{\draw[mid>] (0,0) node[below] {$a$} arc (180:90:0.6) node[coordinate] (c) {}; \draw[mid<] (c) arc (90:0:0.6) node[below] {$n-a$}; \draw (c) -- +(0,0.2);} &
 \fork{a}{n-a}{n} & = \tikz[baseline=-0.5cm]{\draw[mid<] (0,0) node[above] {$a$} arc (-180:-90:0.6) node[coordinate] (c) {}; \draw[mid>] (c) arc (-90:0:0.6) node[above] {$n-a$}; \draw (c) -- +(0,0.2);} 
 \end{align*}
-(Any trivalent vertices with all edges labelled either $0$ or $n$ can simply be deleted.) In fact, we'll sometimes draw diagrams with edges less than $0$ or greater than $n$, and these are simply zero.
+Any trivalent vertices with all edges labelled either $0$ or $n$ can be deleted. Any diagram with an edge labeled less than $0$ or greater than $n$ is zero.
 
-The spider category $Sp(SL_n)$ is the quotient of $FSp(SL_n)$ by the following relations
-
+\subsection{Definition of the spider category $\Sp(\SL_n)$} 
+The spider category $\Sp(\SL_n)$ is the quotient of $\FSp(\SL_n)$ by the following relations
 
 \newcommand{\ladderX}{1.5}
 \newcommand{\ladderY}{1.5}
@@ -187,6 +217,7 @@ The spider category $Sp(SL_n)$ is the quotient of $FSp(SL_n)$ by the following r
   \begin{tikzpicture}[baseline=13*\ladderY*#2]\laddercoordinates{#1}{#2}}
 {\end{tikzpicture}}
 
+%\begin{comment}
 \begin{align}
 \tikz[baseline=0.4cm]{
 \foreach \n in {0,1,2} {
@@ -285,22 +316,15 @@ The spider category $Sp(SL_n)$ is the quotient of $FSp(SL_n)$ by the following r
 \end{tikzpicture}
 \label{eq:commutation}
 \end{align}
-\todo{We also need mirror reflections and the arrow reversals of these.}
+%\end{comment}
+together with the mirror reflections and the arrow reversals of these. These relations will be refered to as the `switching a tag' \eqref{eq:switch}, `removing a bigon' \eqref{eq:bigon1} and \eqref{eq:bigon2}, `$I=H$' \eqref{eq:IH} and `commutation' \eqref{eq:commutation}.
 
-Throughout below we'll refer to these as `switching a tag' (Relation \eqref{eq:switch}), `removing a bigon' (Relations \eqref{eq:bigon1} and \eqref{eq:bigon2}), `$I=H$' (Relation \eqref{eq:IH}) and `commutation' (Relation \eqref{eq:commutation}).
-
-We'll also record several consequences of these relations, to be used later.
-\begin{lem}
+Here are a couple of easy consequences of these relations. 
+\begin{lem} We have:
 \begin{equation}
 \tikz[baseline]{\draw[->] (0,0.5) node[above] {$a$} arc (45:-315:0.5cm);}  = \qBinomial{n}{a} \label{eq:loop}
 \end{equation}
-\end{lem}
-\begin{proof}
-This is just Relation \eqref{eq:bigon2} with $a=0$ after deleting the 0-strings.
-\end{proof}
-\begin{lem}
-\label{lem:cancel-tags}
-\begin{equation}
+\begin{equation}\label{eq:cancel-tags}
 \tikz[baseline=0.6cm]{
 \foreach \n in {0,1,2,3} {
 	\coordinate (a\n) at (0.4*\n, 0.8*\n);
@@ -314,13 +338,163 @@ This is just Relation \eqref{eq:bigon2} with $a=0$ after deleting the 0-strings.
 \end{equation}
 \end{lem}
 \begin{proof}
-This is just the second bigon relation (Relation \eqref{eq:bigon2}) with $b=n-a$ after replacing the $n$-strand with a matching pair of tags. 
+The first identity follows from relation \eqref{eq:bigon2} with $a=0$ after deleting the 0-strings. The second also follows from \eqref{eq:bigon2} with $b=n-a$ after replacing the $n$-strand with a matching pair of tags. 
 \end{proof}
 
 
+
+\todo{Explain exactly what's happening with the square-switch relations from Scott's thesis}
+\todo{Explain why(?) the Kekule relations are consequences of these...}
+
+\subsubsection{The upwards subcategory}
+We will use $\FSp(\SL_n)^+$ and $Sp(\SL_n)^+$ to denote the full subcategories of the above where we restrict to objects which are words in $\{1^+,\ldots,(n-1)^+\}$. This means that strands at the boundary are always oriented upwards. These are tensor subcategories but not pivotal subcategories because the pairing and copairing morphisms for an object $k$ do not lie in this subcategory.
+
 \begin{lem}
-\label{lem:stack}
+Every morphism in $\Sp(\SL_n)$ is of the form $\alpha D \beta$, where $D$ is a morphism in $\Sp(\SL_n)^+$ while $\alpha$ and $\beta$ are isomorphisms built out of tags, sending $k^-$ to $(n-k)^+$. 
+\end{lem}
+\begin{proof}
+NEED
+\end{proof}
+\begin{rem}
+This decomposition is canonical up to a sign coming from Relation \eqref{eq:switch} since each tag can face in two ways.
+\end{rem}
+
+\section{Statement and proof of the main theorem}\label{sec:theorem}
+
+\subsection{Definition of the functor $\Gamma_n: \Sp(\SL_n)^+ \rightarrow \Rep(\SL_n)$}
+
+At the level of objects we take 
+$$\alt^{k_1} \bC^n \otimes \dots \otimes \alt^{k_m} \bC^n \mapsto (k_1, \dots, k_m).$$
+For morphisms we take
+$$ \fuse{a}{b}{a+b} \mapsto ?? \ \ \text{ and } \ \ ...$$
+\todo{these maps are well defined up to a unique multiple -- how do we fix these multiples? one option is to choose them arbitrarily and then scale if necessary... Alternatively, maybe one just needs to choose these so that the triangle in diagram \ref{diag:main} commutes.}
+
+\subsection{The main result}\label{sec:main}
+
+\begin{thm}\label{thm:main}
+The functor $\Gamma_n: \Sp(\SL_n)^+ \rightarrow \Rep(\SL_n)$ is an equivalence of categories. 
+\end{thm}
+\begin{proof}
+We will use the following commutative diagram
+\begin{equation}\label{diag:main}
+\xymatrix{
+\Lad_n^m \ar[r] \ar[d] & \dU^n(\gl_m) \ar[dr]^{\Phi_m^n} \ar[d]_{\Psi_m^n} & \\
+\FSp(\SL_n)^+ \ar[r] & \Sp(\SL_n)^+ \ar[r]^{\Gamma_n} & \Rep(\SL_n) \\
+}
+\end{equation}
+where the three categories in the bottom row were defined in section \ref{sec:diagrams}, while the two categories in the top row (as well as the functors $\Phi$ and $\Psi$) are defined is sections \ref{sec:phi} and \ref{sec:psi}. 
+
+Since $\Gamma_n$ is clearly an isomorphism on objects we must show that it is fully faithful. Surjectivity (fullness) of $\Gamma_n$ on $\Hom$ spaces follows from Lemma \ref{lem:surjective}. It remains to show that if $\phi$ is a morphism such that $\Gamma_n(\phi)=0$ then $\phi=0$. 
+
+Let $\phi$ be such a morphism. By Theorem \ref{thm:laddering} we can pick a representative of $\phi$ in $\FSp(SL_n)^+$ which in turn comes from some linear combination $\tilde{\phi}$ of ladder diagrams in $\Lad_n^m$ for some $m$ sufficiently large. By commutativity this means that there exists some morphism $\phi'$ in $\dU^n(\gl_m)$ such that $\Psi_m^n(\phi')=\phi$. Note that $\Phi^n_m(\phi')=0$ since $\Gamma_n(\phi)=0$. However, by Theorem \ref{th:functorfullyfaithful}, $\Phi_m^n$ is faithful which means $\phi'=0$ and hence $\phi=0$ (so we are done). 
+
+\todo{Here is what you wrote before: The key point is that the functor $ \Phi_m^n $ provided by the Skew Howe duality, factors through $ \Sp(SL_m)$.  This is because we have a functor $ \Lad_n^m \rightarrow \FSp(SL_n) $ given by interpreting ladder diagrams as web diagrams and because the kernel of $ \Lad_n^m \rightarrow \dU^n(\gl_m) $ is sent into the kernel of $ \FSp(SL_n)^+ \rightarrow \Sp(SL_m)^+ $. Do we need this type of argument?}
+\end{proof}
+
+\section{The functor $\Phi_m^n:\dU(\gl_m) \rightarrow \Rep(\SL_n)$}\label{sec:phi}
+
+\subsection{The idempotent form $\dU(\gl_m)$}\label{sec:idemform}
+
+We will think of $\dU(\gl_m)$ as a $\bC[q,q^{-1}]$-linear category with objects $ \ul{k} = (k_1, \dots, k_m) \in \mathbb Z^m $ and morphisms generated by $ E_i, F_i$ with $i=1, \dots, m-1$. The idempotent which projects onto $\ul{k}$ is denoted $\one_\ul{k}$. The morphisms in $\dU(\gl_m)$ satisfy the following relations:
+\begin{enumerate}
+\item\label{rel:1} $\one_{\ul{k}+\alpha_i} E_i = E_i \one_{\ul{k}}$ and $\one_{\ul{k}} F_i = F_i \one_{\ul{k}+\alpha_i}$ while $\one_{\ul{k'}} E_i \one_{\ul{k}} = 0 = \one_{\ul{k}} F_i \one_{\ul{k'}}$ if $\ul{k'}-\ul{k} \ne \alpha_i$.
+\item\label{rel:2} $E_iE_j = E_jE_i$ and $F_iF_j = F_jF_i$ if $|i-j|>1$. 
+\item\label{rel:3} $(E_iF_i - F_iE_i) \one_{\ul{k}} = [\la \ul{k}, \alpha_i \ra]_q \one_{\ul{k}}$ while if $i \ne j$ then $E_iF_j = F_jE_i$. 
+\item\label{rel:4} If $|i-j|=1$ then $[2]_q E_iE_jE_i = E_i^2 E_j + E_j E_i^2$ and likewise with $F$'s. 
+\end{enumerate}
+Here $\alpha_i = (0,\dots,0,1,-1,0,\dots,0)$ where the $1$ appears in position $i$ and $\la \cdot, \cdot \ra$ is the standard inner product on $\mathbb Z^m$. As usual, we write $\Hom(\ul{k}, \ul{k'}) = \one_\ul{k'} \dU^n(\gl_m) \one_\ul{k}$ for the space of morphisms. Notice that $\Hom(\ul{k}, \ul{k'}) = 0 $ unless $\sum k_i = \sum k'_i$. It is also convenient to include the ``divided powers'' morphisms 
+$$E_i^{(r)} := \frac{E_i^r}{[r]_q \dots [1]_q} \ \ \text{ and } \ \ F_i^{(r)} := \frac{F_i^r}{[r]_q \dots [1]_q}.$$
+These satisfy a series of relations, such as $E_i E_i^{(r)} = [r+1]_q E_i^{(r+1)}$, but all of these follow from the relations (\ref{rel:1})--(\ref{rel:4}) above. Notice that using this notation, relation (\ref{rel:4}) takes on the nice form $E_iE_jE_i = E_i^{(2)}E_j + E_jE_i^{(2)}$. 
+
+\subsection{Definition of the functor $\Phi_m^n$}
+For any $K \in {\mathbb{N}}$ the vector space $\Alt^K(\mathbb C^n \otimes \mathbb C^m)$ carries commuting actions of $\GL_m $ and $\SL_n$ which generate each other's commutant. The weight decomposition of $\Alt^K(\mathbb C^n \otimes \mathbb C^m)$ with respect to the maximal torus of $ \GL_m $ is given by 
 \begin{equation}
+ \Alt^K(\mathbb C^n \otimes \mathbb C^m) = \bigoplus_{\ul{k}} \alt^{k_1} \mathbb C^n \otimes \cdots \otimes \alt^{k_m} \mathbb C^n
+ \end{equation}
+where the sum ranges over $\ul{k} = (k_1, \dots, k_m)$ with $ 0 \le k_i \le n $ and $\sum_i k_i = K$. We will refer to such $\ul{k}$ as the {\bf $n$-bounded weights of $\GL_m$}.
+
+Since we have a $\GL_m$ action with these weight spaces, we get a map
+\begin{equation}\label{eq:phimap}
+\one_\ul{k'} \dU(\gl_m) \one_\ul{k} \rightarrow \Hom \left(\alt^{k_1} \mathbb C^n \otimes \cdots \otimes \alt^{k_m} \mathbb C^n, \alt^{k'_1} \mathbb C^n \otimes \cdots \otimes \alt^{k'_m} \mathbb C^n\right)
+\end{equation}
+for any two $n$-bounded weights $\ul{k}, \ul{k'}$ with $\sum_i k_i = \sum_i k'_i = K$. Since the actions of $\GL_m $ and $\SL_n$ commute, this map lands inside the subspace of $\SL_n$-equivariant maps. Moreover, since the action of $\GL_m$ generates the commutant of the $\SL_n$ action this map is surjection onto this subspace.
+
+We can rephrase this construction by defining a functor $\Phi_m^n : \dU(\gl_m) \rightarrow \Rep(\SL_n)$ as follows:
+\begin{itemize}
+\item On objects 
+$\ul{k} \mapsto 
+\begin{cases} 
+\alt^{k_1} \mathbb C^n \otimes \cdots \otimes \alt^{k_m} \mathbb C^n & \text{ if } \ul{k} \text{ is } n\text{-bounded } \\
+0 & \text{ otherwise.}
+\end{cases}$ 
+\item On morphisms $ \Phi_m^n $ is given by (\ref{eq:phimap}). 
+\end{itemize}
+Since (\ref{eq:phimap}) was surjective the functor $\Phi_m^n$ is full.
+
+\subsection{The quotient category $\dU^n(\gl_m)$}
+
+We denote by $\dU^n(\gl_m)$ the quotient of $\dU(\gl_m)$ where we set to zero all objects which are not an $n$-bounded weight. This means that any morphism which factors through a weight which is not $n$-bounded weight becomes zero. Since all weights of $\Alt^K(\mathbb{C}^n \otimes \mathbb{C}^m)$ are $ n$-bounded, the functor $\Phi_m^n: \dU(\gl_m)\rightarrow \Rep(\SL_n)$ factors through $\dU^n(\gl_m)$ (we abuse notation slightly and denote this functor also $\Phi_m^n$).
+
+\begin{thm}\label{th:functorfullyfaithful}
+The functor $\Phi_m^n: \dU^n(\gl_m) \rightarrow \Rep(\SL_n)$ is fully faithful (meaning that it induces an isomorphisms between $\Hom$-spaces).
+\end{thm}
+\begin{proof}
+To prove this result, we need a general result about semisimple Lie algebras which may be well-known, but was not previously known to us. Let $ \g $ denote a semisimple Lie algebra and the $\dot{U}(\g)$ denote its idempotent form.  Let $ \lambda $ be a dominant weight of $\g$ and denote by $V(\lambda)$ the corresponding highest weight representation. Let $ I_\lambda $ be the 2-sided ideal in $\dot{U}(\g)$ generated by all $ 1_\nu $ such that $ \nu $ is not a weight of $V(\lambda)$.
+
+If $ \mu $ is a dominant weight of $ \g $ with $ \mu \le \lambda $, then for each $ \nu $ as above, $ 1_\nu $ is not a weight of $V(\mu)$.  Thus $ I_\lambda $ acts trivially on $ V(\mu) $ and we get a representation $ \dot{U}(\g) / I_\lambda \rightarrow \End{V(\mu)} $.
+
+\begin{lem}
+The resulting map $ \dot{U}(\g) / I_\lambda \rightarrow \bigoplus_{\mu \le \lambda} \End{V(\mu)}$ is an isomorphism.
+\end{lem}
+\begin{proof}
+First note that $\dot{U}(\g)/ I_\lambda $ is finite-dimensional.  By Weddeburn's theorem, it suffices to show that the category of finite-dimensional $\dot(U)(\g)/I_\lambda$-modules is semisimple with simple objects the $V(\mu)$, for $\mu \le \lambda$.
+
+Now a $\dot{U}(\g)/I_\lambda$ module is the same thing as a $\dot{U}(\g) $ module in which $ I_\lambda $ acts trivially.  Thus the semisimplicity is immediate.  It remains just to verify that $ I_\lambda $ does act trivially on $V(\mu)$.
+NEED?
+\end{proof}
+
+We now return to proving Theorem \ref{th:functorfullyfaithful}. For $ 0 \le K \le mn $, recall that by skew-Howe duality, we have a decomposition 
+$$ \Alt^K (\mathbb C^n \otimes \mathbb C^m) = \bigoplus_{\mu} V(\mu^t) \otimes V(\mu) $$
+of $\SL_n \times \GL_m$-modules where $\mu$ varies over all dominant weight $(\mu_1, \dots, \mu_m) $ of $\GL_m$ such that $ 0 \le \mu_i \le n $ for all $i$  and $ \mu_1 + \dots + \mu_m = K$ ($\mu^t$ denotes the transpose of $\mu$ which is a weight of $\SL_n$). Thus 
+$$ \Hom_{\SL_n} \left(\Alt^K(\mathbb C^n \otimes \mathbb C^m), \Alt^K(\mathbb C^n \otimes \mathbb C^m)\right) = \bigoplus_{\mu} \End{V(\mu)} $$
+where $ \mu $ ranges over the same set as above.  Note that these $\mu $ are exactly those which satisfy $ \mu \le \lambda(K) $, where $ \lambda(K) $ is the unique weight of the form $(n, \dots, n, r, 0, \dots, 0) $ where the terms sum to $K$. 
+
+For any integer $K$, let $\dot{U}(\gl_m(K))$ denote the subalgebra of $\dot{U}(\gl_m)$ generated by all $ 1_\mu $ with $ \mu_1 + \dots + \mu_m = K $.  Note that $\dot{U}(\gl_m) = \oplus_{K \in \mathbb Z} \dot{U}(\gl_m(K))$. 
+
+For any $ 0 \le K \le mn $, let $ I_{\lambda(K)} $ denote ideal in $\dot{U}(\gl_m(K))$ generated by all weights $ \nu $ with $ \nu_1 + \dots + \nu_m = K $ which are not $ n$-bounded (which is equivalent to not being a weight $ V(\lambda(K)) $. Even though ${\dot U}(\gl_m(K))$ is not the enveloping algebra of a semsimple Lie algebra (unless $ K = 0 $), it is easy to see that the previous Lemma applies to ${\dot{U}}(\gl_m(K))$ and to the highest weight $\lambda(K)$ shows that
+$${\dot U}(\gl_m(K)) / I_{\lambda(K)} \cong \oplus_{\mu \le \lambda(K)} \End{V(\mu)}.$$
+
+Finally, we note that $\oplus_{K=0}^{mn} {\dot{U}}(\gl_m(K)) / I_{\lambda(K)} \cong \dot{U}^n(\gl_m)$ and combining with the above isomorphisms gives the desired result.
+\end{proof} 
+
+\section{The functor $\Psi_m^n: \dU^n(\gl_m) \rightarrow \Sp(\SL_n)^+$}\label{sec:psi}
+
+We first define a functor $\Psi_m: \dU(\gl_m) \rightarrow \Sp(\SL_n)^+$. Recall that an $n$-bounded weight is indexed by a sequence $\ul{k}$ with $0 \le k_i \le n$. Thus, at the level of objects, we define
+$$\Psi_m(\lambda) = 
+\begin{cases}
+(k_1^+, \dots, k_m^+) & \text{ if } \lambda \text{ is } n \text{-bounded and indexed by } \ul{k} \\ 
+0 & \text{ otherwise.}
+\end{cases}$$
+while at the level of morphisms $\Psi_m$ is given by 
+$$E_i \one_{\ul{k}} \mapsto \todo{going up and right}  \ \ \text{ and }  \ \ F_i \one_{\ul{k}} \mapsto \todo{going left and down}.$$
+
+\begin{prop}\label{prop:psi}
+The maps above define a well defined functor $\Psi_m: \dU(\gl_m) \rightarrow \Sp(\SL_n)^+$. 
+\end{prop}
+\begin{proof}
+We need to check relations (\ref{rel:1})--(\ref{rel:4}) which define $\dU(\gl_m)$ in section \ref{sec:idemform}. The first follows by definition while the second is a consequence of diagrams being isotopy invariant. Relation (\ref{rel:3}) corresponds exactly to relation (\ref{eq:commutation}). 
+
+Finally, relation (\ref{rel:4}) is actually a formal consequence of relations (\ref{rel:1})--(\ref{rel:3}) once you are working with an integrable representation. Here integrable means that $\one_{\ul{k}+r\alpha_i} = 0$ if $r \gg 0$ or $r \ll 0$, which is clearly the case with $\Sp(\SL_n)^+$. 
+\end{proof}
+
+It is easy to see that $\Psi_m$ factors through the quotient $\dU^n(\gl_m)$ to give $\Psi_m^n: \dU^n(\gl_m) \rightarrow \Sp(\SL_n)^+$.
+
+\subsection{Some consequences}
+
+We record some relations in $\Sp(\SL_n)^+$ which are a corollary of Proposition \ref{prop:psi}. 
+
+\begin{cor} The following identities hold in $\Sp(\SL_n)^+$
+\begin{equation}\label{eq:id1}
 \tikz[baseline=40]{
 \laddercoordinates{1}{2}
 \ladderEn{0}{0}{$a-s$}{$b+s$}{$s$}
@@ -337,21 +511,14 @@ This is just the second bigon relation (Relation \eqref{eq:bigon2}) with $b=n-a$
 \node[right] at (l10) {$b$};
 }
 \end{equation}
-\end{lem}
-\begin{proof}
-Use the $I=H$ relation twice, then remove a bigon.
-\end{proof}
-
-\begin{lem}
-\begin{align}
-\label{eq:commutation2}
+\begin{equation}\label{eq:commutation2}
 \begin{ladder}{1}{2}
 \node[left] at (l00) {$a$};
 \node[right] at (l10) {$b$};
 \ladderFn{0}{0}{$a+s$}{$b-s$}{$s$}
 \ladderEn{0}{1}{$a+s-r$}{$b-s+r$}{$r$}
 \end{ladder}
-& = 
+= 
 \sum_t (-1)^t \qBinomial{t+s-r-1+a-b}{t}
 \begin{ladder}{1}{2}
 \node[left] at (l00) {$a$};
@@ -359,21 +526,9 @@ Use the $I=H$ relation twice, then remove a bigon.
 \ladderEn{0}{0}{$a-r+t$}{$b+r-t$}{$r-t$}
 \ladderFn{0}{1}{$a+s-r$}{$b-s+r$}{$s-t$}
 \end{ladder}
-\end{align}
-\end{lem}
-\begin{rem}
-The summation over $t$ in Equation \eqref{eq:commutation2} is over the range $\max(b+r-n,r-a,0) \leq t \leq \min(s,r)$. If $t > s$ or $t>r$, the diagram vanishes (by convention) because there are labels less than zero. If $t<b+r-n$ the label on the right side of the square is greater than $n$. If $t<r-a$ the label on the left side is greater than $n$. If $t<0$ the quantum binomial vanishes. One may check that in each of the other terms all the labels are in $\{0,\ldots,n\}$.
-\end{rem}
-\begin{proof}
-\todo{}
-\end{proof}
-
-{
-In the next lemma, we begin using the convenient notation that any non-vertical strand which is not labelled implicitly carries a $1$, while unlabelled vertical strands are labelled arbitrarily.
-
+\end{equation}
 \renewcommand{\ladderY}{1}
-\begin{lem}
-\begin{equation}
+\begin{equation}\label{eq:serre}
 \begin{ladder}{2}{3}
 \ladderE{0}{0}{}{}
 \ladderE{0}{1}{}{}
@@ -403,207 +558,22 @@ In the next lemma, we begin using the convenient notation that any non-vertical 
 \end{ladder}
 = 0
 \end{equation}
-\end{lem}
-\begin{proof}
-In the middle term, apply the $I=H$ relation, obtaining
-\begin{align*}
-\begin{ladder}{2}{3}
-\ladderE{0}{0}{}{}
-\ladderE{1}{1}{}{}
-\ladderE{0}{2}{}{}
-\ladderI{0}{1}
-\ladderI{2}{0}
-\ladderI{2}{2}
-\end{ladder}
-& = 
-\begin{tikzpicture}[baseline=40]
-\laddercoordinates{2}{3}
-\coordinate (m0) at ($(l00)!.5!(l03)$);
-\coordinate (m2) at ($(l20)!.5!(l23)$);
-\coordinate (m1m) at ($(m0)!.3!(m2)$);
-\coordinate (m1p) at ($(m0)!.7!(m2)$);
-\coordinate (m1d) at ($(l10)!.3!(l13)$);
-\coordinate (m1u) at ($(l10)!.7!(l13)$);
-\draw[mid>] (l00) -- (m0);
-\draw[mid>] (m0) -- (l03);
-\draw[mid>] (l20) -- (m2);
-\draw[mid>] (m2) -- (l23);
-\draw[mid>] (l10) -- (m1d);
-\draw[mid>] (m1u) -- (l13);
-\draw[mid>] (m0) -- node[above] {2} (m1m);
-\draw[mid>] (m1p) -- (m2);
-\draw[mid>] (m1m) -- (m1u);
-\draw[mid>] (m1m) -- (m1d);
-\draw[mid>] (m1d) --node[below right] {$b{+}1$} (m1p);
-\draw[mid>] (m1p) --node[above right] {$b$} (m1u);
-\end{tikzpicture}
-\\
-\intertext{and now apply Equation \eqref{eq:commutation2} to the central square}
-& = 
-(-1)^0 ???
-\begin{tikzpicture}[baseline=40]
-\laddercoordinates{2}{3}
-\coordinate (m0) at ($(l00)!.5!(l03)$);
-\coordinate (m2) at ($(l20)!.5!(l23)$);
-\coordinate (m1m) at ($(m0)!.3!(m2)$);
-\coordinate (m1p) at ($(m0)!.7!(m2)$);
-\coordinate (m1d) at ($(l10)!.3!(l13)$);
-\coordinate (m1u) at ($(l10)!.7!(l13)$);
-\draw[mid>] (l00) -- (m0);
-\draw[mid>] (m0) -- (l03);
-\draw[mid>] (l20) -- (m2);
-\draw[mid>] (m2) -- (l23);
-\draw[mid>] (l10) -- (m1d);
-\draw[mid>] (m1u) -- (l13);
-\draw[mid>] (m0) -- node[below] {2} (m1m);
-\draw[mid>] (m1p) -- (m2);
-\draw[mid>] (m1m) --node[above left] {$b+2$} (m1u);
-\draw[mid<] (m1m) --node[below left] {$b$} (m1d);
-\draw[mid<] (m1p) -- (m1u);
-\end{tikzpicture}
-+
-(-1)^1 ???
-\begin{tikzpicture}[baseline=40]
-\laddercoordinates{2}{3}
-\coordinate (m0) at ($(l00)!.5!(l03)$);
-\coordinate (m2) at ($(l20)!.5!(l23)$);
-\coordinate (m1m) at ($(m0)!.3!(m2)$);
-\coordinate (m1p) at ($(m0)!.7!(m2)$);
-\coordinate (m1d) at ($(l10)!.3!(l13)$);
-\coordinate (m1u) at ($(l10)!.7!(l13)$);
-\draw[mid>] (l00) -- (m0);
-\draw[mid>] (m0) -- (l03);
-\draw[mid>] (l20) -- (m2);
-\draw[mid>] (m2) -- (l23);
-\draw[mid>] (l10) -- (m1d);
-\draw[mid>] (m1u) -- (l13);
-\draw[mid>] (m0) -- node[above] {2} (m1m);
-\draw[mid>] (m1p) -- (m2);
-\draw[mid>] (m1m) --(m1u);
-\draw[mid>] (m1d) --node[below right] {$b$} (m1p);
-\draw[mid>] (m1p) --node[above right] {$b{-}1$} (m1u);
-\end{tikzpicture}
-\end{align*}
-after which an application of Lemma \ref{lem:stack} on each $2$-strand gives the desired identity.
-\end{proof}
-}
-
-\todo{Explain exactly what's happening with the square-switch relations from Scott's thesis}
-\todo{Explain why(?) the Kekule relations are consequences of these...}
-
+where in \ref{eq:serre} we use the convention that any non-vertical unlabeled strand carries a $1$, while the vertical strands have arbitrary compatible labels.
+\end{cor}
 \begin{rem}
-Just as a check:
-Taking the `partial trace' of Relation \eqref{eq:commutation} (that is, closing up the $b$ endpoints), and evaluating all terms to a multiple of the $a$ strand using Relations \eqref{eq:bigon1} and \eqref{eq:bigon2}, we get the non-trivial identity $\qBinomial{n-1}{b-1} \qi{n-a} = \qBinomial{n-1}{b} \qi{a} + \qBinomial{n}{b} \qi{b-a}$.
+The summation in Equation \eqref{eq:commutation2} is over the range $\max(b+r-n,r-a,0) \leq t \leq \min(s,r)$. 
 \end{rem}
-
-\subsection{The upwards subcategory}
-We'll use $FSp(SL_n)^+$ and $Sp(SL_n)^+$ to denote the full subcategories of the above where we restrict to objects which are words in $\{1^+,\ldots,(n-1)^+\}$, that is, we require that at the boundary strands are always oriented upwards. These are tensor subcategories, but not pivotal subcategories, since the pairing and copairing morphisms for an object $k$ do not lie in the subcategory.
-
-\begin{lem}
-Every diagrammatic morphism $D$ in $Sp(SL_n)$ is of the form $\alpha D' \beta$, where $D'$ is a morphism in $Sp(SL_n)^+$ and $\alpha$ and $\beta$ are isomorphisms built out of tags, sending $k^-$ to $(n-k)^+$. 
-\end{lem}
-This decomposition is canonical up to a sign coming from Relation \eqref{eq:switch}; there is a choice at each tag of which way it faces.
-
-
-\section{Skew Howe Duality}
-\label{sec:skew-howe}
-
-\subsection{The idempotent form of $ \Ugl{m} $}
-\label{sec:idemform}
-We now introduce the idempotent form of $\Ugl{m}$.  This is an algebra with generators $ E_i, F_i, \one_\ul{k} $, where $ \ul{k} = (k_1, \dots, k_m) \in \mathbb Z^m $.
-
-It will be convenient for us to think of a $\Ugl{m} $ as a $\mathbb C$-linear category (which we will continue to denote $\Ugl{m}$) with objects $ \ul{k} $ and $ \Hom(\ul{k}, \ul{k'}) = \one_\ul{k} \Ugl{m} \one_\ul{k'}$.
-
-Note that $ \Hom(\ul{k}, \ul{k'}) = 0 $ unless $ \sum k_i = \sum k'_i $.
-
-\todo{More detail here.}
-
-\subsection{The functor $\Phi_m^n$}
-Let $K $ be a positive integer.  The vector space $ \Alt^K(\mathbb C^n \otimes \mathbb C^m) $ carries commuting actions of both $ GL_m $ and $ GL_n $ and these actions generate each others commutant.  
-
-Let us consider the weight decomposition of $\Alt^K(\mathbb C^n \otimes \mathbb C^m)$  with respect to the maximal torus of $ GL_m $.  It is given by 
-\begin{equation}
- \Alt^K(\mathbb C^n \otimes \mathbb C^m) = \bigoplus_{\ul{k}} \alt^{k_1} \mathbb C^n \otimes \cdots \otimes \alt^{k_m} \mathbb C^n
- \end{equation}
-where the sum ranges over those $ \ul{k} $ with $ 0 \le k_i \le n $ for all $ i $, and with $\sum \ul{k} = K$.  We will refer to these as the $n$-bounded weights of $ GL_m$.
-
-As we have a $ GL_m$ action with these weight spaces, for any two $n$-bounded weights $ \ul{k}, \ul{k'}$ with $ \sum \ul{k} = \sum \ul{k'} = K$, we obtain a map
-$$
-\one_\ul{k} \Ugl{m} \one_\ul{k'} \rightarrow \Hom\left(\alt^{k_1} \mathbb C^n \otimes \cdots \otimes \alt^{k_m} \mathbb C^n, \alt^{k'_1} \mathbb C^n \otimes \cdots \otimes \alt^{k'_m} \mathbb C^n\right)
-$$
-
-Since the actions of $GL_m $ and $ SL_n $ commute, this map lands inside the subspace of $ SL_n$-equivariant maps and since the action of $ GL_m$ generates the commutant of the $ SL_n $ action, we see that this map is a surjection onto this subspace.
-
-Let us rephrase this construction by defining a functor $ \Phi_m^n : \Ugl{m} \rightarrow \RepSL{n} $ as follows.  On objects $ \Phi_m^n(\ul{k}) = \alt^{k_1} \mathbb C^n \otimes \cdots \otimes \alt^{k_m} \mathbb C^n $, if $ \ul{k} $ is $n$-bounded, and 0 otherwise.  On morphisms $ \Phi_m^n $ is the above map 
-$$
-\one_\ul{k} \Ugl{m} \one_\ul{k'} \rightarrow \Hom_{SL_n}\left(\alt^{k_1} \mathbb C^n \otimes \cdots \otimes \alt^{k_m} \mathbb C^n, \alt^{k'_1} \mathbb C^n \otimes \cdots \otimes \alt^{k'_m} \mathbb C^n\right)
-$$
-As above, $ \Phi_m^n $ is a surjection on $\Hom$ spaces.  In other words, it is full.
-
-\subsection{A quotient of $\Ugl{m}$}
-Let $ \Ugl{m}^n $ denote the quotient of $ \Ugl{m} $ where we set to 0 all morphisms which factor through an object which is not an $n$-bounded weight.
-\todo{There must be a better way to say this.}
-
-Since all weights of $ \Lambda^K(\mathbb{C}^n \otimes \mathbb{C}^m) $ are $ n$-bounded, the functor $ \Ugl{m} \rightarrow \RepSL{n} $ factors through $ \Ugl{m}^n $.
-
-\begin{thm} \label{th:functorfullyfaithful}
-The resulting functor $\Phi_m^n: \Ugl{m}^n \rightarrow \RepSL{n}$ is fully faithful (it gives isomorphisms on $\Hom$-spaces).
-\end{thm}
-
-To prove this result, we will need a general result about semisimple Lie algebras which may be well-known, but was not previously known to us.
-
-Let $ \mathfrak g $ denote a semisimple Lie algebra and the $ U \mathfrak g $ denote its idempotent form.  Let $ \lambda $ be a dominant weight for $ \mathfrak g $ and let $ I_\lambda $ be the 2-sided ideal in $ U\mathfrak g $ generated by all $ 1_\nu $ such that $ \nu $ is not a weight of the representation $ V(\lambda) $.
-
-If $ \mu $ is a dominant weight of $ \mathfrak g $ with $ \mu \le \lambda $, then for each $ \nu $ as above, $ 1_\nu $ is not a weight of the representation $ V(\mu)$.  Thus $ I_\lambda $ acts trivially on $ V(\mu) $ and we get a representation $ U \mathfrak g / I_\lambda \rightarrow \End{V(\mu)} $.
-
-\begin{lem}
-The resulting map
-$$
-U \mathfrak g / I_\lambda \rightarrow \bigoplus_{\mu \le \lambda} \End{ V(\mu)}
-$$
-is an isomorphism.
-\end{lem}
-
 \begin{proof}
-First note that $U \mathfrak g/ I_\lambda $ is finite-dimensional.  By Weddeburn's theorem, it suffices to show that the category of finite-dimensional $ U\mathfrak g / I_\lambda $-modules is semisimple with simple objects the $ V(\mu) $, for $ \mu \le \lambda $.
+(\ref{eq:id1}) follows from the relation $E_i^{(s)} E_i^{(r)} = \qBinomial{r+s}{r} E_i^{(r+s)}$ in $\dU(\gl_m)$. Likewise, (\ref{eq:commutation2}) is equivalent to 
+\begin{equation}\label{eq:commrel}
+E_i^{(r)} F_i^{(s)} \one_{\ul{k}} = \sum_t \qBinomial{\la \ul{k}, \alpha_i \ra + r - s}{t} F_i^{(s-t)} E_i^{(r-t)} \one_{\ul{k}}
+\end{equation}
+where, in this case, $\la \ul{k},\alpha_i \ra = b-a$. 
+Finally, (\ref{eq:serre}) corresponds to the Serre relation $E_i^2E_j + E_jE_i^2 = [2]_q E_iE_jE_i$ if $|i-j|=1$. 
 
-Now a $ U\mathfrak g / I_\lambda$ module is the same thing as a $ U\mathfrak g $ module in which $ I_\lambda $ acts trivially.  Thus the semisimplicity is immediate.  It remains just to verify that $ I_\lambda $ does act trivially on $ V(\mu)$.
+\todo{Notice that the relation in \ref{eq:commrel} does NOT give the relation in \ref{eq:commutation2}. instead it gives $\qBinomial{b-a+r-s}{t}$. This is based on the convention that an $E$ is given by a diagonal line going up and to the right (instead of the left). I find this convention easier to follow. Under this convention the third term in \ref{eq:commutation} should be $[a-b]_q$. NEED: to fix notation and check that you agree with these changes in relations.} 
 
 \end{proof}
-
-\begin{proof}[Proof of Theorem \ref{th:functorfullyfaithful}]
-For $ 0 \le K \le mn $,  recall that by skew-Howe duality, we have a decomposition (under the $GL_n \times GL_m$ action),
-$$
-\Alt^K (\mathbb C^n \otimes \mathbb C^m) = \oplus_{\mu} V(\mu^t) \otimes V(\mu)
-$$
-where in the direct sum, $\mu $ varies over all dominant weight $ (\mu_1, \dots, \mu_m) $ of $ GL_m $ such that $ 0 \le \mu_i \le n $ for all $ i$  and $ \mu_1 + \dots + \mu_m = K $.  The notation $ \mu^t $ denotes the transpose of a partition.
-
-Thus we see that
-$$
-\Hom_{SL_n} \left(\Alt^K(\mathbb C^n \otimes \mathbb C^m), \Alt^K(\mathbb C^n \otimes \mathbb C^m)\right) = 
-\oplus_{\mu} \End V(\mu) 
-$$
-where $ \mu $ ranges over the same set as before.  Note that these $\mu $ are exactly those which satisfy $ \mu \le \lambda(K) $, where $ \lambda(K) $ is the unique weight of the form $\lambda =  (n, \dots, n, r, 0, \dots, 0) $ with $ \lambda_1 + \dots + \lambda_m = K $.
-
-For any integer $ K $, let $ U \mathfrak{gl}_m(K) $ denote the subalgebra of the idempotented universal enveloping algebra generated by all $ 1_\mu $ with $ \mu_1 + \dots + \mu_m = K $.  Note that the entire idempotented universal enveloping algebra is a product of these subalgebras, 
-$$
-U \mathfrak{gl}_m = \oplus_{K \in \mathbb Z} U \mathfrak{gl}_m(K).
-$$
-
-For any $ 0 \le K \le mn $, let $ I_{\lambda(K)} $ denote ideal in $ U \mathfrak{gl}_m(K)$ generated by all weights $ \nu $ with $ \nu_1 + \dots + \nu_m = K $ which are not $ n$-bounded (which is equivalent to not being a weight $ V(\lambda(K)) $.
-
-Though $ U\mathfrak{gl}_m(K) $ is not the enveloping algebra of a semsimple Lie algebra (unless $ K = 0 $), it is easy to see that the previous Lemma applies to $ U\mathfrak{gl}_m(K) $ and to the highest weight $\lambda(K) $ shows that
-$$
-U\mathfrak{gl}_m(K) / I_{\lambda(K)} \cong \oplus_{\mu \le \lambda(K)} \End{V(\mu)}
-$$
-
-Finally, we note that 
-$$
-\oplus_{K= 0}^{mn} U\mathfrak{gl}_m(K) / I_{\lambda(K)} \cong \Ugl{m}^n 
-$$
-and so combining together the above isomorphisms gives the desired result.
-
-\end{proof} 
 
 \section{Ladder diagrams and $\Usl{m}$}
 \label{sec:ladders}
@@ -614,14 +584,14 @@ We introduce a category $ \Lad_n^m $ whose objects are again labelled by $n$-bou
 
 \todo{More details about ladder diagrams}
 
-There is an obvious functor from $\Lad_n^m \to FSp(SL_n)^+$, just forgetting that the diagrams have a ladder structure and interpreting them as webs. There is a slightly discrepancy at the level of objects: in $\Lad_n^m$ the objects $\ul{k}$ are sequences in $\{0,\ldots,n\}$, while in $FSp(SL_n)$ the objects are sequences in $\{1^\pm,\ldots,(n-1)^\pm\}$. The functor deletes $0$s and $n$s from the sequences, and sends $k$ to $k^+$.
+There is an obvious functor from $\Lad_n^m \to \FSp(SL_n)^+$, just forgetting that the diagrams have a ladder structure and interpreting them as webs. There is a slightly discrepancy at the level of objects: in $\Lad_n^m$ the objects $\ul{k}$ are sequences in $\{0,\ldots,n\}$, while in $\FSp(SL_n)$ the objects are sequences in $\{1^\pm,\ldots,(n-1)^\pm\}$. The functor deletes $0$s and $n$s from the sequences, and sends $k$ to $k^+$.
 
 \begin{thm}
 \label{thm:laddering}
-The functor $\Lad_n^m \to Sp(SL_n)^+$ is surjective.
+The functor $\Lad_n^m \to \Sp(SL_n)^+$ is surjective.
 \end{thm}
 \begin{proof}
-Given any diagrammatic morphism $D \in Sp(SL_n)^+$, just by a planar isotopy we can write it as
+Given any diagrammatic morphism $D \in \Sp(SL_n)^+$, just by a planar isotopy we can write it as
 \begin{align*}
 \begin{tikzpicture}[baseline=12]
 \coordinate (a) at (0,0);
@@ -685,6 +655,7 @@ E_1 =
 \end{tikzpicture}
 \end{equation*}
 Next, to the right of each elementary piece of the Morse decomposition of $D_2$, superimpose either a vertical $0$ strand or a vertical $n$ strand and then make the following local replacements
+%\begin{comment}
 \begin{align*}
 \tikz[baseline=6]{
 \draw[mid>] (-1,0) -- (0,0);
@@ -863,51 +834,23 @@ Next, to the right of each elementary piece of the Morse decomposition of $D_2$,
 \draw[dashed,mid>] (0,0.5) -- (0,1);
 }
 \end{align*}
+%\end{comment}
 to obtain $E_2$. 
-It is clear that $D$ is equivalent (via deleting $0$ and $n$ strands, Lemma \ref{lem:cancel-tags} and \todo{???}) in $Sp(SL_n)^+$ to $E_1 E_2$, which is a ladder diagram.
+It is clear that $D$ is equivalent (via deleting $0$ and $n$ strands, relation \ref{eq:cancel-tags} and \todo{???}) in $\Sp(SL_n)^+$ to $E_1 E_2$, which is a ladder diagram.
 \end{proof}
 
 
 \subsection{Relations}
-We have a functor $ \Lad_n^m \rightarrow \Ugl{m}^n $ which is the identity on objects.  On morphisms it consists of intepreting each ladder diagram as a sequence of $ E_i, F_j $ generators of $ \Ugl{m}^n $.
+We have a functor $ \Lad_n^m \rightarrow \dU^n(\gl_m)$ which is the identity on objects.  On morphisms it consists of intepreting each ladder diagram as a sequence of $ E_i, F_j $ generators of $\dU^n(\gl_m)$.
 
 \begin{thm}
-The kernel of $ \Lad_n^m \rightarrow \Ugl{m}^n $ is generated by the following relations.
+The kernel of $ \Lad_n^m \rightarrow \dU^n(\gl_m)$ is generated by the following relations.
 \end{thm}
+\todo{Question from Sabin: do we really need this Theorem?}
 
 \todo{Add these relations, which should not include the Serre relations}
-\todo{Proof should follow from the usual presentation of $ \Ugl{m} $ plus what the fact that we are killing some objects.}
+\todo{Proof should follow from the usual presentation of $\dU(\gl_m)$ plus what the fact that we are killing some objects.}
 
-
-\section{Proof of the main theorem}
-\label{sec:theorem}
-
-The following is just a schematic indication of how the proof should go.
-
-We have the following 5 categories:
-\begin{enumerate}
-\item $FSp(SL_n)^+$, the free spider category with no relations.
-\item $Sp(SL_n)^+$, the spider category defined by generators and relations.
-\item $\Lad_n^m$, the free ladder category
-\item $\Ugl{m}^n $, defined as a quotient of $ \Ugl{m} $ above.  Also above, we know the generators of the kernel of $ \Lad_n^m \rightarrow \Ugl{m}^n $.
-\item $\RepSL{n}$
-\end{enumerate}
-For $FSp(SL_n)^+$ and $Sp(SL_n)^+$, the +-superscript indicates the full subcategory on objects oriented upwards.
-
-We have a commutative diagram
-\begin{equation*}
-\xymatrix{
-\Lad_n^m \ar[r] \ar[d] & \Ugl{m}^n \ar[dr]^{\Phi_m^n} \ar[d] & \\
-FSp(SL_n)^+ \ar[r] & Sp(SL_m)^+ \ar[r] & \RepSL{n} \\
-}
-\end{equation*}
-The key point is that the functor $ \Phi_m^n $ provided by the Skew Howe duality, factors through $ Sp(SL_m)$.  This is because we have a functor $ \Lad_n^m \rightarrow FSp(SL_n) $ given by interpreting ladder diagrams as web diagrams and because the kernel of $ \Lad_n^m \rightarrow \Ugl{m}^n $ is sent into the kernel of $ FSp(SL_n)^+ \rightarrow Sp(SL_m)^+ $.  
-
-Now, in order to show that $ Sp(SL_n)^+ \rightarrow \RepSL{n} $ is injective, we
- let $ \phi $ be a morphism in $ Sp(SL_n)^+$ which is sent to 0 in $ \RepSL{n} $.  
-By Theorem \ref{thm:laddering} we can pick a representative of $\phi$ in $FSp(SL_n)^+$ which in turn comes from some $\tilde{\phi}$ a linear combination of ladder diagrams in  $\Lad_n^m$ for some $m$ sufficiently large.
-
-By commutativity of the above diagram, $ \tilde{\phi} $ is sent to 0 in $ \RepSL{n} $ following the route via $ \Ugl{m}^n $.  However, since $ \Phi_m^n $ is fully-faithful, it must already go to 0 in $ \Ugl{m}^n $.  Thus using the functor $ \Ugl{m}^n \rightarrow Sp(SL_m) $ we get that $ \tilde{\phi} $ is sent to 0 in $ Sp(SL_m) $ and thus $\phi=0$ and we are done.
 
 
 % ----------------------------------------------------------------
