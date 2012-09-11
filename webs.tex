@@ -508,6 +508,7 @@ $$....$$
 Alternatively, there is a functor from $\Lad_n^m$ to $\FSp(SL_n)$, merely by forgetting the ladder structure of a ladder diagram and thinking of it as a spider diagram. There is a slightly discrepancy at the level of objects: in $\Lad_n^m$ the objects $\ul{k}$ are sequences in $\{0,\ldots,n\}$, while in $\FSp(SL_n)$ the objects are sequences in $\{1^\pm,\ldots,(n-1)^\pm\}$. The functor deletes $0$s and $n$s from the sequences, and sends $k$ to $k^+$.
 
 \begin{prop}
+\label{prop:psi}
 The functor $\Lad_n^m \to \FSp(SL_n) \to \Sp(SL_n)$ can be factored through the functor $\Lad_n^m \to \dU^n(\gl_m)$ of the previous section, giving a functor $\Psi_m^n : \dU^n(\gl_m) \to \Sp(SL_n)$ and making  the left square of Equation \eqref{diag:main} commutes.
 \end{prop}
 \begin{proof}
@@ -524,133 +525,8 @@ Finally, relation (\ref{rel:4}) is actually a formal consequence of relations (\
 \end{proof}
 
 \begin{rem}
-In fact, one can show that relation  (\ref{rel:4}) holds in $\Sp(SL_n)$ directly, without appealing to the theory of integrable representations. We can't resist giving the appealing diagrammatic argument here, even though it isn't necessary.
-
-\todo{Unfortunately, as written this relies on the identities in the next section, which we only prove using the above proposition!}
-
-\begin{lem}
-\begin{equation}\label{eq:serre}
-\renewcommand{\ladderY}{1}
-\begin{ladder}{2}{3}
-\ladderE{0}{0}{}{}
-\ladderE{0}{1}{}{}
-\ladderE{1}{2}{}{}
-\ladderI{0}{2}
-\ladderIn{2}{0}{2}
-\node[below] at (l00) {$a$};
-\node[below] at (l10) {$b$};
-\node[below] at (l20) {$c$};
-\end{ladder}
-- \qi{2}
-\begin{ladder}{2}{3}
-\ladderE{0}{0}{}{}
-\ladderE{1}{1}{}{}
-\ladderE{0}{2}{}{}
-\ladderI{0}{1}
-\ladderI{2}{0}
-\ladderI{2}{2}
-\end{ladder}
-+
-\begin{ladder}{2}{3}
-\ladderE{1}{0}{}{}
-\ladderE{0}{1}{}{}
-\ladderE{0}{2}{}{}
-\ladderI{0}{0}
-\ladderIn{2}{1}{2}
-\end{ladder}
-= 0
-\end{equation}
-where we use the convention that any non-vertical unlabeled strand carries a $1$, while the vertical strands have arbitrary compatible labels.
-\end{lem}
-\begin{proof}
-
-{
-\renewcommand{\ladderY}{1}
-Applying the $I=H$ relation along the leftmost upright, we obtain
-\begin{align*}
-\begin{ladder}{2}{3}
-\ladderE{0}{0}{}{}
-\ladderE{1}{1}{}{}
-\ladderE{0}{2}{}{}
-\ladderI{0}{1}
-\ladderI{2}{0}
-\ladderI{2}{2}
-\end{ladder}
-& = 
-\begin{tikzpicture}[baseline=40]
-\laddercoordinates{2}{3}
-\coordinate (m0) at ($(l00)!.5!(l03)$);
-\coordinate (m2) at ($(l20)!.5!(l23)$);
-\coordinate (m1m) at ($(m0)!.3!(m2)$);
-\coordinate (m1p) at ($(m0)!.7!(m2)$);
-\coordinate (m1d) at ($(l10)!.3!(l13)$);
-\coordinate (m1u) at ($(l10)!.7!(l13)$);
-\draw[mid>] (l00) -- (m0);
-\draw[mid>] (m0) -- (l03);
-\draw[mid>] (l20) -- (m2);
-\draw[mid>] (m2) -- (l23);
-\draw[mid>] (l10) -- (m1d);
-\draw[mid>] (m1u) -- (l13);
-\draw[mid>] (m0) -- node[above] {2} (m1m);
-\draw[mid>] (m1p) -- (m2);
-\draw[mid>] (m1m) -- (m1u);
-\draw[mid>] (m1m) -- (m1d);
-\draw[mid>] (m1d) --node[below right] {$b{+}1$} (m1p);
-\draw[mid>] (m1p) --node[above right] {$b$} (m1u);
-\end{tikzpicture}
-\\
-\intertext{and now apply the mirror reflection of Equation \eqref{eq:commutation2} (with the variables $a, b, r$ and $s$ there specialized to $b, 2, b, 1$) to the central square, obtaining terms for $t=0$ and $t=1$, to obtain}
-& = 
-(-1)^0 \qBinomial{-2}{0}
-\begin{tikzpicture}[baseline=40]
-\laddercoordinates{2}{3}
-\coordinate (m0) at ($(l00)!.5!(l03)$);
-\coordinate (m2) at ($(l20)!.5!(l23)$);
-\coordinate (m1m) at ($(m0)!.3!(m2)$);
-\coordinate (m1p) at ($(m0)!.7!(m2)$);
-\coordinate (m1d) at ($(l10)!.3!(l13)$);
-\coordinate (m1u) at ($(l10)!.7!(l13)$);
-\draw[mid>] (l00) -- (m0);
-\draw[mid>] (m0) -- (l03);
-\draw[mid>] (l20) -- (m2);
-\draw[mid>] (m2) -- (l23);
-\draw[mid>] (l10) -- (m1d);
-\draw[mid>] (m1u) -- (l13);
-\draw[mid>] (m0) -- node[below] {2} (m1m);
-\draw[mid>] (m1p) -- (m2);
-\draw[mid>] (m1m) --node[above left] {$b+2$} (m1u);
-\draw[mid<] (m1m) --node[below left] {$b$} (m1d);
-\draw[mid<] (m1p) -- (m1u);
-\end{tikzpicture}
-+
-(-1)^1 \qBinomial{-1}{1}
-\begin{tikzpicture}[baseline=40]
-\laddercoordinates{2}{3}
-\coordinate (m0) at ($(l00)!.5!(l03)$);
-\coordinate (m2) at ($(l20)!.5!(l23)$);
-\coordinate (m1m) at ($(m0)!.3!(m2)$);
-\coordinate (m1p) at ($(m0)!.7!(m2)$);
-\coordinate (m1d) at ($(l10)!.3!(l13)$);
-\coordinate (m1u) at ($(l10)!.7!(l13)$);
-\draw[mid>] (l00) -- (m0);
-\draw[mid>] (m0) -- (l03);
-\draw[mid>] (l20) -- (m2);
-\draw[mid>] (m2) -- (l23);
-\draw[mid>] (l10) -- (m1d);
-\draw[mid>] (m1u) -- (l13);
-\draw[mid>] (m0) -- node[above] {2} (m1m);
-\draw[mid>] (m1p) -- (m2);
-\draw[mid>] (m1m) --(m1u);
-\draw[mid>] (m1d) --node[below right] {$b$} (m1p);
-\draw[mid>] (m1p) --node[above right] {$b{-}1$} (m1u);
-\end{tikzpicture},
-\end{align*}
-(here both coefficients are just $+1$).
-Finally an application of Equation \eqref{eq:id1} on each $2$-strand gives the desired identity.
-}
-\end{proof}
+In fact, one can show that relation  (\ref{rel:4}) holds in $\Sp(SL_n)$ directly, without appealing to the theory of integrable representations. The diagrammatic argument appears in Appendix \S \ref{sec:serre}.
 \end{rem}
-
 
 Finally, we show that any spider diagram can be modified, possibly using some relations, into ladder form. 
 
@@ -698,7 +574,7 @@ $ and $D_2$ is in Morse position relative to the $x$-coordinate (that is, no two
 Now replace $D_1$ with
 \begin{equation*}
 E_1 =
-\begin{tikzpicture}[baseline=15,x=1.5cm, y=1.5cm]
+\begin{tikzpicture}[baseline=30,x=1.5cm, y=1.5cm]
 \foreach \n/\x/\y in {1/0.25/0.6,2/0.75/0.45, 3/1.25/0.3, 4/1.75/0.15} {
  \coordinate (b\n)  at  (\x, -0.4);
  \draw[lower>, upper>] (b\n) to[out=90,in=180] coordinate (mb\n) (2.2,\y);
@@ -708,7 +584,7 @@ E_1 =
 }
 \end{tikzpicture}
 =
-\begin{tikzpicture}[baseline=12,x=0.8cm,y=0.5cm]
+\begin{tikzpicture}[baseline=10,x=0.6cm,y=0.375cm]
 \foreach \x in {2,3,4,5} {
 	\draw[dashed] (-\x,-3) -- (-\x,5);
 }
@@ -901,15 +777,14 @@ Next, to the right of each elementary piece of the Morse decomposition of $D_2$,
 \draw[dashed,mid>] (0,0.5) -- (0,1);
 }
 \end{align*}
-to obtain $E_2$. 
-It is clear that $D$ is equivalent (via deleting $0$ and $n$ strands, relation \ref{eq:cancel-tags} and \todo{???}) in $\Sp(SL_n)^+$ to $E_1 E_2$, which is a ladder diagram.
+to obtain $E_2$. In each of the local replacements the new diagram consists of part of an upright of the ladder, along with several `half-rungs'. It is easy to see that all of these half-rungs come in matching pairs forming complete rungs, except at the left margin of $E_2$. Similarly, $E_1$ is a ladder diagram except that it has half-rungs along its right margin. The horizontal juxtaposition $E_1 E_2$ is then a ladder diagram.
+It is clear that $D$ is equivalent (via deleting $0$ and $n$ strands, relation \ref{eq:cancel-tags} and \todo{???}) in $\Sp(SL_n)^+$ to $E_1 E_2$.
 \end{proof}
 
-\subsection{Some consequences - ORPHANED}
-\todo{I'd prefer to make it clearer that these relations hold in $\Sp(\SL_n)$ \emph{anyway}, and Proposition \ref{prop:psi} just gives an easy proof. --S}
+\appendix
 
-
-We record some relations in $\Sp(\SL_n)^+$ which are a corollary of Proposition \ref{prop:psi}. 
+\section{The Serre relation is a pivotal consequence of the spider relations}
+\label{sec:serre}
 
 \begin{cor} The following identities hold in $\Sp(\SL_n)^+$
 \begin{equation}\label{eq:id1}
@@ -952,6 +827,8 @@ We record some relations in $\Sp(\SL_n)^+$ which are a corollary of Proposition 
 The summation in Equation \eqref{eq:commutation2} is over the range $\max(b+r-n,r-a,0) \leq t \leq \min(s,r)$. 
 \end{rem}
 \begin{proof}
+\todo{Explain that while these are also consequences of Proposition \ref{prop:psi}, we can prove them directly.}
+
 (\ref{eq:id1}) follows from the relation $E_i^{(s)} E_i^{(r)} = \qBinomial{r+s}{r} E_i^{(r+s)}$ in $\dU(\gl_m)$. Likewise, (\ref{eq:commutation2}) is equivalent to 
 \begin{equation}\label{eq:commrel}
 E_i^{(r)} F_i^{(s)} \one_{\ul{k}} = \sum_t \qBinomial{\la \ul{k}, \alpha_i \ra + r - s}{t} F_i^{(s-t)} E_i^{(r-t)} \one_{\ul{k}}
@@ -959,8 +836,132 @@ E_i^{(r)} F_i^{(s)} \one_{\ul{k}} = \sum_t \qBinomial{\la \ul{k}, \alpha_i \ra +
 where, in this case, $\la \ul{k},\alpha_i \ra = b-a$. 
 
 \todo{Notice that the relation in \ref{eq:commrel} does NOT give the relation in \ref{eq:commutation2}. instead it gives $\qBinomial{b-a+r-s}{t}$. This is based on the convention that an $E$ is given by a diagonal line going up and to the right (instead of the left). I find this convention easier to follow. Under this convention the third term in \ref{eq:commutation} should be $[a-b]_q$. NEED: to fix notation and check that you agree with these changes in relations.} 
-
 \end{proof}
+
+
+\begin{lem}
+\begin{equation}\label{eq:serre}
+\renewcommand{\ladderY}{1}
+\begin{ladder}{2}{3}
+\ladderE{0}{0}{}{}
+\ladderE{0}{1}{}{}
+\ladderE{1}{2}{}{}
+\ladderI{0}{2}
+\ladderIn{2}{0}{2}
+\node[below] at (l00) {$a$};
+\node[below] at (l10) {$b$};
+\node[below] at (l20) {$c$};
+\end{ladder}
+- \qi{2}
+\begin{ladder}{2}{3}
+\ladderE{0}{0}{}{}
+\ladderE{1}{1}{}{}
+\ladderE{0}{2}{}{}
+\ladderI{0}{1}
+\ladderI{2}{0}
+\ladderI{2}{2}
+\end{ladder}
++
+\begin{ladder}{2}{3}
+\ladderE{1}{0}{}{}
+\ladderE{0}{1}{}{}
+\ladderE{0}{2}{}{}
+\ladderI{0}{0}
+\ladderIn{2}{1}{2}
+\end{ladder}
+= 0
+\end{equation}
+where we use the convention that any non-vertical unlabeled strand carries a $1$, while the vertical strands have arbitrary compatible labels.
+\end{lem}
+\begin{proof}
+
+{
+\renewcommand{\ladderY}{1}
+Applying the $I=H$ relation along the leftmost upright, we obtain
+\begin{align*}
+\begin{ladder}{2}{3}
+\ladderE{0}{0}{}{}
+\ladderE{1}{1}{}{}
+\ladderE{0}{2}{}{}
+\ladderI{0}{1}
+\ladderI{2}{0}
+\ladderI{2}{2}
+\end{ladder}
+& = 
+\begin{tikzpicture}[baseline=40]
+\laddercoordinates{2}{3}
+\coordinate (m0) at ($(l00)!.5!(l03)$);
+\coordinate (m2) at ($(l20)!.5!(l23)$);
+\coordinate (m1m) at ($(m0)!.3!(m2)$);
+\coordinate (m1p) at ($(m0)!.7!(m2)$);
+\coordinate (m1d) at ($(l10)!.3!(l13)$);
+\coordinate (m1u) at ($(l10)!.7!(l13)$);
+\draw[mid>] (l00) -- (m0);
+\draw[mid>] (m0) -- (l03);
+\draw[mid>] (l20) -- (m2);
+\draw[mid>] (m2) -- (l23);
+\draw[mid>] (l10) -- (m1d);
+\draw[mid>] (m1u) -- (l13);
+\draw[mid>] (m0) -- node[above] {2} (m1m);
+\draw[mid>] (m1p) -- (m2);
+\draw[mid>] (m1m) -- (m1u);
+\draw[mid>] (m1m) -- (m1d);
+\draw[mid>] (m1d) --node[below right] {$b{+}1$} (m1p);
+\draw[mid>] (m1p) --node[above right] {$b$} (m1u);
+\end{tikzpicture}
+\\
+\intertext{and now apply the mirror reflection of Equation \eqref{eq:commutation2} (with the variables $a, b, r$ and $s$ there specialized to $b, 2, b, 1$) to the central square, obtaining terms for $t=0$ and $t=1$, to obtain}
+& = 
+(-1)^0 \qBinomial{-2}{0}
+\begin{tikzpicture}[baseline=40]
+\laddercoordinates{2}{3}
+\coordinate (m0) at ($(l00)!.5!(l03)$);
+\coordinate (m2) at ($(l20)!.5!(l23)$);
+\coordinate (m1m) at ($(m0)!.3!(m2)$);
+\coordinate (m1p) at ($(m0)!.7!(m2)$);
+\coordinate (m1d) at ($(l10)!.3!(l13)$);
+\coordinate (m1u) at ($(l10)!.7!(l13)$);
+\draw[mid>] (l00) -- (m0);
+\draw[mid>] (m0) -- (l03);
+\draw[mid>] (l20) -- (m2);
+\draw[mid>] (m2) -- (l23);
+\draw[mid>] (l10) -- (m1d);
+\draw[mid>] (m1u) -- (l13);
+\draw[mid>] (m0) -- node[below] {2} (m1m);
+\draw[mid>] (m1p) -- (m2);
+\draw[mid>] (m1m) --node[above left] {$b+2$} (m1u);
+\draw[mid<] (m1m) --node[below left] {$b$} (m1d);
+\draw[mid<] (m1p) -- (m1u);
+\end{tikzpicture}
++
+(-1)^1 \qBinomial{-1}{1}
+\begin{tikzpicture}[baseline=40]
+\laddercoordinates{2}{3}
+\coordinate (m0) at ($(l00)!.5!(l03)$);
+\coordinate (m2) at ($(l20)!.5!(l23)$);
+\coordinate (m1m) at ($(m0)!.3!(m2)$);
+\coordinate (m1p) at ($(m0)!.7!(m2)$);
+\coordinate (m1d) at ($(l10)!.3!(l13)$);
+\coordinate (m1u) at ($(l10)!.7!(l13)$);
+\draw[mid>] (l00) -- (m0);
+\draw[mid>] (m0) -- (l03);
+\draw[mid>] (l20) -- (m2);
+\draw[mid>] (m2) -- (l23);
+\draw[mid>] (l10) -- (m1d);
+\draw[mid>] (m1u) -- (l13);
+\draw[mid>] (m0) -- node[above] {2} (m1m);
+\draw[mid>] (m1p) -- (m2);
+\draw[mid>] (m1m) --(m1u);
+\draw[mid>] (m1d) --node[below right] {$b$} (m1p);
+\draw[mid>] (m1p) --node[above right] {$b{-}1$} (m1u);
+\end{tikzpicture},
+\end{align*}
+(here both coefficients are just $+1$).
+Finally an application of Equation \eqref{eq:id1} on each $2$-strand gives the desired identity.
+}
+\end{proof}
+
+
 
 
 
