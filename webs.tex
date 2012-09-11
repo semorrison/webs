@@ -40,6 +40,7 @@
 
 \newcommand{\one}{1}
 
+\def\bZ{{\mathbb{Z}}}
 \def\sl{{\mathfrak{sl}}}
 \def\Sp{{\mathcal{S}p}}
 \def\FSp{{\mathcal{FS}p}}
@@ -104,7 +105,7 @@ Next, we find that we can explicitly describe the kernel of $\dU(\gl_m)$ acting 
 
 We denote by $[n]_q$ the quantum integer $q^{n-1} + q^{n-3} + \dots + q^{-n+3} + q^{-n+1}$. More generally, 
 $$\qBinomial{n}{k} := \frac{[n]_q\dots[1]_q}{([n-k]_q \dots [1]_q)([k]_q \dots [1]_q)}.$$
-We will denote by $U_q(\sl_n)$ the quantum group associated to $\sl_n$. 
+We will denote by $U_q(\g)$ the quantum group associated to a Lie algebra $\g$. 
 
 \subsection{Definition of the representation category $\Rep(\SL_n)$}
 
@@ -166,7 +167,10 @@ The free spider category $\FSp(\SL_n)$ has as objects sequences $\ul{k}$ in $\{1
 with all labels drawn from the set $\{1,\ldots,n-1\}$. The third and fourth graphs depict bivalent vertices, called `tags', which are not rotationally symmetric, meaning that the tag provides a distinguished side. The bottom boundary of any planar graph in $\Hom(\ul{k}, \ul{k'})$ is $\ul{k}$ with the strand oriented up for each positive entry, and the strand oriented down for each negative entry. Similary, the top boundary is determined by $\ul{k'}$ in the same way.
 
 \todo{how about a trivalent vertex with labels $n-1,n-1,n-2$? how does that fit in this setup?}
+
 \todo{Scott: You can build such a trivalent vertex from a $1+1 \mapsto 2$ vertex by putting a tag on all three of its edges. I guess we should include this as an example?}
+
+\todo{Sabin: Ok, maybe we can do this as one of the examples below. One of the possibly confusing issues is that in this case the trivalent vertex looks like the left one above, but has all arrows pointing down. I understand that this is the same as a rotation of the second trivalent vertex above but perhaps this convention of allowing these types of isotopies etc should be clarified.} 
 
 
 \begin{example}
@@ -307,7 +311,7 @@ The spider category $\Sp(\SL_n)$ is the quotient of $\FSp(\SL_n)$ by the followi
 \ladderEn{0}{1}{$a$}{$b$}{1}
 \end{tikzpicture}
 +
-\qi{b-a}
+\qi{a-b}
 \begin{tikzpicture}[baseline=40]
 \laddercoordinates{1}{2}
 \ladderIn{0}{0}{2}
@@ -386,15 +390,17 @@ We will use the following commutative diagram
 \end{equation}
 where the three categories in the bottom row were defined in section \ref{sec:diagrams}, while the two categories in the top row (as well as the functors $\Phi$ and $\Psi$) are defined in sections \ref{sec:phi} and \ref{sec:psi}. 
 
-Since $\Gamma_n$ is clearly an isomorphism on objects we must show that it is fully faithful. Surjectivity (fullness) of $\Gamma_n$ on $\Hom$ spaces follows from Lemma \ref{lem:surjective}. It remains to show that if $\phi$ is a morphism such that $\Gamma_n(\phi)=0$ then $\phi=0$. 
+Commutativity of the triangle follows from the construction of $\Phi,\Psi$ and $\Gamma$ \todo{need a reference?}. The commutativity of the rectangle in (\ref{diag:main}) is clear for the following reason. Going down and to the right takes the ladder generators to themselves. On the other hand, going right and down takes the generators to $E_i^{(r)}$ or $F_i^{(r)}$ and then back to themselves. 
+
+We now explain why $\Gamma_n$ is an equivalence of categories. Since it is clearly an isomorphism on objects we must show that it is fully faithful. Surjectivity (fullness) of $\Gamma_n$ on $\Hom$ spaces follows from Lemma \ref{lem:surjective}. It remains to show that if $\phi$ is a morphism such that $\Gamma_n(\phi)=0$ then $\phi=0$. 
 
 Let $\phi$ be such a morphism in $\Sp(SL_n)^+$. By Theorem \ref{thm:laddering} we can pick a representative of $\phi$ in $\FSp(SL_n)^+$ which in turn comes from some linear combination $\tilde{\phi}$ of ladder diagrams in $\Lad_n^m$ for some $m$ sufficiently large. By commutativity this means that there exists some morphism $\phi'$ in $\dU^n(\gl_m)$ such that $\Psi_m^n(\phi')=\phi$. Note that $\Phi^n_m(\phi')=0$ since $\Gamma_n(\phi)=0$. However, by Theorem \ref{th:functorfullyfaithful}, $\Phi_m^n$ is faithful which means $\phi'=0$ and hence $\phi=0$ (so we are done). 
-
-\todo{Here is what you wrote before: The key point is that the functor $ \Phi_m^n $ provided by the Skew Howe duality, factors through $ \Sp(SL_m)$.  This is because we have a functor $ \Lad_n^m \rightarrow \FSp(SL_n) $ given by interpreting ladder diagrams as web diagrams and because the kernel of $ \Lad_n^m \rightarrow \dU^n(\gl_m) $ is sent into the kernel of $ \FSp(SL_n)^+ \rightarrow \Sp(SL_m)^+ $. Do we need this type of argument?}
 
 \todo{I think what you've written above is fine. What we do need to mention in this proof is where we explain the commutativity of the diagram! 
 This is just that going down and right the ladder generators are sent to themselves, while going right and down they are sent to $E_i$ and $F_i$ and then back to themselves. Too obvious to mention?
 ---Scott}
+
+\todo{Sabin: that sounds like a reasonable thing to mention -- I added it in.}
 
 \end{proof}
 
@@ -404,16 +410,21 @@ This is just that going down and right the ladder generators are sent to themsel
 
 \todo{The next paragraph is being a bit imprecise; it's mixing up thinking of $\dU(\gl_m)$ as a category and as an algebra (the direct sum of all Hom spaces). I'm not sure it's worth actually being precise, but it might be worthwhile to explain that we're abusing terminology in this way. ---Scott}
 
-We will think of $\dU(\gl_m)$ as a $\bC[q,q^{-1}]$-linear category with objects $ \ul{k} = (k_1, \dots, k_m) \in \mathbb Z^m $ and morphisms generated by $ E_i, F_i$ with $i=1, \dots, m-1$. The idempotent which projects onto $\ul{k}$ is denoted $\one_\ul{k}$. The morphisms in $\dU(\gl_m)$ satisfy the following relations:
+\todo{Sabin: I tried to clarify the situation a bit below. However, I'm not sure if we are really abusing notation that much. Also this notation is used in the literature (like the papers of Khovanov-Lauda and Rouquier) and I think we are following their usual conventions. But if you feel like spelling things out more then I have nothing against that.}
+
+We will think of $\dU(\gl_m)$ as a $\bC(q)$-linear category with objects $ \ul{k} = (k_1, \dots, k_m) \in \mathbb Z^m $ and morphisms generated by $ E_i, F_i$ with $i=1, \dots, m-1$. The idempotent which projects onto $\ul{k}$ is denoted $\one_\ul{k}$. The morphisms in $\dU(\gl_m)$ satisfy the following relations:
 \begin{enumerate}
-\item\label{rel:1} $\one_{\ul{k}+\alpha_i} E_i = E_i \one_{\ul{k}}$ and $\one_{\ul{k}} F_i = F_i \one_{\ul{k}+\alpha_i}$ while $\one_{\ul{k'}} E_i \one_{\ul{k}} = 0 = \one_{\ul{k}} F_i \one_{\ul{k'}}$ if $\ul{k'}-\ul{k} \ne \alpha_i$.
-\item\label{rel:2} $E_iE_j = E_jE_i$ and $F_iF_j = F_jF_i$ if $|i-j|>1$. 
-\item\label{rel:3} $(E_iF_i - F_iE_i) \one_{\ul{k}} = [\la \ul{k}, \alpha_i \ra]_q \one_{\ul{k}}$ while if $i \ne j$ then $E_iF_j = F_jE_i$. 
-\item\label{rel:4} If $|i-j|=1$ then $[2]_q E_iE_jE_i = E_i^2 E_j + E_j E_i^2$ and likewise with $F$'s. 
+\item\label{rel:1} $\one_{\ul{k}+\alpha_i} E_i = E_i \one_{\ul{k}}$ and $\one_{\ul{k}} F_i = F_i \one_{\ul{k}+\alpha_i}$ while $\one_{\ul{k'}} E_i \one_{\ul{k}} = 0 = \one_{\ul{k}} F_i \one_{\ul{k'}}$ if $\ul{k'}-\ul{k} \ne \alpha_i$. This means that $E_i \one_{\ul{k}}$ is a morphism between $\ul{k}$ and $\ul{k} + \alpha_i$ while $F_i \one_{\ul{k}}$ is between $\one_{\ul{k}}$ and $\one_{\ul{k}} - \alpha_i$. 
+\item\label{rel:2} $E_iE_j \one_{\ul{k}} = E_jE_i \one_{\ul{k}}$ and $F_iF_j \one_{\ul{k}} = F_jF_i \one_{\ul{k}}$ if $|i-j|>1$. 
+\item\label{rel:3} $(E_iF_i - F_iE_i) \one_{\ul{k}} = [\la \ul{k}, \alpha_i \ra]_q \one_{\ul{k}}$ while if $i \ne j$ then $E_iF_j \one_{\ul{k}} = F_jE_i \one_{\ul{k}}$. 
+\item\label{rel:4} If $|i-j|=1$ then $[2]_q E_iE_jE_i \one_{\ul{k}} = (E_i^2 E_j + E_j E_i^2) \one_{\ul{k}}$ and likewise with $F$'s. 
 \end{enumerate}
 Here $\alpha_i = (0,\dots,0,1,-1,0,\dots,0)$ where the $1$ appears in position $i$ and $\la \cdot, \cdot \ra$ is the standard inner product on $\mathbb Z^m$. As usual, we write $\Hom(\ul{k}, \ul{k'}) = \one_\ul{k'} \dU^n(\gl_m) \one_\ul{k}$ for the space of morphisms. Notice that $\Hom(\ul{k}, \ul{k'}) = 0 $ unless $\sum k_i = \sum k'_i$. It is also convenient to include the ``divided powers'' morphisms 
 $$E_i^{(r)} := \frac{E_i^r}{[r]_q \dots [1]_q} \ \ \text{ and } \ \ F_i^{(r)} := \frac{F_i^r}{[r]_q \dots [1]_q}.$$
 These satisfy a series of relations, such as $E_i E_i^{(r)} = [r+1]_q E_i^{(r+1)}$, but all of these follow from the relations (\ref{rel:1})--(\ref{rel:4}) above. Notice that using this notation, relation (\ref{rel:4}) takes on the nice form $E_iE_jE_i = E_i^{(2)}E_j + E_jE_i^{(2)}$. 
+
+\begin{rem} When the specific weight space is not important (or is obvious from the context) we will write $E_i$ instead of $E_i \one_{\ul{k}}$, $F_i$ instead of $F_i \one_{\ul{k}}$ etc. 
+\end{rem}
 
 \subsection{Definition of the functor $\Phi_m^n$}
 For any $K \in {\mathbb{N}}$ the vector space $\Alt^K(\mathbb C^n \otimes \mathbb C^m)$ carries commuting actions of $\GL_m $ and $\SL_n$ which generate each other's commutant. The weight decomposition of $\Alt^K(\mathbb C^n \otimes \mathbb C^m)$ with respect to the maximal torus of $ \GL_m $ is given by 
@@ -505,6 +516,8 @@ The functor $\Psi_m^n$ must send
 $$E_i \one_{\ul{k}} \mapsto \todo{going up and right}  \ \ \text{ and }  \ \ F_i \one_{\ul{k}} \mapsto \todo{going left and down},$$
 and this uniquely determines it.
 
+\todo{We should think if we want to try to work over $\bZ[q,q^{-1}]$ instead of $\bC(q)$ in which case we need to throw in the $E_i^{(r)}$ into the set of generators. This might be a bit annoying to do in which perhaps we just make a remark.}
+
 To see that it is well-defined, we need to check relations (\ref{rel:1})--(\ref{rel:4}) which define $\dU(\gl_m)$ in section \ref{sec:idemform}. The first follows by definition while the second is a consequence of diagrams being isotopy invariant. Relation (\ref{rel:3}) corresponds exactly to relation (\ref{eq:commutation}). 
 
 Finally, relation (\ref{rel:4}) is actually a formal consequence of relations (\ref{rel:1})--(\ref{rel:3}) once you are working with an integrable representation. Here integrable means that $\one_{\ul{k}+r\alpha_i} = 0$ if $r \gg 0$ or $r \ll 0$, which is clearly the case with $\Sp(\SL_n)^+$. 
@@ -550,6 +563,7 @@ In fact, one can show that relation  (\ref{rel:4}) holds in $\Sp(SL_n)$ directly
 where we use the convention that any non-vertical unlabeled strand carries a $1$, while the vertical strands have arbitrary compatible labels.
 \end{lem}
 \begin{proof}
+
 {
 \renewcommand{\ladderY}{1}
 Applying the $I=H$ relation along the leftmost upright, we obtain
@@ -585,9 +599,9 @@ Applying the $I=H$ relation along the leftmost upright, we obtain
 \draw[mid>] (m1p) --node[above right] {$b$} (m1u);
 \end{tikzpicture}
 \\
-\intertext{and then applying Equation \eqref{eq:commutation2} to the central square}
+\intertext{and now apply the mirror reflection of Equation \eqref{eq:commutation2} (with the variables $a, b, r$ and $s$ there specialized to $b, 2, b, 1$) to the central square, obtaining terms for $t=0$ and $t=1$, to obtain}
 & = 
-(-1)^0 ???
+(-1)^0 \qBinomial{-2}{0}
 \begin{tikzpicture}[baseline=40]
 \laddercoordinates{2}{3}
 \coordinate (m0) at ($(l00)!.5!(l03)$);
@@ -609,7 +623,7 @@ Applying the $I=H$ relation along the leftmost upright, we obtain
 \draw[mid<] (m1p) -- (m1u);
 \end{tikzpicture}
 +
-(-1)^1 ???
+(-1)^1 \qBinomial{-1}{1}
 \begin{tikzpicture}[baseline=40]
 \laddercoordinates{2}{3}
 \coordinate (m0) at ($(l00)!.5!(l03)$);
@@ -629,8 +643,9 @@ Applying the $I=H$ relation along the leftmost upright, we obtain
 \draw[mid>] (m1m) --(m1u);
 \draw[mid>] (m1d) --node[below right] {$b$} (m1p);
 \draw[mid>] (m1p) --node[above right] {$b{-}1$} (m1u);
-\end{tikzpicture}
+\end{tikzpicture},
 \end{align*}
+(here both coefficients are just $+1$).
 Finally an application of Equation \eqref{eq:id1} on each $2$-strand gives the desired identity.
 }
 \end{proof}
@@ -890,7 +905,6 @@ to obtain $E_2$.
 It is clear that $D$ is equivalent (via deleting $0$ and $n$ strands, relation \ref{eq:cancel-tags} and \todo{???}) in $\Sp(SL_n)^+$ to $E_1 E_2$, which is a ladder diagram.
 \end{proof}
 
-
 \subsection{Some consequences - ORPHANED}
 \todo{I'd prefer to make it clearer that these relations hold in $\Sp(\SL_n)$ \emph{anyway}, and Proposition \ref{prop:psi} just gives an easy proof. --S}
 
@@ -947,7 +961,6 @@ where, in this case, $\la \ul{k},\alpha_i \ra = b-a$.
 \todo{Notice that the relation in \ref{eq:commrel} does NOT give the relation in \ref{eq:commutation2}. instead it gives $\qBinomial{b-a+r-s}{t}$. This is based on the convention that an $E$ is given by a diagonal line going up and to the right (instead of the left). I find this convention easier to follow. Under this convention the third term in \ref{eq:commutation} should be $[a-b]_q$. NEED: to fix notation and check that you agree with these changes in relations.} 
 
 \end{proof}
-
 
 
 
