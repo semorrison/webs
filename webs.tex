@@ -877,30 +877,51 @@ $$...$$
 \begin{prop} \label{prop:LaddertoU}
 The category $ \dU^n(\gl_m) $ is the quotient of $ \Lad_n^m $ by the diagrammatic relations
 \begin{align}
-\begin{tikzpicture}[baseline]
-\foreach \x/\y in {0/0,1/0,2/0,0/1,1/1,0/2} {
-	\coordinate(z\x\y) at (\x+\y/2,\y/1.5);
-}
-\coordinate (z03) at (1,2);
-\draw[mid>] (z00) node[below] {$a$} --  (z01);
-\draw[mid>] (z01) -- node[left] {$a+b$} (z02);
-\draw[mid>] (z10) node[below] {$b$} -- (z01);
-\draw[mid>] (z20) node[below] {$c$} -- (z02);
-\draw[mid>](z02) -- node[left] {$a+b+c$} (z03);
+\begin{tikzpicture}[baseline=40]
+\laddercoordinates{2}{2}
+\node[below] at (l00) {$a$};
+\node[below] at (l10) {$b$};
+\node[below] at (l20) {$c$};
+\ladderEn{0}{0}{$a{-}1$}{$b{+}1$}{1}
+\ladderFn{1}{1}{$b{+}2$}{$c{-}1$}{1}
+\ladderIn{0}{1}{1}
+\ladderIn{2}{0}{1}
 \end{tikzpicture}
 & =
-\begin{tikzpicture}[baseline]
-\foreach \x/\y in {0/0,1/0,2/0,0/1,1/1,0/2} {
-	\coordinate(z\x\y) at (\x+\y/2,\y/1.5);
-}
-\coordinate (z03) at (1,2);
-\draw[mid>] (z00) node[below] {$a$} --  (z02);
-\draw[mid>] (z10) node[below] {$b$} -- (z11);
-\draw[mid>] (z20) node[below] {$c$} -- (z11);
-\draw[mid>] (z11) -- node[right] {$b+c$} (z02);
-\draw[mid>](z02) -- node[left] {$a+b+c$} (z03);
+\begin{tikzpicture}[baseline=40]
+\laddercoordinates{2}{2}
+\node[below] at (l00) {$a$};
+\node[below] at (l10) {$b$};
+\node[below] at (l20) {$c$};
+\ladderEn{0}{1}{$a{-}1$}{$b{+}2$}{1}
+\ladderFn{1}{0}{$b{+}1$}{$c{-}1$}{1}
+\ladderIn{0}{0}{1}
+\ladderIn{2}{1}{1}
 \end{tikzpicture}
 \label{eq:IHlad}
+\displaybreak[1] \\
+\begin{tikzpicture}[baseline=40]
+\laddercoordinates{2}{2}
+\node[below] at (l00) {$a$};
+\node[below] at (l10) {$b$};
+\node[below] at (l20) {$c$};
+\ladderFn{0}{0}{$a{+}1$}{$b{-}1$}{1}
+\ladderEn{1}{1}{$b{-}2$}{$c{+}1$}{1}
+\ladderIn{0}{1}{1}
+\ladderIn{2}{0}{1}
+\end{tikzpicture}
+& =
+\begin{tikzpicture}[baseline=40]
+\laddercoordinates{2}{2}
+\node[below] at (l00) {$a$};
+\node[below] at (l10) {$b$};
+\node[below] at (l20) {$c$};
+\ladderFn{0}{1}{$a{+}1$}{$b{-}2$}{1}
+\ladderEn{1}{0}{$b{-}1$}{$c{+}1$}{1}
+\ladderIn{0}{0}{1}
+\ladderIn{2}{1}{1}
+\end{tikzpicture}
+\label{eq:IHlad2}
 \displaybreak[1] \\
 \begin{tikzpicture}[baseline=40]
 \laddercoordinates{1}{2}
@@ -930,12 +951,12 @@ The category $ \dU^n(\gl_m) $ is the quotient of $ \Lad_n^m $ by the diagrammati
 \end{align}
 \end{prop}
 
-\todo{The first of these diagrams needs to be changed to a two rung ladder equation equivalent to $ E_i F_{i+1} = F_{i+1} E_i $.  Both of these diagrams should be drawn so there are lots of vertical strands on either side of the action.}
+Each of these relations is to be understood with arbitrary many vertical stands on either side.
 
 \begin{proof}
 Since all $ E_i, F_i $ are in the image of the functor, we see that $ \Lad_n^m \rightarrow \dU^n(\gl_m) $ is full (it is obviously dominant).  It remains to see that the above relations generate the kernel.  To see this, recall by Proposition \ref{th:quotientrelations} that the defining relations of $ \dU^n(\gl_m) $ are given by equations (\ref{rel:1}) and (\ref{rel:3}), along with the relation that $ \one_{\ul{k}} = 0 $ if $ \ul{k} $ is not an $ n$-bounded weight.
  
-Equation (\ref{rel:1}) becomes (\ref{eq:commutationlad}) in diagrammatic form.  When $ |i-j| > 1 $, equation (\ref{rel:2}) is reflected in the isotopy invariance of ladders, while when $ |i-j |= 1$, (\ref{rel:2}) is (\ref{eq:IHlad}) in diagrammatic form. 
+Equation (\ref{rel:1}) becomes (\ref{eq:commutationlad}) in diagrammatic form.  When $ |i-j| > 1 $, equation (\ref{rel:2}) is reflected in the isotopy invariance of ladders, while when $ |i-j |= 1$, (\ref{rel:2}) is (\ref{eq:IHlad}) and (\ref{eq:IHlad2}) in diagrammatic form. 
 \end{proof}
 
 \subsection{Ladders as webs}\label{sec:psi}
@@ -949,8 +970,32 @@ The functor $\Lad_n^m \to \FSp(SL_n)^+ \to \Sp(SL_n)^+$ can be factored through 
 To see that $ \Psi_m^n $ exists, we must just show that the diagrammatic relations of $ \dU^n(\gl_m) $ from Proposition \ref{prop:LaddertoU} are taken to the kernel of the functor $ \FSp(\SL_n)^+ \to \Sp(\SL_n)^+ $.
 
 To show that (\ref{eq:IHlad}) holds in $ \Sp(\SL_n)^+ $, it suffices by pivotal composition to prove the relation
-\todo{A diagram like $ E_i F_{i+1} = F_{i+1} E_i $ but with only the middle upright remaining}
-which we see is a special case of (\ref{eq:IH}).
+\begin{equation*}
+\begin{tikzpicture}[baseline]
+\foreach \x/\y in {0/0,1/0,2/0,0/1,1/1,0/2} {
+	\coordinate(z\x\y) at (\x+\y/2,\y/1.5);
+}
+\coordinate (z03) at (1,2);
+\draw[mid>] (z00) node[below] {$1$} --  (z01);
+\draw[mid>] (z01) -- node[left] {$b{+}1$} (z02);
+\draw[mid>] (z10) node[below] {$b$} -- (z01);
+\draw[mid>] (z20) node[below] {$1$} -- (z02);
+\draw[mid>](z02) -- node[left] {$b{+}2$} (z03);
+\end{tikzpicture}
+ =
+\begin{tikzpicture}[baseline]
+\foreach \x/\y in {0/0,1/0,2/0,0/1,1/1,0/2} {
+	\coordinate(z\x\y) at (\x+\y/2,\y/1.5);
+}
+\coordinate (z03) at (1,2);
+\draw[mid>] (z00) node[below] {$1$} --  (z02);
+\draw[mid>] (z10) node[below] {$b$} -- (z11);
+\draw[mid>] (z20) node[below] {$1$} -- (z11);
+\draw[mid>] (z11) -- node[right] {$b{+}1$} (z02);
+\draw[mid>](z02) -- node[left] {$b{+}2$} (z03);
+\end{tikzpicture}
+\end{equation*}
+which we see is a special case of (\ref{eq:IH}). (Similarly for \eqref{eq:IHlad2} using the arrow reversal of \eqref{eq:IH}.)
 
 Finally (\ref{eq:commutationlad}) holds in $\Sp(\SL_n) $ since it is exactly (\ref{eq:commutation}).
 \end{proof}
