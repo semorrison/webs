@@ -6,6 +6,8 @@ syntax: glob
 *.log
 *.out
 *.toc
+*.sav
+*.synctex
 *.synctex.gz*
 *.nav
 *.snm
