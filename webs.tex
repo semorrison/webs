@@ -5,7 +5,7 @@
 %\tikzexternalize[prefix=diagrams/externalized/]
 
 
-\title{Webs and skew Howe duality}
+\title{Webs and quantum skew Howe duality}
 \author{Sabin~Cautis, Joel~Kamnitzer and Scott~Morrison}
 
 \begin{document}
@@ -40,6 +40,7 @@
 
 \newcommand{\one}{1}
 
+\def\sA{\mathcal{A}}
 \def\l{\lambda}
 \def\bZ{{\mathbb{Z}}}
 \def\sl{{\mathfrak{sl}}}
@@ -140,17 +141,7 @@ Thus combining the last two equations, we obtain an isomorphism,
 
 Under this map, elements of $\gl_m $ acts by particular webs, which we call ladders.  This allows us to write the generating relations of $ \dU^n(\gl_m) $ in a diagrammatic form.  By the above isomorphism, we see that these diagrammatic relations become the generating relations in the $ \SL_n $-spider.
 
-%We denote the quotient of the category of trivalent webs by the bigon, $I=H$ and square switch relations as $\Sp(SL_n)$. We have a surjective functor to the representation theory, which we would like to show is an isomorphism. All that remains is to check that it is injective on morphisms.
-
-%Skew Howe duality states that the commuting actions of $\SL_n$ and $\Ugl{m}$ on $\Alt^\bullet(\mathbb{C}^n \tensor \mathbb{C}^m)$ are in fact each the commutant of the other. That is, if  $f: \Alt^\bullet(\mathbb{C}^n \tensor \mathbb{C}^m) \to \Alt^\bullet(\mathbb{C}^n \tensor \mathbb{C}^m)$ is $\SL_n$-linear, then there is some element $X_f \in \Usl{m}$ whose action on  $\Alt^\bullet(\mathbb{C}^n \tensor \mathbb{C}^m)$ is exactly $f$.
-
-%Suppose we have some element $A \in \Homa{\Sp(SL_n)}{\underline{k}}{\underline{k'}}$ which maps to zero in the representation theory. Here $\underline{k}$ and $\underline{k}$ denote two sequences of integers with signs from the set $\{1^\pm,\ldots,n-1^\pm\}$, i.e. two objects in $\Sp(SL_n)$. (The sign indicates whether the strand and that boundary point is oriented up or down.) First, we realize that by conjugating $A$ by the isomorphisms between $k^-$ and $(n-k)^+$ in $\Sp(SL_n)$, which are sent to isomorphisms in the representation theory, we may assume that all the signs are positive.
-
- %We would like to show that $A$ is itself zero.
- %We then choose sequences $\ul{l}$ and $\ul{l'}$ obtained from $\underline{k}$ by interposing some number of $0$s and $n$s, so $\ul{l}$ and $\ul{l'}$ have the same length $m$ and the same sum $L$ (previously, the sums of $\underline{k}$ and $\underline{k'}$ might be differed by a multiple of $n$).
- %The element $A$ is then equivalent, via the specified relations in $\Sp(SL_n)$ to a `ladder diagram' with $m$ rails and boundary given by the sequences $\ul{l}$ and $\ul{l'}$. (See Figure \ref{fig:ladder-example} for an example.)
-
- \begin{figure}[ht]
+\begin{figure}[ht]
 \begin{equation}
 \begin{ladder}{2}{3}
 \node[left] at (l00) {$k_1$};
@@ -553,7 +544,7 @@ M_{k,l}(x_S \otimes x_T) = x_S \wedge_q x_T = \begin{cases} (-q)^{\ell(S, T)} x_
 \end{equation*}
 On the other hand, we define $M'_{k,l} :\Alt^{k+l}_q(\bC^n_q) \rightarrow \Alt^k_q (\bC^n_q) \otimes \Alt^l_q(\bC^n_q) $ as follows 
 \begin{align*}
-M'_{k,l}(x^S) = \sum_{T \subset S} (-q)^{-\ell(S \smallsetminus T, T)} x^T \otimes x^{S \smallsetminus T}
+M'_{k,l}(x^S) = (-1)^{kl} \sum_{T \subset S} (-q)^{-\ell(S \smallsetminus T, T)} x^T \otimes x^{S \smallsetminus T}
 \end{align*}
 where $ T $ ranges over $ k $ elements subsets of $ S $.
 
@@ -574,20 +565,21 @@ This defines a pivotal functor $\Gamma_n: \Sp(\SL_n) \rightarrow \Rep(\SL_n)$.
 \begin{proof}
 One needs to check all the relations in the spider category. 
 
-{\bf Relation (\ref{eq:bigon2})}  We need to compute $M_{k,l} \circ M'_{k,l} = [k+1]_q {\rm{id}}$. For $S $ with $|S|=k+l$ we have 
+{\bf Relation (\ref{eq:bigon2}).} We need to compute $M_{k,l} \circ M'_{k,l} = \qBinomial{k+l}{k} {\rm{id}}$. For $S $ with $|S|=k+l$ we have 
 \begin{align*}
 M_{k,l} \circ M'_{k,l}(x^S) 
-&= M_{k,1} \left( \sum_{T \subset S} (-q)^{- \ell( S \smallsetminus T, S)} x^T \otimes x^{S \smallsetminus T} \right) \\
+&= M_{k,l} \left( \sum_{T \subset S} (-q)^{- \ell( S \smallsetminus T, S)} x^T \otimes x^{S \smallsetminus T} \right) \\
 &= \sum_{T \subset S} (-q)^{\ell(T, S \smallsetminus T)} (-q)^{- \ell( S \smallsetminus T, S)} x^S \\
 &= (-q)^{-|S||T|} \sum_{T \subset S} (-q)^{2\ell(T, S \smallsetminus T)} x^S \\
-&= (-1)^{kl} \qBinomial{k, k+l} x^S
+&= \qBinomial{k+l}{k} x^S
 \end{align*}
 using that $ \ell(T, S \smallsetminus T) + \ell( S \smallsetminus T, S) = |S||T| $.
  
 \todo{Sabin -- I'm not sure what this extra $(-1)^k$ is doing here.... Joel, any ideas?}
 \todo{I think that $M'_{k,l} $ should be changed by a factor of $ (-1)^k (-1)^l $. I think that this will also correct the sign problem is section 5.2.  Also, I rewrote the proof for general $ l $, since I like it better that way. --- Joel}
+\todo{Ok -- I changed the definition of $M'$ above and fixed proof.}
 
-{\bf Relation (\ref{eq:commutation})} 
+{\bf Relation (\ref{eq:commutation}).} 
 \todo{Sabin -- I can write this if you think it's worth it. It's a bit tedious but definitely doable...}
 
 \end{proof}
@@ -709,7 +701,7 @@ F_p x_i y_j = \begin{cases} x_i y_{j+1} & \text{ if } p = j \\
  0 & \text{ otherwise }
  \end{cases}, \ \ 
 L_p x_i y_j = \begin{cases} q x_i y_j & \text{ if } p = j \\
-0 & \text{ otherwise }
+x_i y_j & \text{ otherwise }
 \end{cases}$$
 and similarly for the generators of $ U_q(\sl_n) $.
 
@@ -717,7 +709,7 @@ Recall from \cite{BZ} that if $ V $ is a representation of a quantum group $ U_q
 
 \begin{thm} \label{th:qSkewHowe}\mbox{}
 \begin{enumerate}
-\item The specialization $\overline{\Alt^\bullet_q(\bC_q^n \otimes \bC_q^m)} $ is isomorphic (as a $ \SL_n \times \GL_m $ representation) to $ \Alt^\bullet(\bC^n \otimes \bC^m) $.
+\item The specialization $\overline{\Alt^\bullet_q(\bC_q^n \otimes \bC_q^m)} $ is isomorphic, as a $U(\gl_m) \otimes U(\sl_n)$-module, to $ \Alt^\bullet(\bC^n \otimes \bC^m) $.
 \item For each $ K $, the actions of $ U_q(\gl_m) $ and $ U_q(\sl_n) $ on $ \Alt^K_q(\bC_q^n \otimes \bC_q^m) $ generate each other's commutant.
 \item As a representation of $ U_q(\gl_m) \otimes U_q(\sl_n)  $, we have a decomposition
 $$ \Alt^\bullet_q (\mathbb C^n_q \otimes \mathbb C^m_q) = \bigoplus_{\mu} V(\mu^t) \otimes V(\mu) $$
@@ -736,7 +728,7 @@ where $ h(V^\bullet, t) = \sum_k \dim V^k t^k $ denotes graded dimension.
     
 Since $ S^\bullet_q (\bC_q^n \otimes \bC_q^m) $ is flat, $ h(S^\bullet_q (\bC_q^n \otimes \bC_q^m), t) =  h(S^\bullet (\bC^n \otimes \bC^m), t) $ and thus  $ h(\Alt^\bullet_q (\bC_q^n \otimes \bC_q^m), t) =  h(\Alt^\bullet (\bC^n \otimes \bC^m), t)$ as desired.
     
-By (1) we know that $ \Alt^\bullet_q(\bC_q^n \otimes \bC_q^m) $ decomposes into irreducible $ U_q(\sl_n \oplus \gl_m) $ representations in the same manner as $ \Alt^\bullet(\bC^n \otimes \bC^m) $ decomposes into $ \SL_n \times \GL_m $ representations.  This immediately implies (3) which in turn implies (2).
+By (1) we know that $ \Alt^\bullet_q(\bC_q^n \otimes \bC_q^m) $ decomposes into irreducible $ U_q(\gl_m \oplus \sl_n) $ representations in the same manner as $ \Alt^\bullet(\bC^n \otimes \bC^m) $ decomposes into $ U(\gl_m \oplus \sl_n)$-modules. This immediately implies (3) which in turn implies (2).
 
 Now we consider part (4).  For each $ 1 \le j \le m$, we define an algebra map $T_j : \Alt^\bullet_q(\bC_q^n) \rightarrow \Alt^\bullet_q (\bC_q^n \otimes \bC_q^m) $ by taking generators $ x_i $ to $ x_i y_j$.  This is well-defined as an algebra map because the relations in $ \Alt^\bullet_q(\bC_q^n) $ are taken to relations in $\Alt^\bullet_q (\bC_q^n \otimes \bC_q^m)$.  Moreover $T_j $ is a map of $ U_q(\sl_n) $ representations.   Let us write $ x^S y_j = T_j(x^S) $ where $ S $ is a subset of $ \{ 1, \dots, n \} $.
 
@@ -778,7 +770,7 @@ The result follows after some simplification.
 
 \subsection{Definition of the functor $\Phi_m$}
 
-We will now use the quantum skew Howe duality to define the functor $\Phi_m$. By part 4 of Theorem \ref{th:qSkewHowe}, we have a $U_q(\gl_m)$ action with the weight spaces $\alt^{k_1}_q \mathbb C_q^n \otimes \cdots \otimes \alt^{k_m}_q \mathbb C_q^n$ and commuting with the $\SL_n$ action. Thus we get a map
+We will now use the quantum skew Howe duality to define the functor $\Phi_m$. By part 4 of Theorem \ref{th:qSkewHowe}, we have a $U_q(\gl_m)$ action with the weight spaces $\alt^{k_1}_q \mathbb C_q^n \otimes \cdots \otimes \alt^{k_m}_q \mathbb C_q^n$ and commuting with the $U_q(\sl_n)$ action. Thus we get a map
 \begin{equation}\label{eq:phimap}
 \one_\ul{l} \dU(\gl_m) \one_\ul{k} \rightarrow \Hom_{U_q(\sl_n)} \left(\alt^{k_1}_q \mathbb C^n \otimes \cdots \otimes \alt^{k_m}_q \mathbb C^n, \alt^{l_1}_q \mathbb C^n \otimes \cdots \otimes \alt^{l_m}_q \mathbb C^n\right)
 \end{equation}
@@ -809,42 +801,38 @@ The functor $\Phi_m^n: \dU^n(\gl_m) \rightarrow \Rep(\SL_n)$ is fully faithful (
 
 To prove this result, we need a general result about reductive Lie algebras (and quantum groups) which may be well-known, but was not previously known to us.   For simplicity, we state this result in the $ \gl_m $ case.  For any dominant weight $ \lambda $, let $V(\lambda)$ the corresponding highest weight representation of $ U_q(\gl_m)$.
 
-\todo{In the next paragraph, 'simple' should be 'positive'. Also we need to  say that non-integral positive linear combinations of positive roots are allowed too. We want $1<2$ in $\mathfrak{sl}_2$, right? ---Scott}
-
-\todo{Maybe it's ok that $1$ is not comparable to $2$ since $1$ does not occur as a weight space of $V(2)$. Also, it seems from the example that I added below that you really want this definition --- Sabin}
-
-\todo{We do want $1 $ to be not comparable to $ 2$.  Whether we use simple or positive doesn't matter. (I think of ``sum'' as non-negative integral linear combination..) -- Joel}
-
 We have the usual dominance order on dominant weights of $ \gl_m $ where $ \mu \le \lambda $ if $ \lambda - \mu $ is a sum of the simple roots $ \alpha_i $.  We extend this notion as follows.  We say that a dominant weight $ \lambda $ \textbf{dominates} a weight $ \nu $, if $ \nu $ lies in the Weyl group orbit of a dominant weight $ \mu \le \lambda $.
 
-Let $ I_\lambda $ be the 2-sided ideal in $U_q(\gl_m)$ generated by all $ 1_\nu $ such that $ \lambda $ does not dominate $ \nu $. If $ \mu $ is a dominant weight of $ \gl_m $ with $ \mu \le \lambda $, then for each $ \nu $ as above, $ \nu $ is not a weight of $V(\mu)$.  Thus $ I_\lambda $ acts trivially on $ V(\mu) $ and we get a representation $ U_q(\gl_m) / I_\lambda \rightarrow \End{V(\mu)} $.
+Let $ I_\lambda $ be the 2-sided ideal in $\dU(\gl_m)$ generated by all $ 1_\nu $ such that $ \lambda $ does not dominate $ \nu $. If $ \mu $ is a dominant weight of $ \gl_m $ with $ \mu \le \lambda $, then for each $ \nu $ as above, $ \nu $ is not a weight of $V(\mu)$.  Thus $ I_\lambda $ acts trivially on $ V(\mu) $ and we get a representation $ (\dU(\gl_m)/I_\lambda)' \rightarrow \End{V(\mu)} $ where, for an additive category $\sA$, we denote by $\sA'$ the direct sum of all morphism spaces.
 
 \todo{sabin: in the above and below i switched from $\dU$ to $U_q$ since otherwise the last map above is between a category and a vector space which is weird}
 
 \todo{We need it to be $ \dU $, since the idempotents don't live in $ U_q $.  I agree that I am using $ \dU$ here as an algebra and not as a category.  Perhaps we need a new notation for that. -- Joel}
 
+\todo{I agree. I tried to introduce some new notation. -- Sabin.}
+
 \begin{lem}
-For any dominant weight $ \lambda $, the map $ U_q(\gl_m) / I_\lambda \rightarrow \bigoplus_{\mu \le \lambda} \End{V(\mu)}$ is an isomorphism (where the sum is over dominant $\mu$).
+For any dominant weight $ \lambda $, the map $ (\dU(\gl_m) / I_\lambda)' \rightarrow \bigoplus_{\mu \le \lambda} \End{V(\mu)}$ is an isomorphism (where the sum is over dominant $\mu$).
 \end{lem}
 \begin{proof}
-First note that $U_q(\gl_m)/ I_\lambda $ is finite-dimensional.  By Wedderburn's theorem, it suffices to show that the category of finite-dimensional $U_q(\gl_m)/I_\lambda$-modules is semisimple with simple objects the $V(\mu)$, for $\mu \le \lambda$.
+First note that $(\dU(\gl_m)/ I_\lambda)'$ is finite-dimensional. By Wedderburn's theorem, it suffices to show that the category of finite-dimensional $(U_q(\gl_m)/I_\l)'$-modules is semisimple with simple objects the $V(\mu)$, for $\mu \le \lambda$.
 
-Now a $U_q(\gl_m)/I_\lambda$ module is the same thing as a $U_q(\gl_m) $ module in which $ I_\lambda $ acts trivially.  Since the category of finite-dimensional $ U_q(\gl_m) $ modules is semisimple and the ones where $ I_\lambda $ acts trivially are precisely the $ V(\mu) $ for $ \mu \le \lambda$, the result follows.
+Now a $(U_q(\gl_m)/I_\l)'$ module is the same thing as a $U_q(\gl_m) $ in which $I_\l$ acts trivially. Since the category of finite-dimensional $U_q(\gl_m) $ modules is semisimple and the ones where $I_\l$ acts trivially are precisely the $ V(\mu) $ for $ \mu \le \lambda$, the result follows.
 \end{proof}
 
-\noindent{\bf Example.} Suppose $m=2$ and $\l = (1,-1)$. Then the weights dominated by $\l$ consist of $\l, \l - \alpha$ and $\l-2\alpha$ (which we abbreviate as $2,0,-2$ since this is their pairing with $\alpha$). Then the morphisms in $U_q(\gl_2)/I_\l$ are spanned by 
+\noindent{\bf Example.} Suppose $m=2$ and $\l = (1,-1)$. Then the weights dominated by $\l$ consist of $\l, \l - \alpha$ and $\l-2\alpha$ (which we abbreviate as $2,0,-2$ since this is their pairing with $\alpha$). Subsequently, the the morphisms in $(U_q(\gl_2)/I_\l)'$ are spanned by 
 $$1_2, 1_0, 1_{-2}, E 1_{-2}, E1_0, E^2 1_{-2}, F1_2, F1_0, F^2 1_2, EF1_0 = FE1_0.$$
 On the other hand, the dominant weights dominated by $\l$ are $\l$ and $\l-\alpha$ with $V(\l) \cong \bC^3$ and $V(\l-\alpha)=V(0) \cong \bC$ so that $\bigoplus_{\mu \le \l} \End{V(\mu)} \cong \End{\bC^3} \oplus \End{\bC}$. Notice that these spaces have the same dimension (they are both 10-dimensional). 
 
 \begin{proof}
 We now return to proving Theorem \ref{th:functorfullyfaithful}. Recall that by skew Howe duality, we have a decomposition
 $$ \Alt^\bullet (\bC_q^n \otimes \bC_q^m) = \bigoplus_{\mu} V(\mu^t) \otimes V(\mu) $$
-as $U_q(\sl_n) \otimes U_q(\gl_m)$-representations, where $\mu$ varies over all $n$-bounded weights of $ GL_m$. Thus for any $ 0 \le K \le mn $,
-$$ \Hom_{\SL_n} \left(\Alt^K(\bC_q^n \otimes \bC_q^m), \Alt^K(\bC_q^n \otimes \bC_q^m)\right) = \bigoplus_{\mu} \End{V(\mu)} $$
+as $U_q(\sl_n) \otimes U_q(\gl_m)$-representations, where $\mu$ varies over all $n$-bounded weights of $U_q(\gl_m)$. Thus for any $ 0 \le K \le mn $,
+$$ \Hom_{U_q(\sl_n)} \left(\Alt^K(\bC_q^n \otimes \bC_q^m), \Alt^K(\bC_q^n \otimes \bC_q^m)\right) = \bigoplus_{\mu} \End{V(\mu)} $$
 where $ \mu $ ranges over $ n$-bounded weights with $ \sum \mu_i = K $.  Note that these $\mu $ are exactly the set of dominant weights of $ \gl_m $ which satisfy $ \mu \le \lambda(K) $, where $ \lambda(K) $ is the unique weight of the form $(n, \dots, n, r, 0, \dots, 0) $ where the terms sum to $K$.  Applying the previous lemma, we see that the map
-$$ U_q(\gl_m)/I_{\lambda(K)} \rightarrow \Hom_{\SL_n} \left(\Alt^K(\bC_q^n \otimes \bC_q^m), \Alt^K(\bC_q^n \otimes \bC_q^m)\right) $$
+$$ (\dU(\gl_m)/I_{\lambda(K)})' \rightarrow \Hom_{U_q(\sl_n)} \left(\Alt^K(\bC_q^n \otimes \bC_q^m), \Alt^K(\bC_q^n \otimes \bC_q^m)\right) $$
 is an isomorphism. Since a weight $ \mu $ is $n$-bounded if and only if $ \mu $ is dominated by $ \lambda(K) $ where $ K = \sum \mu_i $ we get 
-$$ U_q^n(\gl_m) = \bigoplus_{K=0}^{nm} U_q(\gl_m)/I_{\lambda(K)} $$
+$$ \dU^n(\gl_m) = \bigoplus_{K=0}^{nm} \dU(\gl_m)/I_{\lambda(K)} $$
 and the result follows.
 \end{proof}
 
