@@ -499,10 +499,11 @@ For any object $\ul{k} \in \Sp(\SL_n)$, define $\abs{\ul{k}}$ to be the object o
 For a morphism $C \in \Sp(\SL_n)$ between objects $\ul{k}$ and $\ul{l}$, let $\alpha$ be such an isomorphism from $\ul{k}$ to $\abs{\ul{k}}$, and $\beta$ be such an isomorphism from $\abs{\ul{l}}$ to $\ul{l}$. Define $D = \alpha^{-1} C \beta^{-1}$.
 
 \todo{sabin-- I'm a little confused by this proof. What happens if there are downward pointing strands in the middle of the web. Supposedly these are not allowed in $\Sp(\SL_n)^+$.}
+\todo{Such webs are allowed in $\Sp(\SL_n)^+$; we're just taking a full subcategory with only the positive objects. This means that it's no longer obvious what the generators of $\Sp(\SL_n)^+$. However, laddering tells us that rungs generate. We may have to do some reorganization. --Scott}
 \end{proof}
 
 \begin{cor}
-The inclusion of $\Sp(\SL_n)^+$ into $ \Sp(\SL_n) $ is an equivalence of \todo{tensor?} categories.
+The inclusion of $\Sp(\SL_n)^+$ into $ \Sp(\SL_n) $ is an equivalence of tensor categories.
 \end{cor}
 
 \section{Statement and proof of the main theorem}\label{sec:theorem}
@@ -515,12 +516,17 @@ Recall that $U_q(\sl_n) $ is a $ \bC(q)$-algebra with generators $ E_i, F_i, K_i
 \end{align*}
 where 
 $$\la i,j \ra = \begin{cases} 2 & \text{ if } i = j \\ -1 & \text{ if } |i-j|=1 \\ 0 & \text{ otherwise. } \end{cases}$$
-It is a Hopf algebra with the coproduct given by
+It is a Hopf algebra with the coproduct
 \begin{align} \label{eq:Hopf}
-\Delta(E_i) = E_i \otimes K_i + 1 \otimes E_i, \ \ \Delta(F_i) = F_i \otimes 1 + K_i^{-1} \otimes F_i, \ \ \Delta(K_i) = K_i \otimes K_i. 
+\Delta(E_i) & = E_i \otimes K_i + 1 \otimes E_i & \Delta(F_i) &= F_i \otimes 1 + K_i^{-1} \otimes F_i & \Delta(K_i) & = K_i \otimes K_i \\
+\intertext{antipode}
+S(K_i) & = K_i^{-1} & S(E_i) & = -E_iK_i^{-1} & S(F_i) = -K_i F_i \\
+\intertext{and counit}
+\epsilon(K_i) & = 1 & \epsilon(E_i) & = 0 & \epsilon(F_i) & = 0.
 \end{align}
 
 \todo{Sabin -- what about the antipode? Do we ever need it?}
+\todo{I added the antipode and counit, but have no objections to leaving them both out, as we don't mention them elsewhere. --Scott}
 
 We will study the category $\Rep(\SL_n)$ whose objects are representation of $U_q(\sl_n) $ isomorphic to tensor products of the fundamental representations $\Alt^k_q \bC_q^n$ of $U_q(\sl_n)$.
 
@@ -528,7 +534,7 @@ We will study the category $\Rep(\SL_n)$ whose objects are representation of $U_
 \label{sec:generating-morphisms}
 
 Denote by $ x_1, \dots, x_n $ the usual basis of the standard $U_q(\sl_n)$-module $\bC_q^n $. We define the {\bf quantum exterior algebra}
-$$ \Alt^\bullet_q(\bC_q^n) := T \bC_q^n / \langle S^2_q ( \bC_q^n) \rangle $$
+$$ {\textstyle \Alt^\bullet}_q(\bC_q^n) := T \bC_q^n / \langle S^2_q ( \bC_q^n) \rangle $$
 to be the tensor algebra (over $\bC(q) $) of $ \bC_q^n $ modulo the quantum symmetric square (see \cite{BZ}). The space $ \Alt^\bullet_q(\bC_q^n) $ is a graded $U_q(\sl_n)$-module algebra and we denote the product by $ \wedge_q $. Note that $S^2_q \bC_q^n $ is spanned by 
 $$ x_i \otimes x_j + q x_j \otimes x_i, \text{ for }  i < j , \text{ and } x_i^2, \text{ for all } i. $$ 
 Thus in $ \Alt^\bullet_q(\bC_q^n) $ we have that
