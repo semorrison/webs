@@ -564,7 +564,7 @@ $$(k_1^+, \dots, k_m^+) \mapsto \Alt^{k_1}_q \bC_q^n \otimes \dots \otimes \Alt^
 For morphisms we take
 $$ \fuse{k}{l}{k+l} \mapsto M_{k,l} \ \ \text{ and } \ \ \fork{k}{l}{k+l} \mapsto M'_{k,l}.$$
 
-\todo{Define the map on tags.}
+\todo{Define the map on tags, also on cups and caps.}
 
 \begin{thm}
 This defines a pivotal functor $\Gamma_n: \Sp(\SL_n) \rightarrow \Rep(\SL_n)$.
@@ -581,17 +581,12 @@ M_{k,l} \circ M'_{k,l}(x^S)
 &= \qBinomial{k+l}{k} x^S
 \end{align*}
 using that $ \ell(T, S \smallsetminus T) + \ell( S \smallsetminus T, S) = |S||T| $.
- 
-\todo{Sabin -- I'm not sure what this extra $(-1)^k$ is doing here.... Joel, any ideas?}
-\todo{I think that $M'_{k,l} $ should be changed by a factor of $ (-1)^k (-1)^l $. I think that this will also correct the sign problem is section 5.2.  Also, I rewrote the proof for general $ l $, since I like it better that way. --- Joel}
-\todo{Ok -- I changed the definition of $M'$ above and fixed proof.}
 
 {\bf Relation (\ref{eq:commutation}).} 
 \todo{Sabin -- I can write this if you think it's worth it. It's a bit tedious but definitely doable...}
 
+\todo{Finish checking the relations in the spider category. }
 \end{proof}
-
-\todo{Check the relations in the spider category. }
 
 \subsection{The main result}\label{sec:main}
 
@@ -614,7 +609,8 @@ Surjectivity (fullness) of $\Gamma_n$ on $\Hom$ spaces follows from the fullness
 $$ \Phi^n_m : \one_{\ul{l}} \dU(\gl_m) \one_{\ul{k}} \rightarrow \Hom_{\SL_n}(V, W) $$
 is surjective (i.e. all the morphisms come from ladders with $m$ uprights). The commutativity of the right triangle (established in Proposition \ref{prop:commutes}) shows us that these morphisms all come from webs in $ \Sp(\SL_n) $.
 
-Next we show that $ \Gamma_n $ is injective (faithful) on $ \Hom$ spaces.  \todo{Some cleanup remains here, to remove $\Sp(SL_n)^+$.} Let $w$ be a morphism in $ \Sp(\SL_n)^+ $ such that $\Gamma_n(w)=0$.  By Theorem \ref{thm:laddering} and the commutativity of the left square, we can find some $ m $ and some $\tilde{w} \in \dU^n(\gl_m) $ such that $ \Psi^n_m(\tilde{w}) = w $ by finding a ladder $ \tilde{w} $ equivalent to the web $ w $. Then by the commutativity of the right triangle, we see that $ \Phi^n_m(\tilde{w}) = 0 $.  However, by Theorem \ref{th:functorfullyfaithful}, $\Phi_m^n$ is faithful which means $\tilde{w}=0$ and hence $w=0$ as desired.
+Next we show that $ \Gamma_n $ is injective (faithful) on $ \Hom$ spaces. It suffices to do this on the $\Hom$ spaces between objects of the form $(k_1^+,\ldots,k_m^+)$ (that is, objects which are all oriented upwards), because every object is isomorphic (via a morphism built solely out of tags) to such an object.
+Let $w$ be a morphism in $ \Sp(\SL_n)$ between upwards oriented objects such that $\Gamma_n(w)=0$.  By Theorem \ref{thm:laddering} and the commutativity of the left square (immediate from the definition of $\Psi$ in Proposition \ref{prop:psi}), we can find some $ m $ and some $\tilde{w} \in \dU^n(\gl_m) $ such that $ \Psi^n_m(\tilde{w}) = w $ by finding a ladder $ \tilde{w} $ equivalent to the web $ w $. Then by the commutativity of the right triangle, we see that $ \Phi^n_m(\tilde{w}) = 0 $.  However, by Theorem \ref{th:functorfullyfaithful}, $\Phi_m^n$ is faithful which means $\tilde{w}=0$ and hence $w=0$ as desired.
 \end{proof}
 
 \section{The functor $\Phi_m^n:\dU(\gl_m) \rightarrow \Rep(\SL_n)$}\label{sec:phi}
