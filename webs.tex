@@ -103,7 +103,7 @@
 
 \section{Introduction}
 
-\subsection{Generators and relations for $ \Rep(\SL_n) $}
+\subsection{Generators and relations for \texorpdfstring{$ \Rep(\SL_n) $}{Rep SL\_n}}
 The representation theory of $\SL_n$ is a pivotal tensor category, and it is natural to ask for a presentation by generators and relations, as a pivotal tensor category.
 
 There are two main choices one needs to make before looking for such a presentation. First, it is reasonable to pass to a full subcategory whose idempotent completion recovers the entire representation category. In particular, in this paper we look at the full subcategory (denoted $\Rep(\SL_n)$) whose objects are isomorphic to tensor products of the fundamental representations $\Alt^k \mathbb C^n$ of $\sl_n$.  Second, we need to decide which generators to use. We take the maps $\Alt^{k} \mathbb{C}^n \tensor \Alt^{l} \mathbb{C}^n \rightarrow \Alt^{k+l} \mathbb{C}^n \to \mathbb{C}$. (The space of such maps is one-dimensional.) It is relatively easy to show that these are indeed generators, i.e. that every $\sl_n$-linear map between tensor products of fundamental representations can be written as tensor products and compositions of these maps, along with the duality pairing and copairing maps \cite[Proposition 3.5.8]{0704.1503}. The question then, is to identify the relations holding between such planar compositions.
@@ -162,12 +162,12 @@ Under this map, elements of $\gl_m $ acts by particular webs, which we call ladd
 \todo{We need to add something about "q" to the introduction.  I'm not quite sure how to do this.  Perhaps it make sense to leave these sections without "q" and then add a new section (or just a paragraph) saying how we work with $U_q $ and explaining about quantum skew Howe duality. -- Joel}
 
 
-\section{The categories $\FSp(\SL_n)$ and $\Sp(\SL_n)$}\label{sec:diagrams}
+\section{The categories \texorpdfstring{$\FSp(\SL_n)$}{FSp(SL\_n)} and \texorpdfstring{$\Sp(\SL_n)$}{Sp(SL\_n)}}\label{sec:diagrams}
 
 We will denote by $[n]_q$ the quantum integer $q^{n-1} + q^{n-3} + \dots + q^{-n+3} + q^{-n+1}$. More generally,
 $$\qBinomial{n}{k} := \frac{[n]_q\dots[1]_q}{([n-k]_q \dots [1]_q)([k]_q \dots [1]_q)}.$$
 
-\subsection{The free spider category $\FSp(\SL_n)$}
+\subsection{The free spider category  \texorpdfstring{$\FSp(\SL_n)$}{FSp(SL\_n)} }
 The free spider category $\FSp(\SL_n)$ has as objects sequences $\ul{k}$ in $\{1^\pm,\ldots,(n-1)^\pm\}$, and as morphisms (linear combinations of) oriented planar graphs locally modeled on the following four types of vertices:
 \newcommand{\fuse}[3]{\tikz[baseline=0.5cm]{
 \coordinate (z1) at (0,0);
@@ -276,7 +276,7 @@ We will often draw diagrams with edges also labelled by $0$ or $n$. This is a no
 \end{align*}
 Any trivalent vertices with all edges labelled either $0$ or $n$ can be deleted. We will occasionally utilize diagrams with an edge labeled less than $0$ or greater than $n$; by convention these diagrams are 0.
 
-\subsection{Definition of the spider category $\Sp(\SL_n)$}
+\subsection{Definition of the spider category  \texorpdfstring{$\Sp(\SL_n)$}{Sp(SL\_n)} }
 The spider category $\Sp(\SL_n)$ is the quotient of $\FSp(\SL_n)$ by the following relations
 
 \begin{align}
@@ -583,7 +583,7 @@ where $ T $ ranges over $ k $ elements subsets of $ S $.
 
 \todo{Does $M_{a,b} $ define a coalgebra structure on $ \Alt^\bullet \bC_q^n $?  It is coassociative (the $I=H $ relation). }
 
-\subsection{Definition of the functor $\Gamma_n: \Sp(\SL_n) \rightarrow \Rep(\SL_n)$} \label{sec:deffunctor}
+\subsection{Definition of the functor \texorpdfstring{$\Gamma_n: \Sp(\SL_n) \rightarrow \Rep(\SL_n)$}{Gamma\_n}} \label{sec:deffunctor}
 
 We now define a functor $ \Gamma_n : \Sp(\SL_n) \rightarrow \Rep(\SL_n) $. At the level of objects we take
 $$(k_1^{\epsilon_1}, \dots, k_m^{\epsilon_m}) \mapsto (\Alt^{k_1}_q \bC_q^n)^{\epsilon_1} \otimes \dots \otimes (\Alt^{k_m}_q \bC_q^n)^{\epsilon_m} .$$
@@ -739,9 +739,9 @@ Next we show that $ \Gamma_n $ is injective (faithful) on $ \Hom$ spaces. It suf
 Let $w$ be a morphism in $ \Sp(\SL_n)$ between upwards oriented objects such that $\Gamma_n(w)=0$.  By Theorem \ref{thm:laddering} and the commutativity of the left square (immediate from the definition of $\Psi$ in Proposition \ref{prop:psi}), we can find some $ m $ and some $\tilde{w} \in \dU^n(\gl_m) $ such that $ \Psi^n_m(\tilde{w}) = w $ by finding a ladder $ \tilde{w} $ equivalent to the web $ w $. Then by the commutativity of the right triangle, we see that $ \Phi^n_m(\tilde{w}) = 0 $.  However, by Theorem \ref{th:functorfullyfaithful}, $\Phi_m^n$ is faithful which means $\tilde{w}=0$ and hence $w=0$ as desired.
 \end{proof}
 
-\section{The functor $\Phi_m^n:\dU(\gl_m) \rightarrow \Rep(\SL_n)$}\label{sec:phi}
+\section{The functor \texorpdfstring{$\Phi_m^n:\dU(\gl_m) \rightarrow \Rep(\SL_n)$}{Phi}}\label{sec:phi}
 
-\subsection{$ U_q(\gl_m)$ and its idempotent form $\dU(\gl_m)$}\label{sec:idemform}
+\subsection{\texorpdfstring{$ U_q(\gl_m)$}{U\_q gl\_m} and its idempotent form \texorpdfstring{$\dU(\gl_m)$}{}}\label{sec:idemform}
 
 We begin with the definition of $ U_q(\gl_m)$.  It is defined much the same way as $ U_q(\sl_m) $, except that we enlarge the ``torus'' by having invertible group-like generators $ L_1, \dots, L_n $ with $ K_i = L_i L_{i+1}^{-1} $.  In this way the weight spaces of $ U_q(\gl_m) $ are labelled by $ \bZ^m $.
 
@@ -896,7 +896,7 @@ Suppose $S_1 = \{k_1 \ge \dots \ge k_a\}$ and $S_2 = \{l_1 \ge \dots \ge l_b\}$.
 The result follows after some simplification. 
 \end{proof}
 
-\subsection{Definition of the functor $\Phi_m$}
+\subsection{Definition of the functor \texorpdfstring{$\Phi_m$}{Phi}}
 
 We will now use the quantum skew Howe duality to define the functor $\Phi_m$. By part 4 of Theorem \ref{th:qSkewHowe}, we have a $U_q(\gl_m)$ action with the weight spaces $\alt^{k_1}_q \mathbb C_q^n \otimes \cdots \otimes \alt^{k_m}_q \mathbb C_q^n$ and commuting with the $U_q(\sl_n)$ action. Thus we get a map
 \begin{equation}\label{eq:phimap}
@@ -918,7 +918,7 @@ $\ul{k} \mapsto
 \end{itemize}
 Since (\ref{eq:phimap}) was surjective the functor $\Phi_m$ is full.
 
-\subsection{Fully-faithfulness of $ \Phi_m^n$}
+\subsection{Fully-faithfulness of \texorpdfstring{$ \Phi_m^n$}{Phi}}
 \label{sec:fully-faithful}
 
 Since all weights of $\Alt^K(\mathbb{C}^n \otimes \mathbb{C}^m)$ are $ n$-bounded, the functor $\Phi_m: \dU(\gl_m)\rightarrow \Rep(\SL_n)$ factors through $\dU^n(\gl_m)$. We denote this induced functor $\Phi_m^n: \dU^n(\gl_m) \rightarrow \Rep(\SL_n)$. In what follows we will need to consider the algebra version (instead of the category version) of Lusztig's idempotent form,
@@ -973,7 +973,7 @@ and the result follows.
 \section{Ladders}
 \label{sec:ladders}
 
-\subsection{Ladders and $\dU^n(\gl_m)$ }
+\subsection{Ladders and \texorpdfstring{$\dU^n(\gl_m)$}{U\_q gl\_m} }
 We will now introduce a diagrammatic notation for morphisms in $ \dU^n(\gl_m)$.  
 
 
@@ -1597,7 +1597,7 @@ Applying the $I=H$ relation along the leftmost upright, we obtain
 \draw[mid>] (m1p) --node[above right] {$b{-}1$} (m1u);
 \end{tikzpicture},
 \end{align*}
-where, to obtain the second equality, we apply the mirror reflection of Equation \eqref{eq:commutation} (with variables $a, b, r$ and $s$ specialized to $b, 2, b$ and $1$) to the central square.  Notice that both coefficients here are equal to $+1$.  Finally an application of Equation \eqref{eq:id1} \todo{need to fix} on each $2$-strand gives the desired identity.
+where, to obtain the second equality, we apply the mirror reflection of Equation \eqref{eq:commutation} (with variables $a, b, r$ and $s$ specialized to $b, 2, b$ and $1$) to the central square.  Notice that both coefficients here are equal to $+1$.  Finally an application of Equation \eqref{eq:id1b} on each $2$-strand gives the desired identity.
 }
 \end{proof}
 
