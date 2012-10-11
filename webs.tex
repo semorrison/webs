@@ -288,7 +288,7 @@ The spider category $\Sp(\SL_n)$ is the quotient of $\FSp(\SL_n)$ by the followi
 \draw[mid<] (a1) -- node[right] {$n-k$} (a2);
 \draw (a1) -- +(-0.2,0.1);
 }
-& = (-1)^{(n+1)k}
+& = (-1)^{k(n-k)}
 \tikz[baseline=0.4cm]{
 \foreach \n in {0,1,2} {
 	\coordinate (a\n) at (0.4*\n, 0.8*\n);
@@ -468,61 +468,61 @@ Here are a couple of easy consequences of these relations.
 \end{equation}
 \end{lem}
 \begin{proof}
-The first identity follows from relation \eqref{eq:bigon2} with $k=0$ after deleting the 0-strings. The second follows from \eqref{eq:commutation} after replacing $n$-strands with tags \todo{is this right?}. The third also follows from \eqref{eq:bigon2} with $l=n-k$ after replacing the $n$-strand with a matching pair of tags.
+The first identity follows from relation \eqref{eq:bigon2} with $k=0$ after deleting the 0-strings. The second follows from \eqref{eq:commutation} after replacing $n$-strands with tags. The third also follows from \eqref{eq:bigon2} with $l=n-k$ after replacing the $n$-strand with a matching pair of tags.
 \end{proof}
 
-\begin{comment}
-We also have the following relations.
-\begin{lem} The following identities hold in $\Sp(\SL_n)$
-\begin{equation}\label{eq:id1b}
-\tikz[baseline=40]{
-\laddercoordinates{1}{2}
-\ladderEn{0}{0}{$k-s$}{$l+s$}{$s$}
-\ladderEn{0}{1}{$k-s-r$}{$l+s+r$}{$r$}
-\node[left] at (l00) {$k$};
-\node[right] at (l10) {$l$};
-}
-=
-\qBinomial{r+s}{r}
-\tikz[baseline=20]{
-\laddercoordinates{1}{1}
-\ladderEn{0}{0}{$k-s-r$}{$l+s+r$}{$r+s$}
-\node[left] at (l00) {$k$};
-\node[right] at (l10) {$l$};
-}
-\end{equation}
-
-\begin{equation}\label{eq:commutation2b}
-\begin{tikzpicture}[baseline=40]
-\laddercoordinates{1}{2}
-\node[left] at (l00) {$k$};
-\node[right] at (l10) {$l$};
-\ladderEn{0}{0}{$k{-}s$}{$l{+}s$}{s}
-\ladderFn{0}{1}{$k{-}s{+}r$}{$l{+}s{-}r$}{r}
-\end{tikzpicture}
-= \sum_t \qBinomial{k-l+r-s}{t}
-\begin{tikzpicture}[baseline=40]
-\laddercoordinates{1}{2}
-\node[left] at (l00) {$k$};
-\node[right] at (l10) {$l$};
-\ladderFn{0}{0}{$k{+}r{-}t$}{$l{-}r{+}t$}{r{-}t}
-\ladderEn{0}{1}{$k{-}s{+}r$}{$l{+}s{-}r$}{s{-}t}
-\end{tikzpicture}
-\end{equation}
-\renewcommand{\ladderY}{1}
-\end{lem}
-\begin{proof}
-\todo{There are two three things we can do. One is to just claim these without proof. Two is to refer to Proposition \ref{prop:psi} and then argue like below. Three is to prove them using the other web relations. I'm ok with any of these choices (although I prefer 1 or 2 right here since they're shorter, in which case one can put 3 in the appendix if you think it's interesting. -- Sabin}
-\todo{I vote option 1: claiming that it follows from the diagrammatics without proof. -- Joel}
-
-(\ref{eq:id1}) follows from the relation $F_i^{(s)} F_i^{(r)} = \qBinomial{r+s}{r} F_i^{(r+s)}$ in $\dU(\gl_m)$. Likewise, (\ref{eq:commutation2}) is equivalent to
-\begin{equation}\label{eq:commrel}
-E_i^{(r)} F_i^{(s)} \one_{\ul{k}} = \sum_t \qBinomial{\la \ul{k}, \alpha_i \ra + r - s}{t} F_i^{(s-t)} E_i^{(r-t)} \one_{\ul{k}}
-\end{equation}
-where, in this case, $\la \ul{k},\alpha_i \ra = k-l$.
-\end{proof}
-
-\end{comment}
+%\begin{comment}
+%We also have the following relations.
+%\begin{lem} The following identities hold in $\Sp(\SL_n)$
+%\begin{equation}\label{eq:id1b}
+%\tikz[baseline=40]{
+%\laddercoordinates{1}{2}
+%\ladderEn{0}{0}{$k-s$}{$l+s$}{$s$}
+%\ladderEn{0}{1}{$k-s-r$}{$l+s+r$}{$r$}
+%\node[left] at (l00) {$k$};
+%\node[right] at (l10) {$l$};
+%}
+%=
+%\qBinomial{r+s}{r}
+%\tikz[baseline=20]{
+%\laddercoordinates{1}{1}
+%\ladderEn{0}{0}{$k-s-r$}{$l+s+r$}{$r+s$}
+%\node[left] at (l00) {$k$};
+%\node[right] at (l10) {$l$};
+%}
+%\end{equation}
+%
+%\begin{equation}\label{eq:commutation2b}
+%\begin{tikzpicture}[baseline=40]
+%\laddercoordinates{1}{2}
+%\node[left] at (l00) {$k$};
+%\node[right] at (l10) {$l$};
+%\ladderEn{0}{0}{$k{-}s$}{$l{+}s$}{s}
+%\ladderFn{0}{1}{$k{-}s{+}r$}{$l{+}s{-}r$}{r}
+%\end{tikzpicture}
+%= \sum_t \qBinomial{k-l+r-s}{t}
+%\begin{tikzpicture}[baseline=40]
+%\laddercoordinates{1}{2}
+%\node[left] at (l00) {$k$};
+%\node[right] at (l10) {$l$};
+%\ladderFn{0}{0}{$k{+}r{-}t$}{$l{-}r{+}t$}{r{-}t}
+%\ladderEn{0}{1}{$k{-}s{+}r$}{$l{+}s{-}r$}{s{-}t}
+%\end{tikzpicture}
+%\end{equation}
+%\renewcommand{\ladderY}{1}
+%\end{lem}
+%\begin{proof}
+%\todo{There are two three things we can do. One is to just claim these without proof. Two is to refer to Proposition \ref{prop:psi} and then argue like below. Three is to prove them using the other web relations. I'm ok with any of these choices (although I prefer 1 or 2 right here since they're shorter, in which case one can put 3 in the appendix if you think it's interesting. -- Sabin}
+%\todo{I vote option 1: claiming that it follows from the diagrammatics without proof. -- Joel}
+%
+%(\ref{eq:id1}) follows from the relation $F_i^{(s)} F_i^{(r)} = \qBinomial{r+s}{r} F_i^{(r+s)}$ in $\dU(\gl_m)$. Likewise, (\ref{eq:commutation2}) is equivalent to
+%\begin{equation}\label{eq:commrel}
+%E_i^{(r)} F_i^{(s)} \one_{\ul{k}} = \sum_t \qBinomial{\la \ul{k}, \alpha_i \ra + r - s}{t} F_i^{(s-t)} E_i^{(r-t)} \one_{\ul{k}}
+%\end{equation}
+%where, in this case, $\la \ul{k},\alpha_i \ra = k-l$.
+%\end{proof}
+%
+%\end{comment}
 
 \todo{Explain exactly what's happening with the square-switch relations from Scott's thesis}
 \todo{Explain why(?) the Kekule relations are consequences of these...}
@@ -616,7 +616,6 @@ $$
  0 & \text{ otherwise. }
  \end{cases}
 $$
-\todo{Sabin: either this definition or (\ref{eq:switch}) must be wrong...}
 
 \begin{thm}
 This defines a pivotal functor $\Gamma_n: \Sp(\SL_n) \rightarrow \Rep(\SL_n)$.
@@ -948,14 +947,6 @@ We have the usual dominance order on dominant weights of $ \gl_m $ where $ \mu \
 
 Let $ I_\lambda $ be the 2-sided ideal in $\dalg(\gl_m)$ generated by all $ 1_\nu $ such that $ \lambda $ does not dominate $ \nu $. If $ \mu $ is a dominant weight of $ \gl_m $ with $ \mu \le \lambda $, then for each $ \nu $ as above, $ \nu $ is not a weight of $V(\mu)$.  Thus $ I_\lambda $ acts trivially on $ V(\mu) $ and we get a representation $  \dalg(\gl_m)/I_\lambda \rightarrow \End{V(\mu)} $ .
 
-\todo{sabin: in the above and below i switched from $\dU$ to $U_q$ since otherwise the last map above is between a category and a vector space which is weird}
-
-\todo{We need it to be $ \dU $, since the idempotents don't live in $ U_q $.  I agree that I am using $ \dU$ here as an algebra and not as a category.  Perhaps we need a new notation for that. -- Joel}
-
-\todo{I agree. I tried to introduce some new notation. -- Sabin.}
-
-\todo{I changed the notation again. --- Joel}
-
 \begin{lem}
 For any dominant weight $ \lambda $, the map $ \dalg(\gl_m) / I_\lambda \rightarrow \bigoplus_{\mu \le \lambda} \End{V(\mu)}$ is an isomorphism (where the sum is over dominant $\mu$).
 \end{lem}
@@ -993,17 +984,14 @@ We begin by formalizing the notion of a ladder.
 An {\bf $n$-ladder} with $m$ uprights is a diagram drawn in a rectangle, with
 \begin{itemize}
 \item $m$ parallel vertical lines running from the bottom edge to the top edge of the rectangle, oriented upwards,
-\item some number of non-crossing {\bf rungs} connecting adjacent uprights,
+\item some number of oriented horizontal {\bf rungs} connecting adjacent uprights,
 \item a labelling of each interval (rungs or segments of uprights) by an integer between $0$ and $n$ inclusive,
 \end{itemize}
 such that the sum of labels (taken with signs according to the orientations of the intervals) at each trivalent vertex, is zero.
 \end{defn}
-\todo{In this definition, are the rungs considered to be horizontal or going up diagonally?  If they are horizontal, so they can't cross, so we don't need to say non-crossing. --- Joel}
 
-See Figure \ref{fig:ladder-example} for an example. \todo{maybe move the example here?}
-We will picture $E_i $ as a ladder with a single rung connecting strands $ i $ and $ i+1 $ and angled diagonally up to the left.
-
-\todo{I changed $\Lad_n^m$ to $\Lad_m^n$ so that functor from $\Lad_n^m$ to $\dU^n(\gl_m)$ looks nicer -- if this clashes with notation from other papers I can change it back}
+See Figure \ref{fig:ladder-example} for an example. \todo{maybe move the example here?} \todo{My preference is to leave the example in the introduction, because it can help the reader quickly get one of the main ideas of the paper. I'm not against reproducing it here. --Scott}
+We will picture $E_i $ as a ladder with a single rung connecting strands $ i+1 $ and $ i $, oriented to the left.
 
 We now introduce the category  $ \Lad_m^n $ of ladders. The objects are sequences of length $m$ of integers between $0$ and $n$ inclusive (that is, $n$-bounded weights of $\dU(\gl_m)$). The morphisms are linear combinations of ladders. The source of a ladder is the sequence of labels appearing on the lowest segments of the uprights, and the target is the sequence of labels appearing on the highest segments. Composition of morphisms is given by vertical concatenation of ladders.
 
