@@ -694,9 +694,9 @@ where, for convenience, we assumed $r > r'$. In the former case we get
 \begin{align*}
 & (-1)^{k+l-1} \sum_{r \in S \smallsetminus T} (-q)^{-\ell(r,S \smallsetminus r) + \ell(r,T) - \ell(T,r) + \ell(S \smallsetminus r,r)} x_S \otimes x_T \\
 =& (-1)^{k+l-1} \sum_{r \in S \smallsetminus T} (-q)^{-2\ell(r,S \smallsetminus r) + 2\ell(r,T) - l + k - 1} x_S \otimes x_T \\
-=& (-1)^{k+l-1} (-q)^{-l+k-1} \sum_{r \in S \smallsetminus T} (-q)^{2 \ell(r,T \smallsetminus S) - 2 \ell(r, S \smallsetminus T)} x_S \otimes x_T
+=& q^{-l+k-1} \sum_{r \in S \smallsetminus T} q^{2 (\ell(r,T \smallsetminus S) -  \ell(r, S \smallsetminus (T \sqcup \{r\}))) } x_S \otimes x_T
 \end{align*}
-\todo{this does't look too promissing...}
+
 On the other hand, the first term on the right hand side of (\ref{eq:commute}) acts as 
 \begin{align*}
 x_S \otimes x_T 
@@ -708,8 +708,19 @@ x_S \otimes x_T
 Again, we have two cases, depending on whether $r = r'$ or $r \ne r'$. In the latter case we get the same expression as in (\ref{eq:local}). In the former case we end up with
 \begin{align*}
 & (-1)^{k+l-1} \sum_{r \in T \smallsetminus S} (-q)^{-\ell(T \smallsetminus r,r) + \ell(S,r) - \ell(r,S) + \ell(r,T \smallsetminus r)} x_S \otimes x_T \\
-=& (-1)^{k+l-1} \sum_{r \in T \smallsetminus S} (-q)^{- 2 \ell(r,S) + 2 \ell(r, T \smallsetminus r) +  k - l +1} x_S \otimes x_T
+=& q^{k-l-1} \sum_{r \in T \smallsetminus S} q^{2( - \ell(r,S) + 2 \ell(r, T \smallsetminus r) +1) } x_S \otimes x_T
 \end{align*}
+
+Thus it suffices to prove the following: for any two disjoint sets $ S, T $ of size $k, l $ respectively, 
+\begin{equation} \label{toprove}
+ \sum_{r \in S} q^{2(\ell(r, T) - \ell(r, S \smallsetminus r))} - \sum_{r \in T} q^{2 (-\ell(r, S) + \ell(r, T \smallsetminus r) + 1)} = q^{l-k+1} [k-l]_q
+\end{equation}
+We proceed by induction on $\min(k,l)$.  The base case of our induction will be when $ k = 0 $ or $ l = 0 $.  In this case, it is easy to see that \eqref{toprove} holds.
+
+Now assume that $k,l > 0 $.  Consider the elements of $ S \cup T $ arranged in order.  We can find a pair of consecutive entries one from $ S $ and one from $ T $.  More precisely, there exists $ s \in S $ and $ t \in T $ such that no element of $ S $ or $ T $ lies in between $ s $ and $ t $.   Suppose that $ s < t$ (if $ s> t$ then the argument is similar).  Then 
+$$ \ell(s,T) = \ell(t, T \smallsetminus t) + 1 \text{ and } \ell(s, S \smallsetminus s) = \ell(t, S) $$
+and thus the left hand side of \eqref{toprove} is unchanged by the removal of $ s $ from $ S $ and $ t $ from $ T $ and so by induction \eqref{toprove} holds.
+
 
 \todo{Finish checking the relations in the spider category. }
 \end{proof}
@@ -808,10 +819,10 @@ Let us write $ x_1, \dots, x_n $ for the standard basis of $ \bC_q^n $ and $ y_1
 Continuing to follow the proof of Proposition 2.38, we see that $ S^2_q (\bC_q^n \otimes \bC_q^m) $ is spanned by
 \begin{gather*}
 (x_i \otimes x_i) \otimes (y_l \otimes y_l) \\
-(x_i \otimes x_i) \otimes (y_l \otimes y_p - q y_p \otimes y_l), \text{ for } l < p \\
-(x_i \otimes x_j - q x_j \otimes x_i) \otimes (y_l \otimes y_l), \text{ for } i < j \\
-(x_i \otimes x_j - q x_j \otimes x_i) \otimes (y_l \otimes y_p - q y_p \otimes y_l), \text{ for } i < j, l < p \\
-(q x_i \otimes x_j +  x_j \otimes x_i) \otimes (q y_l \otimes y_p +  y_p \otimes y_l), \text{ for } i < j, l < p.
+(x_i \otimes x_i) \otimes (y_l \otimes y_p + q y_p \otimes y_l), \text{ for } l < p \\
+(x_i \otimes x_j + q x_j \otimes x_i) \otimes (y_l \otimes y_l), \text{ for } i < j \\
+(x_i \otimes x_j + q x_j \otimes x_i) \otimes (y_l \otimes y_p + q y_p \otimes y_l), \text{ for } i < j, l < p \\
+(q x_i \otimes x_j -  x_j \otimes x_i) \otimes (q y_l \otimes y_p -  y_p \otimes y_l), \text{ for } i < j, l < p.
 \end{gather*}
 A little manipulation proves that $ \Alt^\bullet_q(\bC_q^n \otimes \bC_q^m) $ is the quotient of the free algebra on the set $ \{ x_i y_j \} $ modulo the relations
 \begin{align*}
