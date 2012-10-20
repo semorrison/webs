@@ -65,11 +65,9 @@
 \newtheorem{defn}[prop]{Definition}         % numbered definition
 \newtheorem*{defn*}{Definition}             % unnumbered definition
 \newtheorem{question}{Question}
-\newtheorem{example}{Example}
 \newtheorem{property}[prop]{Property}
-\newtheorem{axiom}[prop]{Axiom}
-\newtheorem{module-axiom}[prop]{Module Axiom}
-\newenvironment{rem}{\noindent\textsl{Remark.}}{}  % perhaps looks better than rem above?
+\newenvironment{rem}{\vspace{0.3cm}\noindent\textsl{Remark.}}{}  % perhaps looks better than rem above?
+\newenvironment{example}{\vspace{0.3cm}\noindent\textbf{Example.}}{}  % perhaps looks better than rem above?
 \newtheorem{rem*}[prop]{Remark}
 \numberwithin{equation}{section}
 %% example, claim and remark are defined in article_preamble.tex, for compatibility with beamer and PNAS
