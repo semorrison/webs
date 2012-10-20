@@ -602,15 +602,16 @@ where, to get the second equality, we use the mirror reflection of Equation \eqr
 }
 \end{proof}
 
-Many more local relations hold, as consequences of these. In particular \cite{0704.1503} described two classes of relations, the `square-switch' and `Kekul\'{e}' relations.
-%For each $\ssum{b} \leq j \leq \ssum{a}+n-1$,
-%\begin{equation*}
-% \sum_{k=-\sumhat{b}}^{-\sumtah{a} + 1} (-1)^{j+k} \qBinomial{j+k-\max{b}}{j-\ssum{b}} \qBinomial{\min{a} + n -j -k}{\ssum{a} + n -1 -j} \mathfig{0.2}{PQ/octagon_jk} = 0.
-%\end{equation*}
- It is relatively easy to see that the square-switch relations there are consequences of our relation \eqref{eq:commutation}. On the other hand, we do not know a diagrammatic argument deriving the Kekul\'{e} relations from the relations presented here; nevertheless, such a derivation must exist, by our main theorem.
 \begin{rem}
 Later, we will use Equation \eqref{eq:serre} in the proof of Proposition \ref{prop:psi}, where it will correspond to the quantum Serre relation \ref{rel:3} in $\dU(\gl_m)$.
 \end{rem}
+
+Many more local relations hold, as consequences of these. In particular \cite{0704.1503} described another classes of relations, the `Kekul\'{e}' relations:
+\begin{equation*}
+ \sum_{k=-\sumhat{b}}^{-\sumtah{a} + 1} (-1)^{j+k} \qBinomial{j+k-\max{b}}{j-\ssum{b}} \qBinomial{\min{a} + n -j -k}{\ssum{a} + n -1 -j} \mathfig{0.2}{PQ/octagon_jk} = 0,
+\end{equation*}
+for each $\ssum{b} \leq j \leq \ssum{a}+n-1$ (each edge label is the signed sum of the blue arrows on either side, $\sumtah{a} = \sum{a} - \min{a}$, and $\sumhat{b} = \sum{b}-\min{b}$).
+We do not know a diagrammatic argument deriving the Kekul\'{e} relations from the relations presented here; nevertheless, such a derivation must exist, by our main theorem.
 
 Further, the main theorem of this paper in particular implies that any closed spider diagram can be reduced to a scalar multiple of the empty diagram, by successive application of the given relations, but we do not have such an evaluation algorithm at this point. Such an algorithm (along with a purely diagrammatic proof that it was well-defined) would allow one to give a purely combinatorial definition of the categories $\Rep(U_q(\sl_n))$, without reference to the underlying quantum group.
 
