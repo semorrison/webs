@@ -170,6 +170,33 @@
 \tikzstyle{lower>}=[decoration={markings, mark=at position 0.2 with {\arrow{>}}}, postaction={decorate}]
 \tikzstyle{lower<}=[decoration={markings, mark=at position 0.2 with {\arrow{<}}}, postaction={decorate}]
 
+\def\Foam{{\mathcal{F}{\rm oam}}}
+\newcommand{\alt}{\wedge}
+\newcommand{\Alt}[2]{{\textstyle\bigwedge^{#1}_{#2}}}
+\newcommand{\Usl}[1]{U\sl_{#1}}
+\newcommand{\one}{1}
+\def\sA{\mathcal{A}}
+\def\l{\lambda}
+\def\bZ{{\mathbb{Z}}}
+\def\sl{{\mathfrak{sl}}}
+\def\Sp{{\mathcal{S}p}}
+\def\FSp{{\mathcal{FS}p}}
+\def\bC{{\mathbb{C}}}
+\def\g{{\mathfrak{g}}}
+\def\SL{{\rm{SL}}}
+\def\GL{{\rm{GL}}}
+\def\gl{{\mathfrak{gl}}}
+\def\dU{\dot{{\mathcal{U}}}_q}
+\def\Uq{\mathcal{U}_q}
+\def\Rep{\mathcal{R}ep}
+\def\la{\langle}
+\def\ra{\rangle}
+\def\dalg{\dot{{U}}_q}
+
+\newcommand{\ul}[1]{{\underline{#1}}}
+
+%\newcommand{\RepSL}[1]{\mathcal{R}ep(SL_{#1})}
+\newcommand{\Lad}{\mathcal{L}ad}
 
 \usepackage{environ}
 \usepackage{xargs}
@@ -177,6 +204,61 @@
 \newcommandx{\NewEnvironx}[5][2,3]{%
   \expandafter\newcommandx\csname start#1\endcsname[#2][#3]{#4}%
   \NewEnviron{#1}{\csname start#1\expandafter\endcsname\BODY #5}}
+
+\newcommand{\ladderX}{1.5}
+\newcommand{\ladderY}{1.5}
+\newcommand{\ladderR}{0.6}
+\newcommand{\laddercoordinates}[2]{
+\foreach \x in {0,...,#1} {
+	\foreach \y in {0,...,#2} {
+		\coordinate (l\x\y) at (\x * \ladderX, \y * \ladderY);
+		\coordinate (u\x\y) at ($(l\x\y)+\ladderR*(0,\ladderY)$);
+		\coordinate (d\x\y) at ($(l\x\y)+(0,\ladderY)-\ladderR*(0,\ladderY)$);
+	}
+}
+}
+\newcommand{\ladderEn}[5]{
+\draw[mid>] (l#1#2) -- (d#1#2);
+\draw[mid>] (d#1#2) -- ($(l#1#2)+(0,\ladderY)$) node[left] {#3};
+\draw[mid>] ($(l#1#2)+(\ladderX,0)$) -- ($(u#1#2)+(\ladderX,0)$);
+\draw[mid>] ($(u#1#2)+(\ladderX,0)$) -- ($(l#1#2)+(\ladderX,\ladderY)$) node[right] {#4};
+\draw[mid>] (d#1#2) --node[above]{#5} ($(u#1#2)+(\ladderX,0)$);
+}
+\newcommand{\ladderE}[4]{\ladderEn{#1}{#2}{#3}{#4}{}}
+\newcommand{\ladderFn}[5]{
+\draw[mid>] (l#1#2) -- (u#1#2);
+\draw[mid>] (u#1#2) -- ($(l#1#2)+(0,\ladderY)$) node[left] {#3};
+\draw[mid>] ($(l#1#2)+(\ladderX,0)$) -- ($(d#1#2)+(\ladderX,0)$);
+\draw[mid>] ($(d#1#2)+(\ladderX,0)$) -- ($(l#1#2)+(\ladderX,\ladderY)$) node[right] {#4};
+\draw[mid>] ($(d#1#2)+(\ladderX,0)$) --node[above]{#5} (u#1#2);
+}
+\newcommand{\ladderF}[4]{\ladderFn{#1}{#2}{#3}{#4}{}}
+\newcommand{\ladderIn}[3]{\draw[mid>] (l#1#2) -- +($#3*(0,\ladderY)$);}
+\newcommand{\ladderI}[2]{\ladderIn{#1}{#2}{1}}
+
+\NewEnvironx{ladder}[2]{%
+  \begin{tikzpicture}[baseline=13*\ladderY*#2]\laddercoordinates{#1}{#2}}
+{\end{tikzpicture}}
+
+\newcommand{\fuse}[3]{\tikz[baseline=0.5cm]{
+\coordinate (z1) at (0,0);
+\coordinate (z2) at (1,0);
+\coordinate (c) at (0.5,0.5);
+\coordinate (e) at (0.5,1);
+\draw[mid>] (z1) node[below] {$#1$} -- (c);
+\draw[mid>] (z2) node[below] {$#2$} -- (c);
+\draw[mid>] (c) -- (e) node[above] {$#3$};
+}}
+\newcommand{\fork}[3]{\tikz[baseline=0.5cm]{
+\coordinate (z1) at (0,1);
+\coordinate (z2) at (1,1);
+\coordinate (c) at (0.5,0.5);
+\coordinate (e) at (0.5,0);
+\draw[mid<] (z1) node[above] {$#1$} -- (c);
+\draw[mid<] (z2) node[above] {$#2$} -- (c);
+\draw[mid<] (c) -- (e) node[below] {$#3$};
+}}
+
 
 % example for creating tikz environments compatible with externalize
 % thanks Andrew Stacey: http://tex.stackexchange.com/a/15614/77
