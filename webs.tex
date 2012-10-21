@@ -523,7 +523,7 @@ where, to get the second equality, we use the mirror reflection of Equation \eqr
 Later, we will use Equation \eqref{eq:serre} in the proof of Proposition \ref{prop:psi}, where it will correspond to the quantum Serre relation \ref{rel:3} in $\dU(\gl_m)$.
 \end{rem}
 
-\todo{Sabin: some of the notation below is not so clear. for example, there is reference to blue arrows etc.} 
+\todo{Sabin: some of the notation below is not so clear. for example, there is reference to blue arrows etc.} \todo{Scott: the blue arrows are in the diagram, which hopefully appears now. I don't have a strong attachment to actually including this relation. I suspect it would be useful if one wanted an evaluation algorithm, but the motivation for that is under dispute anyway!}
 
 Many more local relations hold, as consequences of these. In particular \cite{0704.1503} described another classes of relations, the `Kekul\'{e}' relations:
 \begin{equation*}
@@ -535,6 +535,9 @@ We do not know a diagrammatic argument deriving the Kekul\'{e} relations from th
 Further, the main theorem of this paper in particular implies that any closed spider diagram can be reduced to a scalar multiple of the empty diagram, by successive application of the given relations, but we do not have such an evaluation algorithm at this point. Such an algorithm (along with a purely diagrammatic proof that it was well-defined) would allow one to give a purely combinatorial definition of the categories $\Rep(\SL_n)$, without reference to the underlying quantum group. 
 
 \todo{Sabin: I don't quite understand the last point above. Doesn't our paper give such a purely combinatorial definition -- the fact that you don't have an algorithm for computing things seems beside the point.}
+\todo{Scott: Suppose I just handed you these generators and relations. Could you say anything useful about it without referring to $\SL_n$? (e.g. that it is non-zero?) An evaluation algorithm would show that the tensor identity is simple. Once you've written down the braiding, this then shows you have a polynomial valued knot invariant, etc.
+An advantage of a purely combinatorial construction of the spider is that you can specialize to roots of unity much more easily; no rigmarole with tilting modules.
+}
 
 \section{Statement and proof of the main theorem}\label{sec:theorem}
 
@@ -558,8 +561,6 @@ and the conunit by
 \begin{equation}\label{counit}
 \epsilon(K_i) = 1, \ \ \ \epsilon(E_i) = 0, \ \ \ \epsilon(F_i) = 0.
 \end{equation}
-
-\todo{Sabin -- where do we use counit?}
 
 We will study the category $\Rep(\SL_n)$ whose objects are representation of $U_q(\sl_n) $ isomorphic to tensor products of the fundamental representations $\Alt{k}{q} \bC_q^n$ of $U_q(\sl_n)$.
 
@@ -1363,7 +1364,7 @@ E_1 =
 \end{tikzpicture}
 \end{equation*}
 Next, to the right of each elementary piece of the Morse decomposition of $D_2$, superimpose either a vertical $0$ strand or a vertical $n$ strand and then make the following local replacements
-\begin{align*}
+\begin{align}
 \tikz[baseline=6]{
 \draw[mid>] (-1,0.5) to[out=0,in=0] node[right] {$k$} (-1,-0.5);
 \draw[mid>, dashed] (0,-1) --node[right] {$n$} (0,1);
@@ -1387,7 +1388,8 @@ Next, to the right of each elementary piece of the Morse decomposition of $D_2$,
 \draw[mid<] (-1,0.5) --node[above] {$k$} (0,0.5);
 \draw[mid>] (-1,-0.5) --node[below] {$k$} (0,-0.5);
 }
-\displaybreak[1]\\\\
+\notag
+\displaybreak[1]\\\notag\\
 \tikz[baseline=6]{
 \draw[mid>] (2,0.5) -- (1,0.5) to[out=180,in=180] node[left] {$k$} (1,-0.5) -- (2,-0.5);
 \draw[mid>, dashed] (1.25,-1) --node[right] {$n$} (1.25,1);
@@ -1411,7 +1413,8 @@ Next, to the right of each elementary piece of the Morse decomposition of $D_2$,
 \draw[mid<] (1,0.5) --node[above] {$k$} (0,0.5);
 \draw[mid>] (1,-0.5) --node[below] {$k$} (0,-0.5);
 }
-\displaybreak[1]\\\\
+\notag
+\displaybreak[1]\\\notag\\
 \tikz[baseline=6]{
 \draw[mid>] (-1,0.5) node[left] {$k$} -- (-0.5,0);
 \draw[mid>] (-1,-0.5) node[left] {$l$}-- (-0.5,0);
@@ -1445,7 +1448,8 @@ Next, to the right of each elementary piece of the Morse decomposition of $D_2$,
 \draw[mid>] (0,0) -- (0,0.5);
 \draw[dashed,mid>] (0,0.5) -- (0,1) node[above] {0};
 }
-\displaybreak[1]\\\\
+\notag
+\displaybreak[1]\\\notag\\
 \tikz[baseline=6]{
 \draw[mid<] (-1,0.5) node[left] {$k{+}l$} -- (-0.5,0);
 \draw[mid>] (-1,-0.5) node[left] {$k$}-- (-0.5,0);
@@ -1464,22 +1468,23 @@ Next, to the right of each elementary piece of the Morse decomposition of $D_2$,
 }
 &
 \tikz[baseline=6]{
-\draw[mid>] (-1,0.5) node[left] {$k{+}l$} -- (-0.5,0);
-\draw[mid<] (-1,-0.5) node[left] {$k$}-- (-0.5,0);
+\draw[mid<] (-1,0.5) node[left] {$k$} -- (-0.5,0);
+\draw[mid>] (-1,-0.5) node[left] {$k{+}l$}-- (-0.5,0);
 \draw[upper>] (-0.5,0) -- (1,0) node[right] {$l$};
-\draw[dashed,lower>] (0,-1) node[below] {$n$} -- (0,1) node[above] {$n$};
+\draw[dashed,lower>] (0,-1) node[below] {0} -- (0,1) node[above] {0};
 }
 & \mapsto
 \tikz[baseline=6]{
-\draw[mid<] (-1,-0.5) node[left] {$k$} -- (0,-0.5);
-\draw[mid>] (-1,0.5) node[left] {$k{+}l$} -- (0,0.5);
+\draw[mid>] (-1,-0.5) node[left] {$k{+}l$} -- (0,-0.5);
+\draw[mid<] (-1,0.5) node[left] {$k$} -- (0,0.5);
 \draw[mid>] (0,0) -- (1,0) node[right] {$l$} ;
-\draw[dashed,mid>] (0,-1) node[below] {$n$} -- (0,-0.5);
+\draw[dashed,mid>] (0,-1) node[below] {0} -- (0,-0.5);
 \draw[mid>] (0,-0.5) -- (0,0);
 \draw[mid>] (0,0) -- (0,0.5);
-\draw[dashed,mid>] (0,0.5) -- (0,1) node[above] {$n$};
+\draw[dashed,mid>] (0,0.5) -- (0,1) node[above] {0};
 }
-\displaybreak[1]\\\\
+\notag
+\displaybreak[1]\\\notag\\
 \tikz[baseline=6]{
 \draw[mid>] (-1,0.5) node[left] {$k$} -- (-0.5,0);
 \draw[mid<] (-1,-0.5) node[left] {$k{+}l$}-- (-0.5,0);
@@ -1498,22 +1503,23 @@ Next, to the right of each elementary piece of the Morse decomposition of $D_2$,
 }
 &
 \tikz[baseline=6]{
-\draw[mid<] (-1,0.5) node[left] {$k$} -- (-0.5,0);
-\draw[mid>] (-1,-0.5) node[left] {$k{+}l$}-- (-0.5,0);
+\draw[mid>] (-1,0.5) node[left] {$k{+}l$} -- (-0.5,0);
+\draw[mid<] (-1,-0.5) node[left] {$k$}-- (-0.5,0);
 \draw[upper>] (-0.5,0) -- (1,0) node[right] {$l$};
-\draw[dashed,lower>] (0,-1) node[below] {0} -- (0,1) node[above] {0};
+\draw[dashed,lower>] (0,-1) node[below] {$n$} -- (0,1) node[above] {$n$};
 }
 & \mapsto
 \tikz[baseline=6]{
-\draw[mid>] (-1,-0.5) node[left] {$k{+}l$} -- (0,-0.5);
-\draw[mid<] (-1,0.5) node[left] {$k$} -- (0,0.5);
+\draw[mid<] (-1,-0.5) node[left] {$k$} -- (0,-0.5);
+\draw[mid>] (-1,0.5) node[left] {$k{+}l$} -- (0,0.5);
 \draw[mid>] (0,0) -- (1,0) node[right] {$l$} ;
-\draw[dashed,mid>] (0,-1) node[below] {0} -- (0,-0.5);
+\draw[dashed,mid>] (0,-1) node[below] {$n$} -- (0,-0.5);
 \draw[mid>] (0,-0.5) -- (0,0);
 \draw[mid>] (0,0) -- (0,0.5);
-\draw[dashed,mid>] (0,0.5) -- (0,1) node[above] {0};
+\draw[dashed,mid>] (0,0.5) -- (0,1) node[above] {$n$};
 }
-\end{align*}
+\label{eq:n-right-of-trivalent}
+\end{align}
 and then finally replacing each other instance where a superimposed strand crosses a horizontal strand of $D_2$ as follows
 \begin{align*}
 \tikz[baseline=6]{
@@ -1542,7 +1548,7 @@ and then finally replacing each other instance where a superimposed strand cross
 \draw[mid<] (0,-0.2) --node[below] {$k$} (1,-0.2);
 \draw[mid>,dashed]  (0,-1) -- (0,-0.2);
 \draw[dashed] (0,0.2) --node[right] {0} (0,1);
-} \displaybreak[1] \\\\
+} \displaybreak[1] \\\notag\\
 \tikz[baseline=6]{
 \draw[mid>] (-1,0) -- (0,0);
 \draw (0,0) --node[below] {$k$} (1,0);
@@ -1571,7 +1577,7 @@ and then finally replacing each other instance where a superimposed strand cross
 \draw[mid>,dashed] (0,0.3) --node[right] {$n$} (0,1);
 }
 \end{align*}
-to obtain $E_2$. Now one can check that $E_2$ is in fact equal to $D_2$, using only a few relations from the spider. In particular, for each of the replacements above involving a $0$ strand, when we delete the $0$ strands we see that nothing has changed. In the replacements involving an $n$ strand but no trivalent vertices, after removing the $n$-strands and replacing their endpoints with tags, we find we can cancel the tags according to Equation \eqref{eq:cancel-tags}. Finally, in the replacements involving an $n$ strand to the right of a trivalent vertex, we need to use Equation \eqref{eq:tag-migration} to move one tag past the trivalent vertex, and then Equation \eqref{eq:cancel-tags} to cancel them. \todo{Is it sufficiently confusing which replacements are being talked about here that I should number them? --Scott}
+to obtain $E_2$. Now one can check that $E_2$ is in fact equal to $D_2$, using only a few relations from the spider. In particular, for each of the replacements above involving a $0$ strand, when we delete the $0$ strands we see that nothing has changed. In the replacements involving an $n$ strand but no trivalent vertices, after removing the $n$-strands and replacing their endpoints with tags, we find we can cancel the tags according to Equation \eqref{eq:cancel-tags}. Finally, in the replacements involving an $n$ strand to the right of a trivalent vertex (those in \eqref{eq:n-right-of-trivalent}), we need to use Equation \eqref{eq:tag-migration} to move one tag past the trivalent vertex, and then Equation \eqref{eq:cancel-tags} to cancel them. 
 
 In each of the local replacements used to form $E_2$ the new diagram consists of part of an upright of the ladder, along with several `half-rungs'. It is easy to see that all of these half-rungs come in matching pairs forming complete rungs, except at the left margin of $E_2$. Similarly, $E_1$ is a ladder except that it has half-rungs along its right margin. The horizontal juxtaposition $E_1 E_2$ is then a ladder.
 Since $D$ is equivalent in $\Sp(\SL_n)$ to $E_1 E_2$, we are finished.
