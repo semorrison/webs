@@ -1,0 +1,64 @@
+\newcommand{\noopsort}[1]{}\def\cprime{$'$} \def\cprime{$'$} \def\cprime{$'$}
+\begin{thebibliography}{MPT12}
+
+\bibitem[BZ08]{BZ}
+Arkady Berenstein and Sebastian Zwicknagl.
+\newblock Braided symmetric and exterior algebras.
+\newblock {\em Trans. Amer. Math. Soc.}, 360(7):3429--3472, 2008.
+\newblock \mathscinet{MR2386232} \doi{10.1090/S0002-9947-08-04373-0}
+  \arxiv{math/0504155}.
+
+\bibitem[Kho04]{MR2100691}
+Mikhail Khovanov.
+\newblock sl(3) link homology.
+\newblock {\em Algebr. Geom. Topol.}, 4:1045--1081, 2004.
+\newblock \arxiv{math.QA/0304375} \mathscinet{MR2100691}
+  \doi{10.2140/agt.2004.4.1045}.
+
+\bibitem[Kim03]{math.QA/0310143}
+Dongseok Kim.
+\newblock Graphical calculus on representations of quantum lie algebras, 2003.
+\newblock {P}h. {D}. thesis, University of California, Davis
+  \arxiv{math.QA/0310143}.
+
+\bibitem[KL10]{MR2628852}
+Mikhail Khovanov and Aaron~D. Lauda.
+\newblock A categorification of quantum {${\rm sl}(n)$}.
+\newblock {\em Quantum Topol.}, 1(1):1--92, 2010.
+\newblock \mathscinet{MR2628852} \doi{10.4171/QT/1} \arxiv{0807.3250}.
+
+\bibitem[Kup96]{MR1403861}
+Greg Kuperberg.
+\newblock Spiders for rank {$2$} {L}ie algebras.
+\newblock {\em Comm. Math. Phys.}, 180(1):109--151, 1996.
+\newblock \mathscinet{MR1403861} \arxiv{q-alg/9712003}
+  \euclid{euclid.cmp/1104287237}.
+
+\bibitem[LRQ]{LRQ}
+Aaron Lauda, David Rose, and Hoel Queffelec.
+\newblock in preparation.
+
+\bibitem[Mor07]{0704.1503}
+Scott Morrison.
+\newblock {\em A Diagrammatic Category for the Representation Theory of
+  $U_q\left(\mathfrak{sl}_n\right)$}.
+\newblock PhD thesis, University of California, Berkeley, 2007.
+\newblock \arxiv{0704.1503}.
+
+\bibitem[MPT12]{1206.2118}
+Marco Mackaay, Weiwei Pan, and Daniel Tubbenhauer.
+\newblock The $\mathfrak{sl}_3$ web algebra, 2012.
+\newblock \arxiv{1206.2118}.
+
+\bibitem[MSV07]{0708.2228}
+Marco Mackaay, Marko Stosic, and Pedro Vaz.
+\newblock {SL(N)} link homology using foams and the {K}apustin-{L}i formula,
+  2007.
+\newblock \arxiv{0708.2228}.
+
+\bibitem[Rou08]{0812.5023}
+Rapha\"{e}l Rouquier.
+\newblock {$2$-Kac-Moody} algebras, 2008.
+\newblock \arxiv{0812.5023}.
+
+\end{thebibliography}
