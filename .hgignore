@@ -12,7 +12,6 @@ syntax: glob
 *.nav
 *.snm
 *.auxlock
-diagrams/externalized/
 sandbox.pdf
 
 # Dropbox
@@ -23,6 +22,7 @@ Icon*
 webs.pdf
 webs.dvi
 *.bak
+webs.tar.gz
 
 # bibliograph stuff
 *.blg
