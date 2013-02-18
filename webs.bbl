@@ -1,4 +1,4 @@
-\newcommand{\noopsort}[1]{}\def\cprime{$'$} \def\cprime{$'$} \def\cprime{$'$}
+\newcommand{\noopsort}[1]{}\def\cprime{$'$} \def\cprime{$'$}
 \begin{thebibliography}{MPT12}
 
 \bibitem[BZ08]{BZ}
@@ -7,6 +7,21 @@ Arkady Berenstein and Sebastian Zwicknagl.
 \newblock {\em Trans. Amer. Math. Soc.}, 360(7):3429--3472, 2008.
 \newblock \mathscinet{MR2386232} \doi{10.1090/S0002-9947-08-04373-0}
   \arxiv{math/0504155}.
+
+\bibitem[CKL10]{MR2593278}
+Sabin Cautis, Joel Kamnitzer, and Anthony Licata.
+\newblock Categorical geometric skew {H}owe duality.
+\newblock {\em Invent. Math.}, 180(1):111--159, 2010.
+\newblock \arxiv{0902.1795} \mathscinet{MR2593278}
+  \doi{10.1007/s00222-009-0227-1}.
+
+\bibitem[CR08]{MR2373155}
+Joseph Chuang and Rapha{\"e}l Rouquier.
+\newblock Derived equivalences for symmetric groups and {$\germ
+  {sl}_2$}-categorification.
+\newblock {\em Ann. of Math. (2)}, 167(1):245--298, 2008.
+\newblock \arxiv{math/0407205} \mathscinet{MR2373155}
+  \doi{10.4007/annals.2008.167.245}.
 
 \bibitem[Kho04]{MR2100691}
 Mikhail Khovanov.
@@ -34,9 +49,18 @@ Greg Kuperberg.
 \newblock \mathscinet{MR1403861} \arxiv{q-alg/9712003}
   \euclid{euclid.cmp/1104287237}.
 
-\bibitem[LRQ]{LRQ}
+\bibitem[LRQ]{1212.6076}
 Aaron Lauda, David Rose, and Hoel Queffelec.
-\newblock in preparation.
+\newblock {K}hovanov homology is a skew {H}owe $2$-representation of
+  categorified quantum $\mathfrak{sl}_m$.
+\newblock \arxiv{1212.6076}.
+
+\bibitem[Lus93]{MR1227098}
+George Lusztig.
+\newblock {\em Introduction to quantum groups}, volume 110 of {\em Progress in
+  Mathematics}.
+\newblock Birkh\"auser Boston Inc., Boston, MA, 1993.
+\newblock \mathscinet{MR1227098} \doi{10.1007/978-0-8176-4717-9}.
 
 \bibitem[Mor07]{0704.1503}
 Scott Morrison.
@@ -60,5 +84,12 @@ Marco Mackaay, Marko Stosic, and Pedro Vaz.
 Rapha\"{e}l Rouquier.
 \newblock {$2$-Kac-Moody} algebras, 2008.
 \newblock \arxiv{0812.5023}.
+
+\bibitem[TL02]{MR1896470}
+Valerio Toledano~Laredo.
+\newblock A {K}ohno-{D}rinfeld theorem for quantum {W}eyl groups.
+\newblock {\em Duke Math. J.}, 112(3):421--451, 2002.
+\newblock \arxiv{math/0009181} \mathscinet{MR1896470}
+  \doi{10.1215/S0012-9074-02-11232-0}.
 
 \end{thebibliography}
