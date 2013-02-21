@@ -23,6 +23,20 @@ Joseph Chuang and Rapha{\"e}l Rouquier.
 \newblock \arxiv{math/0407205} \mathscinet{MR2373155}
   \doi{10.4007/annals.2008.167.245}.
 
+\bibitem[How89]{MR986027}
+Roger Howe.
+\newblock Remarks on classical invariant theory.
+\newblock {\em Trans. Amer. Math. Soc.}, 313(2):539--570, 1989.
+\newblock \mathscinet{MR986027} \doi{10.2307/2001418}.
+
+\bibitem[How95]{MR1321638}
+Roger Howe.
+\newblock Perspectives on invariant theory: {S}chur duality, multiplicity-free
+  actions and beyond.
+\newblock In {\em The {S}chur lectures (1992) ({T}el {A}viv)}, volume~8 of {\em
+  Israel Math. Conf. Proc.}, pages 1--182. Bar-Ilan Univ., Ramat Gan, 1995.
+\newblock \mathscinet{MR1321638}.
+
 \bibitem[JK12]{math/0506403}
 Myeong-Ju Jeong and Dongseok Kim.
 \newblock The quantum $\mathfrak{sl}(n,\mathbb{C})$ representation theory and
