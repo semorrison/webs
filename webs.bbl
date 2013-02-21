@@ -1,5 +1,5 @@
 \newcommand{\noopsort}[1]{}\def\cprime{$'$} \def\cprime{$'$}
-\begin{thebibliography}{MPT12}
+\begin{thebibliography}{MOY98}
 
 \bibitem[BZ08]{BZ}
 Arkady Berenstein and Sebastian Zwicknagl.
@@ -22,6 +22,15 @@ Joseph Chuang and Rapha{\"e}l Rouquier.
 \newblock {\em Ann. of Math. (2)}, 167(1):245--298, 2008.
 \newblock \arxiv{math/0407205} \mathscinet{MR2373155}
   \doi{10.4007/annals.2008.167.245}.
+
+\bibitem[JK12]{math/0506403}
+Myeong-Ju Jeong and Dongseok Kim.
+\newblock The quantum $\mathfrak{sl}(n,\mathbb{C})$ representation theory and
+  its applications.
+\newblock {\em Journal of the Korean Mathematical Society}, 49(5):993--1015,
+  2012.
+\newblock \arxiv{math/0506403}
+  \doi{http://dx.doi.org/10.4134/JKMS.2012.49.5.993}.
 
 \bibitem[Kho04]{MR2100691}
 Mikhail Khovanov.
@@ -68,6 +77,12 @@ Scott Morrison.
   $U_q\left(\mathfrak{sl}_n\right)$}.
 \newblock PhD thesis, University of California, Berkeley, 2007.
 \newblock \arxiv{0704.1503}.
+
+\bibitem[MOY98]{MR1659228}
+Hitoshi Murakami, Tomotada Ohtsuki, and Shuji Yamada.
+\newblock Homfly polynomial via an invariant of colored plane graphs.
+\newblock {\em Enseign. Math. (2)}, 44(3-4):325--360, 1998.
+\newblock \mathscinet{MR1659228}.
 
 \bibitem[MPT12]{1206.2118}
 Marco Mackaay, Weiwei Pan, and Daniel Tubbenhauer.
