@@ -1645,7 +1645,7 @@ T''_{i,-1} \one_{\ul{k}} = \sum_{a, b, c \ge 0, -a +b -c = k_i - k_{i+1}} (-1)^b
 \end{equation}
 Note that these sums are actually finite since we are working in the truncation $ \dU^n(\gl_m) $.
 
-The summation in \ref{eq:temp3} above when $c \ne 0$ is actually equal to zero. This can be shown by a direct calculation -- namely by commuting the $F_i^{(b)}$ past the $E_i^{(a)}$ or $E_i^{(c)}$ and simplifying. As a result you end up with the simplified expression
+The summation in \ref{eq:temp3} above when $c \ne 0$ is actually equal to zero. This can be shown by a direct calculation -- namely by commuting the $F_i^{(b)}$ past the $E_i^{(a)}$ or $E_i^{(c)}$ and simplifying. As a result you end up with the simplified expression \todo{hanging sentence here?}
 
 Lusztig's elements admit the following simplified form, a fact which seems to have been first observed by Chuang-Rouquier \cite{MR2373155} when $ q = 1 $.
 \begin{lem} \label{le:singlesum}
@@ -1761,7 +1761,14 @@ Using the form for $ T''_{1,-1} $ given in Lemma \ref{le:singlesum}, we can tran
 \begin{cor}
 The braiding $ \beta_{\Alt{k}{q} \mathbb C_q^n, \Alt{l}{q} \mathbb C_q^n } $ is given by the following sum of webs
 
-\todo{SCOTT: we need some diagrams here.}
+$$ (-1)^{k+kl} q^{k-\frac{kl}{n}} \sum_{\substack{a,b\geq 0 \\ b-a = k-l}} (-q)^{-b}
+\begin{tikzpicture}[baseline=40]
+\laddercoordinates{1}{2}
+\node[left] at (l00) {$k$};
+\node[right] at (l10) {$l$};
+\ladderEn{0}{0}{$k{-}b$}{$l{+}b$}{$b$}
+\ladderFn{0}{1}{$l$}{$k$}{$a$}
+\end{tikzpicture} $$
 \end{cor}
 
 % ----------------------------------------------------------------
