@@ -1654,7 +1654,7 @@ $T''_{i,-1} \one_{\ul{k}} = \sum_{a, b \ge 0, -a +b = k_i - k_{i+1}} (-q)^{-b} E
 \begin{proof}
 By the definition of $ T''_{i,-1}$, we must show that 
 $$\sum_{a, b, c \ge 0, -a +b -c = k_i - k_{i+1}, c > 0 } (-1)^b q^{ac - b} E_i^{(a)} F_i^{(b)} E_i^{(c)} \one_{\ul{k}} = 0 $$
-This is easily proven by direct calculation starting with the usual commutation relation $ (E_i F_i - F_i E_i)\one_{\ul{k}} = k_i - k_{i+1} $.
+This is easily proven by direct calculation starting with the usual commutation relation $ (E_i F_i - F_i E_i)\one_{\ul{k}} = [k_i]_q - [k_{i+1}]_q $.
 \end{proof}
 
 We will need the following modification of Lusztig's definition in order to later match with the braiding on $ \Rep(\SL_n) $,
@@ -1677,7 +1677,7 @@ $$ w(i) = \begin{cases} p + i \ \ & \text{ if } i \le m  \\
  $$
 
 \begin{lem} \label{le:natural}
-$\beta $ is a natural transformation $\bigotimes \to \bigotimes^{\text{op}}$.
+$\beta $ is a natural transformation from the bifunctor $- \bigotimes -$ to the bifunctor $- \bigotimes^{\text{op}} -$.
 \end{lem}
 
 \begin{proof}
@@ -1709,7 +1709,7 @@ The functor $ \Phi^n: \dU^n(\gl_\bullet) \rightarrow \Rep(\SL_n) $ is a functor 
 \end{thm}
 
 \begin{proof}
-Clearly, $\Phi^n$ is a tensor functor.  So we need to show that $ \Phi^n $ carries the braiding in $ \dU^n(\gl_\bullet) $ to the braiding in $\Rep(\SL_n) $.  By the hexagon equation (\ref{eq:hex}), it suffices to prove that if $ 0 \le k, l \le m $ then $$ \Phi^n(\beta_{k, l}) = \beta_{\Alt{k}{q} \mathbb C_q^n, \Alt{l}{q} \mathbb C_q^n}. $$
+Clearly, $\Phi^n$ is a tensor functor.  So we need to show that $ \Phi^n $ carries the braiding in $ \dU^n(\gl_\bullet) $ to the braiding in $\Rep(\SL_n) $.  By the hexagon equation (\ref{eq:hex}), it suffices to prove that if $ 0 \le k, l \le m $ then $$ \Phi^n(\beta_{k, l}) = \beta_{\alt^{k}_{q} \mathbb C_q^n, \alt^{l}_{q} \mathbb C_q^n}. $$
 
 First we claim that when $ k_i = 0 $ or $ k_{i+1} = 0 $, then $ \Phi^n(T_i \one_{\ul{k}}) $ is the identity.  To see this recall that Lusztig proved (Proposition 5.2.2(b) in \cite{MR1227098}) that if $ F_i v = 0 $ and $ H_i v = -r v $, then $ T''_{i,-1}(v) = E^{(r)} v $.  On the other hand, Lusztig proved that (same Proposition), that if $ E_i v = 0 $ and $H_i v = rv $, then $ T''_{i,-1}(v) = (-1)^r q^{-r} F^{(r)} v $.  From this it follows that $ T_i \one_{\ul{k}} = E^{(k_{i+1})} \one_{\ul{k}} $ if $ k_i = 0 $ and $ T_i \one_{\ul{k}} = F^{(k_i)} $ if $ k_{i+1} = 0 $.  Thus the claim follows.
 
@@ -1732,7 +1732,7 @@ $$
 $$
 On the other hand, by the naturality of the braiding in $\Rep(\SL_n)$, we have that
 $$
- \beta_{(\mathbb C_q^n)^{\otimes k}, (\mathbb C_q^n)^{\otimes l}} \circ \Phi^n(\phi) \otimes \Phi^n(\psi) = \Phi^n(\psi) \otimes \Phi^n(\phi) \circ \beta_{\Alt{k}{q} \mathbb C_q^n, \Alt{l}{q} \mathbb C_q^n}
+ \beta_{(\mathbb C_q^n)^{\otimes k}, (\mathbb C_q^n)^{\otimes l}} \circ \Phi^n(\phi) \otimes \Phi^n(\psi) = \Phi^n(\psi) \otimes \Phi^n(\phi) \circ \beta_{\alt^{k}_{q} \mathbb C_q^n, \alt^{l}_{q} \mathbb C_q^n}
 $$
 Thus the injectivity of $ \Phi^n(\psi) \otimes \Phi^n(\phi)$ implies the desired result.
 \end{proof}
@@ -1759,7 +1759,7 @@ From the above computation of $ T''_{1,-1} $ we see that $ \beta_{1,1} $ acts by
 
 Using the form for $ T''_{1,-1} $ given in Lemma \ref{le:singlesum}, we can translate Theorem \ref{th:braiding} to the language of webs as follows.
 \begin{cor}
-The braiding $ \beta_{\Alt{k}{q} \mathbb C_q^n, \Alt{l}{q} \mathbb C_q^n } $ is given by the following sum of webs
+The braiding $ \beta_{\alt^{k}_{q} \mathbb C_q^n, \alt^{l}_{q} \mathbb C_q^n } $ is given by the following sum of webs
 
 $$ (-1)^{k+kl} q^{k-\frac{kl}{n}} \sum_{\substack{a,b\geq 0 \\ b-a = k-l}} (-q)^{-b}
 \begin{tikzpicture}[baseline=40]
