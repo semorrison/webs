@@ -21,7 +21,7 @@
         <delete file="${arxivTarFile}"/>
         <delete file="${arxivTarFile}.gz"/>
         <tar destfile="${arxivTarFile}" basedir="." includes="**"
-            excludes="*.synctex*,*.dvi,*.ps,blob1.pdf,*.png,${arxivTarFile},${arxivTarFile}.gz,sandbox.*,bibliography/**,papers/**,talks/**,.hg/**,versions/**,TODO,referee/**,copyright/**"
+            excludes="*.synctex*,*.dvi,*.ps,webs.pdf,*.png,${arxivTarFile},${arxivTarFile}.gz,sandbox.*,bibliography/**,papers/**,talks/**,.hg/**,versions/**,TODO,referee/**,copyright/**,code/**,Icon*,.hg*,versions/**,.dropbox"
         />
         <gzip src="${arxivTarFile}" destfile="${arxivTarFile}.gz"/>
         <delete file="${arxivTarFile}"/>
