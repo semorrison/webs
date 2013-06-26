@@ -23,6 +23,7 @@ webs.pdf
 webs.dvi
 *.bak
 webs.tar.gz
+Report*.pdf
 
 # bibliograph stuff
 *.blg
