@@ -129,6 +129,13 @@ Rapha\"{e}l Rouquier.
 \newblock {$2$-Kac-Moody} algebras, 2008.
 \newblock \arxiv{0812.5023}.
 
+\bibitem[Sik05]{MR2171796}
+Adam~S. Sikora.
+\newblock Skein theory for {${\rm SU}(n)$}-quantum invariants.
+\newblock {\em Algebr. Geom. Topol.}, 5:865--897 (electronic), 2005.
+\newblock \arxiv{math.QA/0407299} \mathscinet{MR2171796}
+  \doi{10.2140/agt.2005.5.865}.
+
 \bibitem[TL02]{MR1896470}
 Valerio Toledano~Laredo.
 \newblock A {K}ohno-{D}rinfeld theorem for quantum {W}eyl groups.
