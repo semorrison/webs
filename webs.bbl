@@ -5,8 +5,8 @@
 Arkady Berenstein and Sebastian Zwicknagl.
 \newblock Braided symmetric and exterior algebras.
 \newblock {\em Trans. Amer. Math. Soc.}, 360(7):3429--3472, 2008.
-\newblock \mathscinet{MR2386232} \doi{10.1090/S0002-9947-08-04373-0}
-  \arxiv{math/0504155}.
+\newblock \arxiv{math/0504155} \mathscinet{MR2386232}
+  \doi{10.1090/S0002-9947-08-04373-0}.
 
 \bibitem[CKL10]{MR2593278}
 Sabin Cautis, Joel Kamnitzer, and Anthony Licata.
@@ -23,10 +23,17 @@ Joseph Chuang and Rapha{\"e}l Rouquier.
 \newblock \arxiv{math/0407205} \mathscinet{MR2373155}
   \doi{10.4007/annals.2008.167.245}.
 
+\bibitem[Dot03]{MR1990659}
+Stephen Doty.
+\newblock Presenting generalized {$q$}-{S}chur algebras.
+\newblock {\em Represent. Theory}, 7:196--213 (electronic), 2003.
+\newblock \arxiv{math/0305208} \mathscinet{MR1990659}
+  \doi{10.1090/S1088-4165-03-00176-6}.
+
 \bibitem[Gra12]{1212.4511}
 Jonathan Grant.
-\newblock The moduli problem of lobb and zentner and the coloured sl(n) graph
-  invariant, 2012.
+\newblock The moduli problem of {Lobb} and {Zentner} and the coloured sl(n)
+  graph invariant, 2012.
 \newblock \arxiv{1212.4511}.
 
 \bibitem[How89]{MR986027}
@@ -69,13 +76,13 @@ Dongseok Kim.
 Mikhail Khovanov and Aaron~D. Lauda.
 \newblock A categorification of quantum {${\rm sl}(n)$}.
 \newblock {\em Quantum Topol.}, 1(1):1--92, 2010.
-\newblock \mathscinet{MR2628852} \doi{10.4171/QT/1} \arxiv{0807.3250}.
+\newblock \arxiv{0807.3250} \mathscinet{MR2628852} \doi{10.4171/QT/1}.
 
 \bibitem[Kup96]{MR1403861}
 Greg Kuperberg.
 \newblock Spiders for rank {$2$} {L}ie algebras.
 \newblock {\em Comm. Math. Phys.}, 180(1):109--151, 1996.
-\newblock \mathscinet{MR1403861} \arxiv{q-alg/9712003}
+\newblock \arxiv{q-alg/9712003} \mathscinet{MR1403861}
   \euclid{euclid.cmp/1104287237}.
 
 \bibitem[LRQ]{1212.6076}
@@ -109,11 +116,13 @@ Marco Mackaay, Weiwei Pan, and Daniel Tubbenhauer.
 \newblock The $\mathfrak{sl}_3$ web algebra, 2012.
 \newblock \arxiv{1206.2118}.
 
-\bibitem[MSV07]{0708.2228}
-Marco Mackaay, Marko Stosic, and Pedro Vaz.
-\newblock {SL(N)} link homology using foams and the {K}apustin-{L}i formula,
-  2007.
-\newblock \arxiv{0708.2228}.
+\bibitem[MSV09]{MR2491657}
+Marco Mackaay, Marko Sto{\v{s}}i{\'c}, and Pedro Vaz.
+\newblock {$\mathfrak{sl}(N)$}-link homology {$(N\geq 4)$} using foams and the
+  {K}apustin-{L}i formula.
+\newblock {\em Geom. Topol.}, 13(2):1075--1128, 2009.
+\newblock \mathscinet{MR2491657} \doi{10.2140/gt.2009.13.1075}
+  \arxiv{0708.2228}.
 
 \bibitem[Rou08]{0812.5023}
 Rapha\"{e}l Rouquier.
