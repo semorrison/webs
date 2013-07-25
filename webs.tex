@@ -700,14 +700,15 @@ using that $ \ell(T, S \smallsetminus T) + \ell( S \smallsetminus T, T) = |S \sm
 {\bf Relation (\ref{eq:bigon2}).} The bigon on the left hand side of (\ref{eq:bigon2}) is the composition of a cup, two trivalent vertices and a cap.  The cups and caps are taken by $ \Gamma_n $ to the canonical copairing and pairing in $ \Rep(\SL_n) $.  Thus, for $S \subset \{1,\dots,n\}$ with $|S|=k$, the composition acts on $x_S$ as follows:
 \begin{align*}
 x_S
-&\mapsto \sum_{|T|=l} x_T^\vee \otimes x_T \otimes x_S \\
-&\mapsto \sum_{|T|=l, S \cap T = \emptyset} (-q)^{\ell(T,S)} x_T^\vee \otimes x_{T \cup S} \\
-&\mapsto (-1)^{kl} \sum_{|T|=l, S \cap T = \emptyset} (-q)^{\ell(T,S)} \sum_{U \subset T \cup S} (-q)^{-\ell((T \cup S) \smallsetminus U,U)} x_T^\vee \otimes x_U \otimes x_{(T \cup S) \smallsetminus U} \\
-&\mapsto (-1)^{kl} \sum_{|T|=l, S \cap T = \emptyset} (-q)^{\ell(T,S) - \ell(S,T)} x_S \\
-&= (-1)^{kl} (-q)^{kl} \sum_{T \subset S^c} (-q)^{2\ell(T, S^c)} x_S \\
+&\mapsto q^{l(n-l)} \sum_{|T|=l} (-q)^{-2 \ell(T, T^c)} x_T^\vee \otimes x_T \otimes x_S \\
+&\mapsto q^{l(n-l)} \sum_{|T|=l, S \cap T = \emptyset} (-q)^{\ell(T,S) - 2 \ell(T, T^c)} x_T^\vee \otimes x_{T \cup S} \\
+&\mapsto (-1)^{kl} q^{l(n-l)} \sum_{|T|=l, S \cap T = \emptyset} (-q)^{\ell(T,S) - 2 \ell(T, T^c)} \sum_{U \subset T \cup S} (-q)^{-\ell((T \cup S) \smallsetminus U,U)} x_T^\vee \otimes x_U \otimes x_{(T \cup S) \smallsetminus U} \\
+&\mapsto (-1)^{kl} q^{l(n-l)} \sum_{|T|=l, S \cap T = \emptyset} (-q)^{\ell(T,S) - \ell(S,T) - 2 \ell(T, T^c) } x_S \\
+&= (-1)^{kl} q^{l(n-l)} \sum_{|T|=l, S \cap T = \emptyset} (-q)^{-\ell(T,S) - \ell(S,T) - 2 \ell(T,T^c \smallsetminus S)} x_S \\
+&= q^{l(n-l-k)} \sum_{T \subset S^c} q^{-2\ell(T, T^c \smallsetminus S)} x_S \\
 &= \qBinomial{n-k}{l} x_S
 \end{align*}
-where we write $S^c := \{1, \dots, n\} \smallsetminus S$ and, to obtain the fourth line, we use that $x_T^\vee \otimes x_U \mapsto \delta_{T,U}$. (Here $ x_T^\vee $ denotes an element in the dual basis of $ (\Alt{\bullet}{q}(\bC^n_q))^* $.) The result follows.  
+where we write $S^c$ and $T^c$ for the complements of $S$ and $T$ in $\{1, \dots, n\}$. Note that to obtain the first and fourth line we use the description of the cup and cap obtained by combining a trivalent vertex with tags. In particular, the cap in the fourth line is given by $x_T^\vee \otimes x_U \mapsto \delta_{T,U}$ where $ x_T^\vee $ denotes an element in the dual basis of $ (\Alt{\bullet}{q}(\bC^n_q))^* $. The result follows.  
 
 {\bf Relation (\ref{eq:IH}).}  This follows immediately from the fact that $ \Alt{\bullet}{q}(\bC^n_q) $ forms an associative algebra (it is a quotient of a tensor algebra) and the arrow reversal follows from the fact that it forms a coassociative coalgebra (Lemma \ref{le:coalg}).
 
@@ -791,17 +792,17 @@ Finally, relation (\ref{eq:switch}) is straightforward while the proof of relati
 \begin{lem}\label{lem:binom}
 For any $n \ge k \in {\mathbb N}$ we have
 \begin{equation}\label{eq:binom}
-\qBinomial{n}{k} = q^{-k(n-k)} \sum_{S \subset T, |S|=k} q^{2 \ell(S, T \smallsetminus S)}
+\qBinomial{n}{k} = q^{-k(n-k)} \sum_{S \subset T, |S|=k} q^{2 \ell(S, T \smallsetminus S)} = q^{k(n-k)} \sum_{S \subset T, |S|=k} q^{-2 \ell(S, T \smallsetminus S)}
 \end{equation}
 where $T = \{1, \dots, n\}$.
 \end{lem}
 \begin{proof}
-The proof is by induction on $n$. It is an elementary exercise to show that the left hand side of (\ref{eq:binom} satisfies the recursion relation
+We prove the first equality as the second follows in the same way. The proof is by induction on $n$. It is an elementary exercise to show that the left hand side of (\ref{eq:binom} satisfies the recursion relation
 $$\qBinomial{n}{k} = q^k \qBinomial{n-1}{k} + q^{-n+k} \qBinomial{n-1}{k-1}.$$
 It remains to show that the right hand side of (\ref{eq:binom}) also satisfies this recursion. To do this we break up the sum into two depending on whether $n \in S$. We have
-$$q^{-k(n-k)} \sum_{S \subset T, |S|=k, n \not\in S} q^{2 \ell(S, T \smallsetminus S}) = q^{-k(n-k)} q^{2k} \sum_{S \subset T \smallsetminus n, |S|=k} = q^k \qBinomial{n-1}{k}$$
+$$q^{-k(n-k)} \sum_{S \subset T, |S|=k, n \not\in S} q^{2 \ell(S, T \smallsetminus S)} = q^{-k(n-k)} q^{2k} \sum_{S \subset T \smallsetminus n, |S|=k} = q^k \qBinomial{n-1}{k}$$
 where the last equality follows by induction. Similarly one finds that
-$$q^{-k(n-k)} \sum_{S \subset T, |S|=k, n \in S} q^{2 \ell(S, T \smallsetminus S}) = q^{-k(n-k)} \sum_{S \smallsetminus n \subset T \smallsetminus n, |S \smallsetminus n| = k-1} q^{2 \ell(S \smallsetminus n, T \smallsetminus S}) = q^{-n+k} \qBinomial{n-1}{k-1}$$
+$$q^{-k(n-k)} \sum_{S \subset T, |S|=k, n \in S} q^{2 \ell(S, T \smallsetminus S)} = q^{-k(n-k)} \sum_{S \smallsetminus n \subset T \smallsetminus n, |S \smallsetminus n| = k-1} q^{2 \ell(S \smallsetminus n, T \smallsetminus S)} = q^{-n+k} \qBinomial{n-1}{k-1}$$
 The result follows by induction.
 \end{proof}
 
