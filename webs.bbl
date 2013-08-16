@@ -111,6 +111,12 @@ Hitoshi Murakami, Tomotada Ohtsuki, and Shuji Yamada.
 \newblock {\em Enseign. Math. (2)}, 44(3-4):325--360, 1998.
 \newblock \mathscinet{MR1659228}.
 
+\bibitem[MPS11]{MR2783128}
+Scott Morrison, Emily Peters, and Noah Snyder.
+\newblock Knot polynomial identities and quantum group coincidences.
+\newblock {\em Quantum Topol.}, 2(2):101--156, 2011.
+\newblock \doi{10.4171/QT/16} \mathscinet{MR2783128} \arxiv{1003.0022}.
+
 \bibitem[MPT12]{1206.2118}
 Marco Mackaay, Weiwei Pan, and Daniel Tubbenhauer.
 \newblock The $\mathfrak{sl}_3$ web algebra, 2012.
