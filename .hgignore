@@ -12,6 +12,7 @@ syntax: glob
 *.nav
 *.snm
 *.auxlock
+*.fdb_latexmk
 sandbox.pdf
 
 # Dropbox
