@@ -803,12 +803,12 @@ For any $n \ge k \in {\mathbb N}$ we have
 where $T = \{1, \dots, n\}$.
 \end{lem}
 \begin{proof}
-We prove the first equality as the second follows in the same way. The proof is by induction on $n$. It is an elementary exercise to show that the left hand side of (\ref{eq:binom} satisfies the recursion relation
+We prove the first equality as the second follows in the same way. The proof is by induction on $n$. It is an elementary exercise to show that the left hand side of \eqref{eq:binom} satisfies the recursion relation
 $$\qBinomial{n}{k} = q^k \qBinomial{n-1}{k} + q^{-n+k} \qBinomial{n-1}{k-1}.$$
 It remains to show that the right hand side of (\ref{eq:binom}) also satisfies this recursion. To do this we break up the sum into two depending on whether $n \in S$. We have
-$$q^{-k(n-k)} \sum_{S \subset T, |S|=k, n \not\in S} q^{2 \ell(S, T \smallsetminus S)} = q^{-k(n-k)} q^{2k} \sum_{S \subset T \smallsetminus n, |S|=k} = q^k \qBinomial{n-1}{k}$$
+$$q^{-k(n-k)} \sum_{\substack{S \subset T \\ |S|=k, n \not\in S}} q^{2 \ell(S, T \smallsetminus S)} = q^{-k(n-k)} q^{2k} \sum_{\substack{S \subset T \smallsetminus n \\ |S|=k} q^{2\ell(S,(T\setminus n)\setminus S)}} = q^k \qBinomial{n-1}{k}$$
 where the last equality follows by induction. Similarly one finds that
-$$q^{-k(n-k)} \sum_{S \subset T, |S|=k, n \in S} q^{2 \ell(S, T \smallsetminus S)} = q^{-k(n-k)} \sum_{S \smallsetminus n \subset T \smallsetminus n, |S \smallsetminus n| = k-1} q^{2 \ell(S \smallsetminus n, T \smallsetminus S)} = q^{-n+k} \qBinomial{n-1}{k-1}$$
+$$q^{-k(n-k)} \sum_{\substack{S \subset T \\ |S|=k, n \in S}} q^{2 \ell(S, T \smallsetminus S)} = q^{-k(n-k)} \sum_{\substack{S \smallsetminus n \subset T \smallsetminus n \\ |S \smallsetminus n| = k-1}} q^{2 \ell(S \smallsetminus n, T \smallsetminus S)} = q^{-n+k} \qBinomial{n-1}{k-1}$$
 The result follows by induction.
 \end{proof}
 
