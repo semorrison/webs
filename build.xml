@@ -17,7 +17,7 @@
         </delete>
     </target>
 
-    <target name="arxiv" depends="clean">
+    <target name="arxiv" depends="pdf">
         <delete file="${arxivTarFile}"/>
         <delete file="${arxivTarFile}.gz"/>
         <tar destfile="${arxivTarFile}" basedir="." includes="**"
