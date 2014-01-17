@@ -26,6 +26,9 @@ webs.dvi
 webs.tar.gz
 Report*.pdf
 
+emails
+sandbox.tex
+
 # bibliograph stuff
 *.blg
 bibliography
