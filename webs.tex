@@ -148,7 +148,7 @@ The braided monoidal category structure on $\Rep(\SL_n) $ leads to quantum knot 
 \vspace{.5cm}
 
 \noindent {\bf Acknowledgments:}
-The authors benefited from discussions with Arkady Berenstein, Bruce Fontaine, Stavros Garoufalidis, Greg Kuperberg, Valerio Toledano Laredo and Sebastian Zwicknagl. S.C. was supported by NSF grant DMS-1101439 and the Alfred P. Sloan foundation, S.M. was supported by the Australian Research Council grant DE120100232 and by DOD-DARPA HR0011-12-1-0009, J.K. was supported by NSERC.  We would also like to thank VIA Rail for providing the venue where much of this research was carried out.
+The authors benefited from discussions with Arkady Berenstein, Bruce Fontaine, Stavros Garoufalidis, Greg Kuperberg, Valerio Toledano Laredo and Sebastian Zwicknagl. We would like to thank Dongho Moon who pointed out that the relation of Equation \eqref{eq:IH2} was missing in the first 3 versions posted on the arXiv! S.C. was supported by NSF grant DMS-1101439 and the Alfred P. Sloan foundation, S.M. was supported by the Australian Research Council grant DE120100232 and by DOD-DARPA HR0011-12-1-0009, J.K. was supported by NSERC.  We would also like to thank VIA Rail for providing the venue where much of this research was carried out.
 
 \section{The categories \texorpdfstring{$\FSp(\SL_n)$}{FSp(SL\_n)} and \texorpdfstring{$\Sp(\SL_n)$}{Sp(SL\_n)}}\label{sec:diagrams}
 
@@ -324,6 +324,31 @@ The spider category $\Sp(\SL_n)$ is the quotient of $\FSp(\SL_n)$ by the followi
 \end{tikzpicture}
 \label{eq:IH}
 \displaybreak[1] \\
+\begin{tikzpicture}[baseline]
+\foreach \x/\y in {0/0,1/0,2/0,0/1,1/1,0/2} {
+	\coordinate(z\x\y) at (\x+\y/2,\y/1.5);
+}
+\coordinate (z03) at (1,2);
+\draw[mid>] (z00) node[below] {$a+b$} --  (z01);
+\draw[mid>] (z01) -- node[left] {$a$} (z02);
+\draw[mid<] (z10) node[below] {$b$} -- (z01);
+\draw[mid>] (z20) node[below] {$b+c$} -- (z02);
+\draw[mid>](z02) -- node[left] {$a+b+c$} (z03);
+\end{tikzpicture}
+& =
+\begin{tikzpicture}[baseline]
+\foreach \x/\y in {0/0,1/0,2/0,0/1,1/1,0/2} {
+	\coordinate(z\x\y) at (\x+\y/2,\y/1.5);
+}
+\coordinate (z03) at (1,2);
+\draw[mid>] (z00) node[below] {$a+b$} --  (z02);
+\draw[mid<] (z10) node[below] {$b$} -- (z11);
+\draw[mid>] (z20) node[below] {$b+c$} -- (z11);
+\draw[mid>] (z11) -- node[right] {$c$} (z02);
+\draw[mid>](z02) -- node[left] {$a+b+c$} (z03);
+\end{tikzpicture}
+\label{eq:IH2}
+\displaybreak[1] \\
 \label{eq:id1b}
 \tikz[baseline=40]{
 \laddercoordinates{1}{2}
@@ -359,7 +384,7 @@ The spider category $\Sp(\SL_n)$ is the quotient of $\FSp(\SL_n)$ by the followi
 \ladderEn{0}{1}{$k{-}s{+}r$}{$l{+}s{-}r$}{$s{-}t$}
 \end{tikzpicture}
 \end{align}
-together with the mirror reflections and the arrow reversals of these. These relations are often refered to as the `switching a tag' \eqref{eq:switch}, `removing a bigon' \eqref{eq:bigon1} and \eqref{eq:bigon2}, `$I=H$' \eqref{eq:IH}, `square removal' \eqref{eq:id1b} and `square switch' \eqref{eq:commutation}.
+together with the mirror reflections and the arrow reversals of these. These relations are often refered to as the `switching a tag' \eqref{eq:switch}, `removing a bigon' \eqref{eq:bigon1} and \eqref{eq:bigon2}, `$I=H$' (\ref{eq:IH} and \ref{eq:IH2}), `square removal' \eqref{eq:id1b} and `square switch' \eqref{eq:commutation}.
 
 \begin{rem}
 In the relations above we allow strands to be labelled by $0$ and $n$. As before, this means that $0$-strands should be deleted and $n$-strands replaced by tags. 
@@ -398,6 +423,32 @@ The relations above are redundant. For example, relation (\ref{eq:id1b}) is not 
 \draw[mid<] (cze) -- node[right] {$n{-}l$} (c);
 \draw (cze) -- + (0.15,0.15);
 \draw[mid<] (c) -- (e) node[above] {$n{-}k{-}l$};
+\end{tikzpicture} \\
+\label{eq:tag-migration2}
+\begin{tikzpicture}[baseline=20]
+\coordinate (z1) at (0,0);
+\coordinate (z2) at (1,0);
+\coordinate (c) at (0.5,0.5);
+\coordinate (ce) at (0.5,1);
+\coordinate (e) at (0.5,1.45);
+\draw[mid>] (z1) node[below] {$k{+}l$} -- (c);
+\draw[mid<] (z2) node[below] {$k$} -- (c);
+\draw[mid>] (c) -- node[right] {$l$} (ce);
+\draw[mid<] (ce) -- (e) node[above] {$n{-}l$};
+\draw (ce) -- +(-0.2,0);
+\end{tikzpicture}
+&=
+\begin{tikzpicture}[baseline=20,x=-1cm]
+\coordinate (z1) at (0,0);
+\coordinate (z2) at (1.5,0);
+\coordinate (cze) at (1.25,0.333);
+\coordinate (c) at (0.75,1);
+\coordinate (e) at (0.75,1.45);
+\draw[mid<] (z1) node[below] {$k$} -- (c);
+\draw[mid>] (z2) node[below] {$k{+}l$} -- (cze);
+\draw[mid<] (cze) -- node[left] {$n{-}k{-}l$} (c);
+\draw (cze) -- + (0.15,0.15);
+\draw[mid<] (c) -- (e) node[above] {$n{-}l$};
 \end{tikzpicture} \\
 \label{eq:cancel-tags}
 \tikz[baseline=0.6cm]{
@@ -447,7 +498,7 @@ The relations above are redundant. For example, relation (\ref{eq:id1b}) is not 
 where we use the convention that any non-vertical unlabelled strand carries a $1$, while the vertical strands have arbitrary compatible labels.
 \end{lem}
 \begin{proof}
-The first identity follows from relation \eqref{eq:bigon2} with $k=0$ after deleting the 0-strings. The second follows from \eqref{eq:IH} after replacing $n$-strands with tags. The third also follows from \eqref{eq:bigon2} with $l=n-k$ after replacing the $n$-strand with a matching pair of tags.
+The first identity follows from relation \eqref{eq:bigon2} with $k=0$ after deleting the 0-strings. The second and third follow from \eqref{eq:IH} and \eqref{eq:IH2} after replacing $n$-strands with tags. The fourth also follows from \eqref{eq:bigon2} with $l=n-k$ after replacing the $n$-strand with a matching pair of tags.
 
 { \renewcommand{\ladderY}{1}
 Finally, to prove (\ref{eq:serre}), we apply the $I=H$ relation along the leftmost upright to obtain
@@ -717,6 +768,59 @@ x_S
 where we write $S^c$ and $T^c$ for the complements of $S$ and $T$ in $\{1, \dots, n\}$. The result follows.
 
 {\bf Relation (\ref{eq:IH}).}  This follows immediately from the fact that $ \Alt{\bullet}{q}(\bC^n_q) $ forms an associative algebra (it is a quotient of a tensor algebra) and the arrow reversal follows from the fact that it forms a coassociative coalgebra (Lemma \ref{le:coalg}).
+
+{\bf Relation \eqref{eq:IH2}.}
+We rewrite this relation as 
+\begin{align*}
+\begin{tikzpicture}[baseline=30]
+\draw[mid>] (0,0) node[below] {$a+b$} -- (0,0.5);
+\draw (0,0.5) -- (-0.5,1);
+\draw[mid>] (-0.5,1) -- node[left] {$a$} (-0.5, 1.5);
+\draw (-0.5, 1.5) -- (1,2.5);
+\draw[mid>] (0,0.5) -- (0.5,1);
+\draw[mid>] (0.5,1) arc (180:0:0.5);
+\draw[mid<] (1.5,0) node[below] {$b$} -- (1.5,1);
+\draw[mid>] (2.5,0) node[below] {$b+c$} -- (2.5,1.5);
+\draw (2.5,1.5) -- (1,2.5);
+\draw[mid>] (1,2.5) -- (1,3) node[above] {$a+b+c$};
+\end{tikzpicture}
+& =
+\begin{tikzpicture}[baseline=30,x=-1cm]
+\draw[mid>] (0,0) node[below] {$b+c$} -- (0,0.5);
+\draw (0,0.5) -- (-0.5,1);
+\draw[mid>] (-0.5,1) -- node[right] {$c$} (-0.5, 1.5);
+\draw (-0.5, 1.5) -- (1,2.5);
+\draw[mid>] (0,0.5) -- (0.5,1);
+\draw[mid>] (0.5,1) arc (180:0:0.5);
+\draw[mid<] (1.5,0) node[below] {$b$} -- (1.5,1);
+\draw[mid>] (2.5,0) node[below] {$a+b$} -- (2.5,1.5);
+\draw (2.5,1.5) -- (1,2.5);
+\draw[mid>] (1,2.5) -- (1,3) node[above] {$a+b+c$};
+\end{tikzpicture}.
+\end{align*}
+
+The left hand side acts on $x_S \otimes x_T^* \otimes x_U$ as
+\begin{align*}
+x_S \otimes x_T^* \otimes x_U
+ & \mapsto (-1)^{(a+b)b} \sum_{V \subset S} (-q)^{- \ell( S \smallsetminus V, V)} x_V \otimes x_{S \smallsetminus V}
+\otimes x_T^* \otimes x_U \\
+ & \mapsto q^{-b(n-b) + 2 \ell(T, T^c)} (-1)^{(a+b)b} (-q)^{- \ell( T, S \smallsetminus T)} x_{S \smallsetminus T} \otimes  x_U \\
+ & \mapsto q^{-b(n-b) + 2 \ell(T, T^c)} (-1)^{(a+b)b} (-q)^{- \ell( T, S \smallsetminus T) + \ell(S \smallsetminus T, U) } x_{(S \smallsetminus T) \cup U} \delta_{(S \smallsetminus T) \cap U, \emptyset}.
+\end{align*}
+(Here we have used that the `backwards cap' map $$\Alt{k}{q} \bC_q^n \otimes (\Alt{k}{q} \bC_q^n)^* \rightarrow \bC(q)$$
+is given by applying the pivotal isomorphism in the first factor and then a canonical pairing, that is, $ x_T \otimes x_U^* \mapsto q^{-k(n-k) + 2 \ell(T, T^c)} \delta_{T,U}$.)
+
+The right hand side acts on $x_S \otimes x_T^* \otimes x_U$ as
+\begin{align*}
+x_S \otimes x_T^* \otimes x_U
+ & \mapsto (-1)^{b(b+c)} \sum_{W \subset U} (-q)^{- \ell(U \smallsetminus W, W)} x_S \otimes x_T^* \otimes x_W \otimes x_{U
+ \smallsetminus W} \\
+ & \mapsto (-1)^{b(b+c)} (-q)^{- \ell(U \smallsetminus T, T)} x_S \otimes x_{U \smallsetminus T} \\
+ & \mapsto (-1)^{b(b+c)} (-q)^{- \ell(U \smallsetminus T, T) + \ell(S, U \smallsetminus T)} x_{S \cup (U \smallsetminus T)}
+ \delta_{S \cap (U \smallsetminus T), \emptyset}
+\end{align*}
+
+\todo{Get these to match up!}
 
 {\bf Relation (\ref{eq:commutation}).}
 We will prove (\ref{eq:commutation}) in the case when $r=s=1$ (this suffices by the second remark in \S \ref{sec:spider}), which amounts to the following diagram.
@@ -1649,7 +1753,7 @@ and then finally replacing each other instance where a superimposed strand cross
 \draw[mid>,dashed] (0,0.3) --node[right] {$n$} (0,1);
 }
 \end{align*}
-to obtain $D'_2$. Now one can check that $D'_2$ is in fact equal to $D_2$, using only a few relations from the spider. In particular, for each of the replacements above involving a $0$ strand, when we delete the $0$ strands we see that nothing has changed. In the replacements involving an $n$ strand but no trivalent vertices, after removing the $n$-strands and replacing their endpoints with tags, we find we can cancel the tags according to Equation \eqref{eq:cancel-tags}. Finally, in the replacements involving an $n$ strand to the right of a trivalent vertex (those in \eqref{eq:n-right-of-trivalent}), we need to use Equation \eqref{eq:tag-migration} to move one tag past the trivalent vertex, and then Equation \eqref{eq:cancel-tags} to cancel them.
+to obtain $D'_2$. Now one can check that $D'_2$ is in fact equal to $D_2$, using only a few relations from the spider. In particular, for each of the replacements above involving a $0$ strand, when we delete the $0$ strands we see that nothing has changed. In the replacements involving an $n$ strand but no trivalent vertices, after removing the $n$-strands and replacing their endpoints with tags, we find we can cancel the tags according to Equation \eqref{eq:cancel-tags}. Finally, in the replacements involving an $n$ strand to the right of a trivalent vertex (those in \eqref{eq:n-right-of-trivalent}), we need to use Equations \eqref{eq:tag-migration} and \eqref{eq:tag-migration2} to move one tag past the trivalent vertex, and then Equation \eqref{eq:cancel-tags} to cancel them.
 
 In each of the local replacements used to form $D'_2$ the new diagram consists of part of an upright of the ladder, along with several `half-rungs'. It is easy to see that all of these half-rungs come in matching pairs forming complete rungs, except at the left margin of $D'_2$. Similarly, $D'_1$ is a ladder except that it has half-rungs along its right margin. The horizontal juxtaposition $D'_1 D'_2$ is then a ladder.
 Since $D$ is equivalent in $\Sp(\SL_n)$ to $D'_1 D'_2$, we are finished.
