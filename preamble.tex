@@ -149,13 +149,16 @@
 
 % ----------------------------------------------------------------
 
-\ifpdf
-	\usepackage[pdftex,plainpages=false,hypertexnames=false,pdfpagelabels]{hyperref}
-	\usepackage[pdftex]{graphicx}
-\else
-	\usepackage[plainpages=false,hypertexnames=false,pdfpagelabels]{hyperref}
-	\usepackage{graphicx}
-\fi
+\usepackage{hyperref}
+\usepackage{graphicx}
+
+% \ifpdf
+% 	\usepackage[pdftex,plainpages=false,hypertexnames=false,pdfpagelabels]{hyperref}
+% 	\usepackage[pdftex]{graphicx}
+% \else
+% 	\usepackage[plainpages=false,hypertexnames=false,pdfpagelabels]{hyperref}
+% 	\usepackage{graphicx}
+% \fi
 
 %must load tikz after graphicx
 \usepackage{tikz}
